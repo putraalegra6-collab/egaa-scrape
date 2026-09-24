@@ -38,27 +38,35 @@ input{font-family:inherit}
 .lnav-links a:hover{color:var(--fg)}
 .lnav-cta{padding:8px 14px;border-radius:7px;background:var(--fg);color:var(--accent-inv);font-size:13px;font-weight:600;transition:.15s}
 .lnav-cta:hover{background:#fff}
-.lhero{max-width:1200px;margin:0 auto;padding:80px 32px 60px;display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center}
-.lhero-left{display:flex;flex-direction:column}
-.lhero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:5px 11px;border:1px solid var(--line-2);border-radius:999px;font-size:11.5px;color:var(--fg-dim);letter-spacing:.3px;margin-bottom:24px;align-self:flex-start}
-.lhero-eyebrow i{width:5px;height:5px;border-radius:50%;background:var(--green);display:block}
-.lhero-h1{font-size:56px;font-weight:700;letter-spacing:-1.8px;line-height:1.05;color:var(--fg);margin-bottom:22px}
+
+.lhero{max-width:1200px;margin:0 auto;padding:88px 32px 64px;display:grid;grid-template-columns:1.05fr 1fr;gap:72px;align-items:center;position:relative}
+.lhero-left{display:flex;flex-direction:column;position:relative;z-index:1}
+.lhero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:5px 11px;border:1px solid var(--line-2);border-radius:999px;font-size:11.5px;color:var(--fg-dim);letter-spacing:.3px;margin-bottom:24px;align-self:flex-start;background:var(--bg-2)}
+.lhero-eyebrow i{width:5px;height:5px;border-radius:50%;background:var(--green);display:block;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.lhero-h1{font-size:60px;font-weight:700;letter-spacing:-2.2px;line-height:1.02;color:var(--fg);margin-bottom:24px}
 .lhero-h1 .dim{color:var(--fg-dimmer)}
-.lhero-p{font-size:16px;color:var(--fg-dim);line-height:1.65;max-width:520px;margin-bottom:32px}
-.lhero-btns{display:flex;gap:10px;flex-wrap:wrap}
-.lbtn-1{padding:13px 24px;border-radius:9px;background:var(--fg);color:var(--accent-inv);font-size:14px;font-weight:600;transition:.15s}
-.lbtn-1:hover{background:#fff}
-.lbtn-2{padding:13px 24px;border-radius:9px;background:transparent;border:1px solid var(--line-2);color:var(--fg);font-size:14px;font-weight:500;transition:.15s}
+.lhero-p{font-size:16px;color:var(--fg-dim);line-height:1.65;max-width:540px;margin-bottom:36px}
+.lhero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+.lbtn-1{padding:14px 26px;border-radius:9px;background:var(--fg);color:var(--accent-inv);font-size:14px;font-weight:600;transition:.15s;display:inline-flex;align-items:center;gap:8px}
+.lbtn-1:hover{background:#fff;transform:translateY(-1px)}
+.lbtn-1 svg{width:14px;height:14px}
+.lbtn-2{padding:14px 26px;border-radius:9px;background:transparent;border:1px solid var(--line-2);color:var(--fg);font-size:14px;font-weight:500;transition:.15s}
 .lbtn-2:hover{background:var(--bg-3);border-color:#3a3a42}
+.lhero-meta{display:flex;gap:24px;flex-wrap:wrap;font-size:11.5px;color:var(--fg-dimmer);font-family:var(--mono)}
+.lhero-meta span{display:inline-flex;align-items:center;gap:6px}
+.lhero-meta svg{width:12px;height:12px;color:var(--green)}
+
 .lhero-right{position:relative}
-.mock{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.lhero-right::before{content:'';position:absolute;inset:-40px;background:radial-gradient(circle at 50% 50%, rgba(91,141,239,.08), transparent 70%);pointer-events:none;z-index:0}
+.mock{position:relative;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 30px 80px -30px rgba(0,0,0,.8);z-index:1}
 .mock-head{padding:11px 14px;background:var(--bg-3);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
 .mock-dots{display:flex;gap:5px}
 .mock-dot{width:9px;height:9px;border-radius:50%;background:var(--line-2)}
 .mock-title{font-family:var(--mono);font-size:11px;color:var(--fg-dimmer);margin-left:8px}
-.mock-body{padding:18px 16px;font-family:var(--mono);font-size:11.5px;line-height:1.75}
-.mock-line{display:flex;gap:12px;padding:2px 0}
-.mock-n{color:var(--fg-dimmer);user-select:none;width:18px;text-align:right;flex-shrink:0}
+.mock-body{padding:20px 18px;font-family:var(--mono);font-size:11.5px;line-height:1.8}
+.mock-line{display:flex;gap:14px;padding:2px 0}
+.mock-n{color:var(--fg-dimmer);user-select:none;width:20px;text-align:right;flex-shrink:0}
 .mock-key{color:#8fb3ff}
 .mock-str{color:#a5d6a7}
 .mock-com{color:#565f75}
@@ -66,32 +74,53 @@ input{font-family:inherit}
 .mock-attr{color:#c8b46a}
 .mock-cursor{display:inline-block;width:7px;height:13px;background:var(--fg);vertical-align:-2px;animation:blink 1s step-end infinite}
 @keyframes blink{50%{opacity:0}}
-.lstats{max-width:1200px;margin:0 auto;padding:0 32px 60px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.lstat{padding:26px 24px;border-right:1px solid var(--line)}
+.mock-badge{position:absolute;bottom:-14px;right:-14px;background:var(--bg-3);border:1px solid var(--line-2);border-radius:10px;padding:10px 14px;box-shadow:0 10px 30px -10px rgba(0,0,0,.8);font-family:var(--mono);font-size:11px;display:flex;align-items:center;gap:8px}
+.mock-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+.mock-badge span{color:var(--fg-dim)}
+
+.lstats{max-width:1200px;margin:0 auto;padding:0 32px 64px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.lstat{padding:28px 24px;border-right:1px solid var(--line);position:relative;transition:.2s}
 .lstat:last-child{border-right:none}
-.lstat-v{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--fg);letter-spacing:-.5px}
-.lstat-l{font-size:11.5px;color:var(--fg-dim);margin-top:4px;text-transform:uppercase;letter-spacing:.7px}
-.lflow{max-width:1200px;margin:0 auto;padding:80px 32px 40px}
-.lflow-head{margin-bottom:36px;max-width:600px}
-.lflow-h{font-size:28px;font-weight:700;letter-spacing:-.8px;margin-bottom:10px}
-.lflow-p{font-size:14.5px;color:var(--fg-dim);line-height:1.6}
-.lflow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.lstep{padding:28px 24px;border-right:1px solid var(--line);background:var(--bg-2)}
+.lstat:hover{background:var(--bg-2)}
+.lstat-v{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--fg);letter-spacing:-.5px}
+.lstat-l{font-size:11.5px;color:var(--fg-dim);margin-top:5px;text-transform:uppercase;letter-spacing:.7px}
+
+.lflow{max-width:1200px;margin:0 auto;padding:84px 32px 40px}
+.lflow-head{margin-bottom:40px;max-width:640px}
+.lflow-h{font-size:30px;font-weight:700;letter-spacing:-1px;margin-bottom:12px}
+.lflow-p{font-size:15px;color:var(--fg-dim);line-height:1.65}
+.lflow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg-2)}
+.lstep{padding:32px 28px;border-right:1px solid var(--line);position:relative;transition:.2s}
 .lstep:last-child{border-right:none}
-.lstep-n{font-family:var(--mono);font-size:11px;color:var(--fg-dimmer);margin-bottom:16px;letter-spacing:.8px}
-.lstep-h{font-size:15px;font-weight:600;margin-bottom:8px;letter-spacing:-.2px}
-.lstep-p{font-size:13px;color:var(--fg-dim);line-height:1.6}
-.lfeat{max-width:1200px;margin:0 auto;padding:40px 32px 80px}
-.lfeat-head{margin-bottom:32px}
-.lfeat-h{font-size:28px;font-weight:700;letter-spacing:-.8px;margin-bottom:10px}
-.lfeat-p{font-size:14.5px;color:var(--fg-dim);max-width:600px;line-height:1.6}
+.lstep:hover{background:var(--bg-3)}
+.lstep-n{font-family:var(--mono);font-size:11px;color:var(--fg-dimmer);margin-bottom:18px;letter-spacing:.9px;display:flex;align-items:center;gap:10px}
+.lstep-n::after{content:'';flex:1;height:1px;background:var(--line);max-width:40px}
+.lstep-h{font-size:15.5px;font-weight:600;margin-bottom:9px;letter-spacing:-.2px}
+.lstep-p{font-size:13px;color:var(--fg-dim);line-height:1.65}
+
+.lfeat{max-width:1200px;margin:0 auto;padding:44px 32px 84px}
+.lfeat-head{margin-bottom:36px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.lfeat-h{font-size:30px;font-weight:700;letter-spacing:-1px;margin-bottom:10px}
+.lfeat-p{font-size:15px;color:var(--fg-dim);max-width:600px;line-height:1.65}
 .lfeat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.feat{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:22px;transition:.15s}
-.feat:hover{border-color:var(--line-2);background:var(--bg-3)}
-.feat-ico{width:34px;height:34px;border-radius:8px;background:var(--bg-3);border:1px solid var(--line-2);display:grid;place-items:center;margin-bottom:16px;color:var(--fg-dim)}
+.feat{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:24px;transition:.2s;position:relative}
+.feat:hover{border-color:var(--line-2);background:var(--bg-3);transform:translateY(-2px)}
+.feat-ico{width:36px;height:36px;border-radius:9px;background:var(--bg-3);border:1px solid var(--line-2);display:grid;place-items:center;margin-bottom:18px;color:var(--fg-dim);transition:.2s}
+.feat:hover .feat-ico{color:var(--fg);border-color:#3a3a42}
 .feat-ico svg{width:16px;height:16px}
-.feat-h{font-size:14.5px;font-weight:600;margin-bottom:7px;letter-spacing:-.15px}
-.feat-p{font-size:12.8px;color:var(--fg-dim);line-height:1.6}
+.feat-h{font-size:14.5px;font-weight:600;margin-bottom:8px;letter-spacing:-.15px}
+.feat-p{font-size:12.8px;color:var(--fg-dim);line-height:1.65}
+
+.lcta{max-width:1200px;margin:0 auto;padding:0 32px 84px}
+.lcta-inner{background:var(--bg-2);border:1px solid var(--line);border-radius:16px;padding:56px 40px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;position:relative;overflow:hidden}
+.lcta-inner::before{content:'';position:absolute;top:-50%;right:-10%;width:400px;height:400px;background:radial-gradient(circle, rgba(91,141,239,.08), transparent 70%);pointer-events:none}
+.lcta-left{max-width:560px;position:relative;z-index:1}
+.lcta-h{font-size:28px;font-weight:700;letter-spacing:-.9px;margin-bottom:12px}
+.lcta-p{font-size:14.5px;color:var(--fg-dim);line-height:1.65}
+.lcta-btn{padding:15px 28px;border-radius:10px;background:var(--fg);color:var(--accent-inv);font-size:14.5px;font-weight:600;transition:.15s;display:inline-flex;align-items:center;gap:9px;position:relative;z-index:1}
+.lcta-btn:hover{background:#fff;transform:translateY(-1px)}
+.lcta-btn svg{width:14px;height:14px}
+
 .lfoot{border-top:1px solid var(--line);padding:26px 32px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--fg-dimmer);flex-wrap:wrap;gap:12px;max-width:1200px;margin:0 auto}
 .lfoot b{color:var(--fg-dim);font-weight:600}
 
@@ -106,14 +135,12 @@ input{font-family:inherit}
 
 .awrap{max-width:1100px;margin:0 auto;padding:32px 24px 80px}
 
-/* App header */
 .ahead{margin-bottom:28px}
 .ahead-eyebrow{display:inline-flex;align-items:center;gap:7px;padding:4px 10px;border:1px solid var(--line-2);border-radius:999px;font-size:11px;color:var(--fg-dim);letter-spacing:.3px;margin-bottom:14px}
 .ahead-eyebrow i{width:5px;height:5px;border-radius:50%;background:var(--green);display:block}
 .ahead-h1{font-size:32px;font-weight:700;letter-spacing:-1px;line-height:1.15;margin-bottom:8px}
 .ahead-p{font-size:14px;color:var(--fg-dim);line-height:1.6;max-width:560px}
 
-/* Input panel */
 .apane{background:var(--bg-2);border:1px solid var(--line);border-radius:13px;padding:20px;margin-bottom:16px}
 .apane-h{font-size:10.5px;color:var(--fg-dim);text-transform:uppercase;letter-spacing:1.4px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .apane-h::before{content:'';width:3px;height:11px;background:var(--fg-dim);border-radius:2px}
@@ -142,13 +169,11 @@ input{font-family:inherit}
 .aspin{width:12px;height:12px;border:2px solid var(--line-2);border-top-color:var(--fg);border-radius:50%;animation:sp .7s linear infinite;flex-shrink:0}
 @keyframes sp{to{transform:rotate(360deg)}}
 
-/* Quick examples */
 .aex{margin-bottom:16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .aex-l{font-size:11px;color:var(--fg-dim);margin-right:4px;font-family:var(--mono)}
 .aex-b{padding:5px 10px;border-radius:6px;background:var(--bg-2);border:1px solid var(--line);color:var(--fg-dim);font-size:11.5px;font-family:var(--mono);transition:.15s}
 .aex-b:hover{color:var(--fg);border-color:var(--line-2);background:var(--bg-3)}
 
-/* Empty state (idle) */
 .aidle{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
 .aidle-card{background:var(--bg-2);border:1px solid var(--line);border-radius:13px;padding:24px}
 .aidle-h{font-size:14px;font-weight:600;margin-bottom:6px;letter-spacing:-.15px}
@@ -165,7 +190,6 @@ input{font-family:inherit}
 .aidle-li svg{width:13px;height:13px;color:var(--green);flex-shrink:0}
 .aidle-li b{color:var(--fg);font-weight:500}
 
-/* Result */
 #result{display:none}
 #result.show{display:block;animation:fade .25s}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
@@ -239,7 +263,19 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
 .amod-imports{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
 .chip{font-size:10px;padding:3px 8px;background:var(--bg);border:1px solid var(--line-2);color:var(--fg-dim);border-radius:4px;font-family:var(--mono)}
 
-/* Preview */
+/* API Module tab */
+.apimod-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--bg-3);border:1px solid var(--line);border-radius:9px;padding:14px 16px;margin-bottom:14px}
+.apimod-file-l{font-size:10px;color:var(--fg-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-weight:600}
+.apimod-file-v{font-family:var(--mono);font-size:13px;color:var(--fg);font-weight:600}
+.apimod-stats{display:flex;gap:20px}
+.apimod-stat{display:flex;flex-direction:column;align-items:center}
+.apimod-stat b{font-family:var(--mono);font-size:18px;color:var(--fg);font-weight:700;letter-spacing:-.4px}
+.apimod-stat span{font-size:10px;color:var(--fg-dim);text-transform:uppercase;letter-spacing:.8px;margin-top:2px}
+.apimod-list{display:flex;flex-direction:column;gap:5px}
+.apimod-item{display:flex;gap:10px;align-items:center;background:var(--bg-3);border:1px solid var(--line);border-radius:7px;padding:9px 12px;font-family:var(--mono);font-size:11.5px}
+.apimod-method{flex-shrink:0;padding:2px 7px;background:var(--bg);border:1px solid var(--line-2);border-radius:4px;color:var(--fg-dim);font-size:10px;font-weight:600;letter-spacing:.5px}
+.apimod-url{color:var(--fg);word-break:break-all;min-width:0}
+
 .pv-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:var(--bg-3);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:12px}
 .pv-url{font-size:11.5px;color:var(--fg-dim);font-family:var(--mono);word-break:break-all;flex:1;min-width:180px}
 .pv-open{padding:6px 11px;border-radius:6px;background:var(--bg);border:1px solid var(--line-2);color:var(--fg-dim);font-size:11.5px;font-weight:500;transition:.15s;display:inline-flex;align-items:center;gap:6px}
@@ -253,8 +289,8 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
 .afoot b{color:var(--fg-dim)}
 
 @media(max-width:960px){
-  .lhero{grid-template-columns:1fr;gap:48px;padding:56px 24px 40px}
-  .lhero-h1{font-size:42px;letter-spacing:-1.3px}
+  .lhero{grid-template-columns:1fr;gap:56px;padding:64px 24px 48px}
+  .lhero-h1{font-size:44px;letter-spacing:-1.5px}
   .lhero-right{order:2}
   .lstats{grid-template-columns:repeat(2,1fr)}
   .lstat{border-bottom:1px solid var(--line)}
@@ -265,21 +301,25 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
   .lstep:last-child{border-bottom:none}
   .lfeat-grid{grid-template-columns:1fr 1fr}
   .aidle{grid-template-columns:1fr}
+  .lcta-inner{padding:40px 28px}
 }
 @media(max-width:640px){
   .lnav{padding:0 18px}
   .lnav-links{display:none}
-  .lhero{padding:44px 18px 32px}
-  .lhero-h1{font-size:34px;letter-spacing:-1px}
+  .lhero{padding:48px 18px 36px}
+  .lhero-h1{font-size:36px;letter-spacing:-1.1px}
   .lhero-p{font-size:14.5px}
-  .lstats{padding:0 18px 40px}
-  .lstat{padding:20px 16px}
-  .lstat-v{font-size:18px}
+  .lhero-meta{font-size:11px;gap:16px}
+  .lstats{padding:0 18px 48px}
+  .lstat{padding:22px 16px}
+  .lstat-v{font-size:19px}
   .lflow{padding:56px 18px 32px}
-  .lflow-h{font-size:22px}
-  .lfeat{padding:32px 18px 56px}
-  .lfeat-h{font-size:22px}
+  .lflow-h{font-size:23px}
+  .lfeat{padding:32px 18px 60px}
+  .lfeat-h{font-size:23px}
   .lfeat-grid{grid-template-columns:1fr}
+  .lcta{padding:0 18px 60px}
+  .lcta-h{font-size:22px}
   .lfoot{padding:20px 18px}
   .awrap{padding:20px 14px 60px}
   .anav{padding:0 14px}
@@ -308,6 +348,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
     <div class="lnav-links">
       <a href="#how">Cara Kerja</a>
       <a href="#features">Fitur</a>
+      <a href="#start">Mulai</a>
     </div>
     <button class="lnav-cta" onclick="openApp()">Buka Aplikasi</button>
   </nav>
@@ -320,13 +361,21 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
         sumber website <span class="dim">ke satu file.</span>
       </h1>
       <p class="lhero-p">
-        Ekstrak HTML, CSS, JavaScript, module imports, gambar, tabel, dan form
-        dari website mana pun. Semua hasil dibungkus rapi ke dalam satu file
-        ZIP siap unduh.
+        Ekstrak HTML, CSS, JavaScript, module imports, API endpoint, gambar,
+        tabel, dan form dari website mana pun. Semua hasil dikemas rapi ke
+        dalam satu file ZIP siap unduh.
       </p>
       <div class="lhero-btns">
-        <button class="lbtn-1" onclick="openApp()">Mulai Sekarang</button>
+        <button class="lbtn-1" onclick="openApp()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Mulai Sekarang
+        </button>
         <a class="lbtn-2" href="#how">Pelajari Cara Kerja</a>
+      </div>
+      <div class="lhero-meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Tanpa instalasi</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Gratis sepenuhnya</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hasil langsung bisa diunduh</span>
       </div>
     </div>
     <div class="lhero-right">
@@ -344,19 +393,23 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
           <div class="mock-line"><span class="mock-n">6</span><span class="mock-tag">&lt;/head&gt;</span></div>
           <div class="mock-line"><span class="mock-n">7</span><span class="mock-tag">&lt;body&gt;</span></div>
           <div class="mock-line"><span class="mock-n">8</span>&nbsp;&nbsp;<span class="mock-tag">&lt;div</span> <span class="mock-attr">class</span>=<span class="mock-str">"app"</span><span class="mock-tag">&gt;</span></div>
-          <div class="mock-line"><span class="mock-n">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="mock-key">const</span> data = <span class="mock-key">await</span> scrape(url)<span class="mock-cursor"></span></div>
+          <div class="mock-line"><span class="mock-n">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="mock-key">const</span> data = <span class="mock-key">await</span> fetch(api)<span class="mock-cursor"></span></div>
           <div class="mock-line"><span class="mock-n">10</span>&nbsp;&nbsp;<span class="mock-tag">&lt;/div&gt;</span></div>
           <div class="mock-line"><span class="mock-n">11</span><span class="mock-tag">&lt;/body&gt;</span></div>
         </div>
+      </div>
+      <div class="mock-badge">
+        <span class="mock-badge-dot"></span>
+        <span>API Module</span>
       </div>
     </div>
   </section>
 
   <section class="lstats">
-    <div class="lstat"><div class="lstat-v">12</div><div class="lstat-l">Kategori Data</div></div>
+    <div class="lstat"><div class="lstat-v">13</div><div class="lstat-l">Kategori Data</div></div>
     <div class="lstat"><div class="lstat-v">ZIP</div><div class="lstat-l">Format Unduhan</div></div>
     <div class="lstat"><div class="lstat-v">JS</div><div class="lstat-l">Module Analyzer</div></div>
-    <div class="lstat"><div class="lstat-v">Live</div><div class="lstat-l">Preview Hasil</div></div>
+    <div class="lstat"><div class="lstat-v">API</div><div class="lstat-l">Endpoint Detector</div></div>
   </section>
 
   <section class="lflow" id="how">
@@ -373,7 +426,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
       <div class="lstep">
         <div class="lstep-n">LANGKAH 02</div>
         <div class="lstep-h">Proses Salin</div>
-        <p class="lstep-p">Sistem mengambil HTML, asset, dan menganalisis JS module secara otomatis.</p>
+        <p class="lstep-p">Sistem mengambil HTML, asset, dan menganalisis JS module serta endpoint API secara otomatis.</p>
       </div>
       <div class="lstep">
         <div class="lstep-n">LANGKAH 03</div>
@@ -385,8 +438,10 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
 
   <section class="lfeat" id="features">
     <div class="lfeat-head">
-      <h2 class="lfeat-h">Fitur lengkap</h2>
-      <p class="lfeat-p">Semua yang dibutuhkan untuk menyalin dan menganalisis struktur website target.</p>
+      <div>
+        <h2 class="lfeat-h">Fitur lengkap</h2>
+        <p class="lfeat-p">Semua yang dibutuhkan untuk menyalin dan menganalisis struktur website target.</p>
+      </div>
     </div>
     <div class="lfeat-grid">
       <div class="feat">
@@ -400,14 +455,14 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
         <p class="feat-p">Deteksi import dan export di setiap file JavaScript secara otomatis.</p>
       </div>
       <div class="feat">
-        <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
-        <div class="feat-h">Asset Downloader</div>
-        <p class="feat-p">Ambil isi script, stylesheet, dan inline asset langsung ke disk.</p>
+        <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg></div>
+        <div class="feat-h">API Module Generator</div>
+        <p class="feat-p">File module JS dibuat otomatis dari endpoint API yang terdeteksi.</p>
       </div>
       <div class="feat">
         <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
         <div class="feat-h">Struktur ZIP Rapi</div>
-        <p class="feat-p">Hasil dikelompokkan ke folder website, data, dan lists yang terorganisir.</p>
+        <p class="feat-p">Hasil dikelompokkan ke folder website, data, lists, dan modules.</p>
       </div>
       <div class="feat">
         <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
@@ -419,6 +474,19 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
         <div class="feat-h">Preview Live</div>
         <p class="feat-p">Lihat tampilan website hasil salinan langsung di dalam aplikasi.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="lcta" id="start">
+    <div class="lcta-inner">
+      <div class="lcta-left">
+        <h3 class="lcta-h">Siap menyalin website pertamamu?</h3>
+        <p class="lcta-p">Buka aplikasi dan mulai proses salin. Hasil lengkap bisa diunduh dalam satu file ZIP dengan struktur folder yang rapi.</p>
+      </div>
+      <button class="lcta-btn" onclick="openApp()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Buka Aplikasi
+      </button>
     </div>
   </section>
 
@@ -443,14 +511,12 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
 
   <div class="awrap">
 
-    <!-- App header -->
     <div class="ahead">
       <div class="ahead-eyebrow"><i></i>Siap digunakan</div>
       <h1 class="ahead-h1">Salin sumber website</h1>
-      <p class="ahead-p">Masukkan alamat website yang ingin disalin. Sistem akan mengambil HTML, asset, dan module JavaScript secara otomatis.</p>
+      <p class="ahead-p">Masukkan alamat website yang ingin disalin. Sistem akan mengambil HTML, asset, module JavaScript, dan endpoint API secara otomatis.</p>
     </div>
 
-    <!-- Input -->
     <div class="apane">
       <div class="apane-h">Target URL</div>
       <div class="arow">
@@ -466,7 +532,6 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
       <div class="astat" id="status"></div>
     </div>
 
-    <!-- Quick examples -->
     <div class="aex">
       <span class="aex-l">Contoh cepat:</span>
       <button class="aex-b" data-url="https://example.com">example.com</button>
@@ -474,7 +539,6 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
       <button class="aex-b" data-url="https://developer.mozilla.org">mozilla.org</button>
     </div>
 
-    <!-- Idle state (belum ada hasil) -->
     <div class="aidle" id="idle">
       <div class="aidle-card">
         <div class="aidle-h">Panduan singkat</div>
@@ -501,13 +565,12 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
           <div class="aidle-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><b>HTML</b> struktur halaman asli</div>
           <div class="aidle-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><b>CSS</b> stylesheet dan inline style</div>
           <div class="aidle-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><b>JavaScript</b> beserta daftar import</div>
-          <div class="aidle-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><b>Metadata</b> title, description, favicon</div>
+          <div class="aidle-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><b>API Endpoint</b> dan module otomatis</div>
           <div class="aidle-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><b>Gambar, link, tabel, form</b></div>
         </div>
       </div>
     </div>
 
-    <!-- Result -->
     <div id="result">
       <div class="abar">
         <div class="abar-info">
@@ -528,6 +591,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
             <button class="atab on" data-t="preview">Preview</button>
             <button class="atab" data-t="meta">Metadata</button>
             <button class="atab" data-t="modules">JS Modules</button>
+            <button class="atab" data-t="api">API Module</button>
             <button class="atab" data-t="scripts">Scripts</button>
             <button class="atab" data-t="styles">Styles</button>
             <button class="atab" data-t="headings">Headings</button>
@@ -544,6 +608,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
         <div class="atc on" id="t-preview"></div>
         <div class="atc" id="t-meta"></div>
         <div class="atc" id="t-modules"></div>
+        <div class="atc" id="t-api"></div>
         <div class="atc" id="t-scripts"></div>
         <div class="atc" id="t-styles"></div>
         <div class="atc" id="t-headings"></div>
@@ -701,7 +766,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
       ['Paragraf', s.totalParagraphs],
       ['Script', s.totalScripts],
       ['Style', s.totalStylesheets],
-      ['Form', s.totalForms],
+      ['Endpoint', s.detectedEndpoints || 0],
       ['HTML', fmtB(s.htmlSize)]
     ];
     sgrid.innerHTML = items.map(function(x){
@@ -710,6 +775,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
 
     updateBadge('meta', '');
     updateBadge('modules', d.assetModules ? d.assetModules.length : 0);
+    updateBadge('api', s.detectedEndpoints || 0);
     updateBadge('scripts', d.scripts ? d.scripts.length : 0);
     updateBadge('styles', (d.stylesheets ? d.stylesheets.length : 0) + (d.inlineStyles ? d.inlineStyles.length : 0));
     updateBadge('headings', s.totalHeadings);
@@ -743,6 +809,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
       '<div class="amr"><span class="amk">Favicon</span><span class="amv">' + (m.favicon ? '<a href="' + esc(m.favicon) + '" target="_blank">' + esc(m.favicon) + '</a>' : '-') + '</span></div>' +
       '</div>';
 
+    // JS MODULES
     if(d.assetModules && d.assetModules.length){
       $('t-modules').innerHTML = d.assetModules.map(function(mod,i){
         return '<div class="amod">' +
@@ -762,6 +829,49 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
       $('t-modules').innerHTML = '<div class="aempty">Tidak ada JS module yang terdeteksi.</div>';
     }
 
+    // API MODULE
+    if(d.generatedModule && d.generatedModule.code){
+      var gm = d.generatedModule;
+      var apiHtml =
+        '<div class="apimod-head">' +
+          '<div>' +
+            '<div class="apimod-file-l">File name</div>' +
+            '<div class="apimod-file-v">' + esc(gm.fileName) + '</div>' +
+          '</div>' +
+          '<div class="apimod-stats">' +
+            '<div class="apimod-stat"><b>' + gm.endpointCount + '</b><span>Endpoint</span></div>' +
+            '<div class="apimod-stat"><b>' + gm.baseUrlCount + '</b><span>Base URL</span></div>' +
+          '</div>' +
+        '</div>';
+
+      if(d.apiAnalyses && d.apiAnalyses.length){
+        var allEndpoints = [];
+        d.apiAnalyses.forEach(function(a){
+          a.endpoints.forEach(function(e){ allEndpoints.push(e); });
+        });
+        if(allEndpoints.length){
+          apiHtml += '<div class="ast">Endpoint Terdeteksi</div>';
+          apiHtml += '<div class="apimod-list">';
+          allEndpoints.forEach(function(e){
+            apiHtml += '<div class="apimod-item">' +
+              '<span class="apimod-method">' + esc(e.method) + '</span>' +
+              '<span class="apimod-url">' + esc(e.url) + '</span>' +
+            '</div>';
+          });
+          apiHtml += '</div>';
+        }
+      }
+
+      apiHtml += '<div class="ast">Source Code</div>';
+      apiHtml += '<pre>' + esc(gm.code.slice(0, 60000)) + '</pre>';
+      apiHtml += '<div class="pv-note" style="margin-top:10px;">File ini otomatis ikut terunduh di folder <b>modules/</b> saat kamu klik Download ZIP.</div>';
+
+      $('t-api').innerHTML = apiHtml;
+    } else {
+      $('t-api').innerHTML = '<div class="aempty">Tidak ada API endpoint terdeteksi dari website ini.</div>';
+    }
+
+    // SCRIPTS
     $('t-scripts').innerHTML = d.scripts.length
       ? '<div class="aitems">' + d.scripts.map(function(s){
           return '<div class="ait"><span class="sub">' + esc(s.type) + (s.size ? ' · ' + fmtB(s.size) : '') + '</span>' +
@@ -769,6 +879,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
         }).join('') + '</div>'
       : '<div class="aempty">Tidak ada script.</div>';
 
+    // STYLES
     var stylesHtml = '';
     if(d.stylesheets.length){
       stylesHtml += '<div class="ast">External Stylesheets (' + d.stylesheets.length + ')</div>';
@@ -783,6 +894,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
     }
     $('t-styles').innerHTML = stylesHtml || '<div class="aempty">Tidak ada CSS.</div>';
 
+    // HEADINGS
     var h = d.headings, hHtml = '', hasH = false;
     ['h1','h2','h3','h4','h5','h6'].forEach(function(tag){
       if(h[tag] && h[tag].length){
@@ -793,10 +905,12 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
     });
     $('t-headings').innerHTML = hasH ? hHtml : '<div class="aempty">Tidak ada heading.</div>';
 
+    // PARAGRAPHS
     $('t-paras').innerHTML = d.paragraphs.length
       ? d.paragraphs.map(function(p){ return '<div class="apara">' + esc(p) + '</div>'; }).join('')
       : '<div class="aempty">Tidak ada paragraf.</div>';
 
+    // LINKS
     $('t-links').innerHTML = d.links.length
       ? '<div class="aitems">' + d.links.map(function(l){
           return '<div class="ait">' + (l.text ? '<span class="sub">' + esc(l.text) + '</span>' : '') +
@@ -804,6 +918,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
         }).join('') + '</div>'
       : '<div class="aempty">Tidak ada link.</div>';
 
+    // IMAGES
     $('t-imgs').innerHTML = d.images.length
       ? '<div class="aigrid">' + d.images.map(function(i){
           return '<div class="aic"><img src="' + esc(i.url) + '" alt="' + esc(i.alt) + '" loading="lazy" onerror="this.style.opacity=0.15" />' +
@@ -811,6 +926,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
         }).join('') + '</div>'
       : '<div class="aempty">Tidak ada gambar.</div>';
 
+    // TABLES
     $('t-tables').innerHTML = d.tables.length
       ? d.tables.map(function(rows,i){
           var html = '<div class="ast">Tabel ' + (i+1) + ' · ' + rows.length + ' baris</div><div class="atw"><table>';
@@ -824,6 +940,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
         }).join('')
       : '<div class="aempty">Tidak ada tabel.</div>';
 
+    // FORMS
     $('t-forms').innerHTML = d.forms.length
       ? d.forms.map(function(f,i){
           return '<div class="ast">Form ' + (i+1) + '</div>' +
@@ -838,10 +955,12 @@ pre{background:#050506;border:1px solid var(--line);border-radius:8px;padding:14
         }).join('')
       : '<div class="aempty">Tidak ada form.</div>';
 
+    // TEXT
     $('t-text').innerHTML = d.bodyText
       ? '<pre style="white-space:pre-wrap;font-family:inherit;font-size:12.5px;line-height:1.7;">' + esc(d.bodyText.slice(0,60000)) + '</pre>'
       : '<div class="aempty">Tidak ada text.</div>';
 
+    // RAW
     $('t-raw').innerHTML = '<pre>' + esc(d.rawHtml.slice(0,200000)) + '</pre>';
   }
 
