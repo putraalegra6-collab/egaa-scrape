@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
   res.setHeader('Content-Type', 'application/zip');
   res.setHeader(
     'Content-Disposition',
-    `attachment; filename="egaa-scrape-${hostname}-${timestamp}.zip"`
+    `attachment; filename="copy-website-${hostname}-${timestamp}.zip"`
   );
 
   const archive = archiver('zip', { zlib: { level: 9 } });
@@ -89,12 +89,24 @@ module.exports = async (req, res) => {
     L('downloaded-assets.json', JSON.stringify(data.downloadedAssets, null, 2));
   }
 
-  const info = `EGAA SCRAPER v3.0 - HASIL SCRAPING
+  // API Analysis
+  if (data.apiAnalyses && data.apiAnalyses.length) {
+    L('api-analyses.json', JSON.stringify(data.apiAnalyses, null, 2));
+  }
+
+  // Generated module file
+  if (data.generatedModule && data.generatedModule.code) {
+    const fileName = data.generatedModule.fileName || 'api-module.js';
+    archive.append(data.generatedModule.code, { name: 'modules/' + fileName });
+    archive.append(data.generatedModule.code, { name: fileName });
+  }
+
+  const info = `COPY WEBSITE - HASIL SALINAN
 ========================================
 
 URL        : ${data.url}
 Waktu      : ${new Date().toISOString()}
-Scraper    : Egaa Scraper v3.0
+Scraper    : Copy Website
 
 STATISTIK
 ----------------------------------------
@@ -109,7 +121,32 @@ Total Stylesheet      : ${data.stats?.totalStylesheets || 0}
 Total Iframe          : ${data.stats?.totalIframes || 0}
 Total Font            : ${data.stats?.totalFonts || 0}
 Asset Terdownload     : ${data.stats?.downloadedAssets || 0}
+Endpoint Terdeteksi   : ${data.stats?.detectedEndpoints || 0}
+Base URL Terdeteksi   : ${data.stats?.detectedBaseUrls || 0}
 Ukuran HTML           : ${data.stats?.htmlSize || 0} bytes
+
+STRUKTUR FILE
+----------------------------------------
+website/index.html              - HTML asli
+website/content.txt             - Text content
+website/assets/                 - Asset inline
+data/data.json                  - Semua data
+data/meta.json                  - Metadata
+data/stats.json                 - Statistik
+lists/links.txt                 - Daftar link
+lists/links.json                - Link JSON
+lists/images.txt                - Daftar gambar
+lists/images.json               - Gambar JSON
+lists/scripts.txt               - Daftar script
+lists/stylesheets.txt           - Stylesheet
+lists/iframes.txt               - Iframe
+lists/headings.txt              - Heading
+lists/tables.json               - Tabel
+lists/forms.json                - Form
+lists/asset-modules.json        - Analisa import/export
+lists/asset-modules.txt         - Analisa readable
+lists/api-analyses.json         - Analisa API endpoint
+${data.generatedModule && data.generatedModule.code ? 'modules/' + (data.generatedModule.fileName || 'api-module.js') + '  - Module JS auto-generated\n' : ''}
 `;
   archive.append(info, { name: 'INFO.txt' });
 
