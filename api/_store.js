@@ -1,9 +1,10 @@
 const crypto = require('crypto');
 
-// Secret untuk signing token. Ganti dengan string random milikmu.
+// Secret untuk signing token admin. Bisa diganti via Environment Variable di Vercel.
 const TOKEN_SECRET = process.env.ADMIN_SECRET || 'egaa-scrape-default-secret-key-2026';
 
-// In-memory store. Untuk skala lebih besar, sambungkan ke Vercel KV.
+// In-memory store.
+// Catatan: data reset saat Vercel cold start. Untuk permanen, gunakan Vercel KV.
 const state = {
   bannedIPs: {},
   attempts: {},
@@ -56,12 +57,13 @@ function pushLog(ip, userAgent, url, action) {
 }
 
 // ============ SIGNED TOKEN (stateless, tahan cold start) ============
-function base64url(buf){
+function base64url(buf) {
   return Buffer.from(buf).toString('base64')
-    .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
-function base64urlDecode(str){
-  str = str.replace(/-/g,'+').replace(/_/g,'/');
+
+function base64urlDecode(str) {
+  str = str.replace(/-/g, '+').replace(/_/g, '/');
   while (str.length % 4) str += '=';
   return Buffer.from(str, 'base64').toString('utf8');
 }
