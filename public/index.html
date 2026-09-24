@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Egaa Scraper</title>
+<title>Copy Website</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#0b0b0d;
   --bg-2:#101013;
   --bg-3:#151519;
+  --bg-4:#1a1a1f;
   --line:#232328;
   --line-2:#2e2e35;
   --fg:#ededf0;
@@ -20,308 +21,257 @@
   --blue:#5b8def;
   --green:#3fbf7f;
   --red:#e05252;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
-html,body{
-  background:var(--bg);
-  color:var(--fg);
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,system-ui,sans-serif;
-  font-size:14px;
-  line-height:1.5;
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-}
+html,body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,system-ui,sans-serif;font-size:14px;line-height:1.5;min-height:100vh;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,textarea{font-family:inherit}
 
 /* ============ LANDING ============ */
-#landing{
-  display:flex;
-  flex-direction:column;
-  min-height:100vh;
-  position:relative;
-}
-.land-nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:20px 32px;
-  border-bottom:1px solid var(--line);
+#landing{min-height:100vh;background:var(--bg)}
+.lnav{
+  position:sticky;top:0;z-index:50;
   background:var(--bg);
-  position:sticky;
-  top:0;
-  z-index:10;
+  border-bottom:1px solid var(--line);
+  padding:0 32px;
+  height:56px;
+  display:flex;align-items:center;justify-content:space-between;
 }
-.land-brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.land-mark{
-  width:32px;height:32px;
-  border-radius:7px;
-  background:var(--bg-3);
-  border:1px solid var(--line-2);
+.lnav-brand{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;letter-spacing:-.2px}
+.lnav-mark{
+  width:26px;height:26px;border-radius:6px;
+  background:var(--bg-4);border:1px solid var(--line-2);
   display:grid;place-items:center;
-  font-weight:700;font-size:15px;
-  color:var(--fg);
-  letter-spacing:-.5px;
+  font-weight:700;font-size:13px;color:var(--fg);
 }
-.land-brand-name{
-  font-size:14px;font-weight:600;
-  letter-spacing:-.2px;
+.lnav-brand span{color:var(--fg-dim);font-weight:400}
+.lnav-links{display:flex;gap:28px;font-size:13px;color:var(--fg-dim)}
+.lnav-links a{transition:.15s}
+.lnav-links a:hover{color:var(--fg)}
+.lnav-cta{
+  padding:8px 14px;border-radius:7px;
+  background:var(--fg);color:var(--accent-inv);
+  font-size:13px;font-weight:600;transition:.15s;
 }
-.land-brand-name span{color:var(--fg-dim);font-weight:400}
-.land-nav-links{display:flex;gap:24px;font-size:13px;color:var(--fg-dim)}
-.land-nav-links a:hover{color:var(--fg)}
-.land-cta{
-  padding:9px 16px;
-  border-radius:8px;
-  background:var(--fg);
-  color:var(--accent-inv);
-  font-size:13px;
-  font-weight:600;
-  transition:.15s;
-}
-.land-cta:hover{background:#fff}
+.lnav-cta:hover{background:#fff}
 
-.land-hero{
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:80px 24px 60px;
-  max-width:820px;
-  margin:0 auto;
-  width:100%;
-}
-.land-tag{
-  font-size:11.5px;
-  color:var(--fg-dim);
-  padding:5px 12px;
-  border:1px solid var(--line-2);
-  border-radius:999px;
-  margin-bottom:28px;
-  letter-spacing:.3px;
-}
-.land-h1{
-  font-size:52px;
-  font-weight:700;
-  letter-spacing:-1.5px;
-  line-height:1.08;
-  margin-bottom:20px;
-  color:var(--fg);
-}
-.land-h1 .dim{color:var(--fg-dimmer)}
-.land-sub{
-  font-size:16px;
-  color:var(--fg-dim);
-  max-width:560px;
-  margin-bottom:36px;
-  line-height:1.6;
-}
-.land-btns{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-.land-btn-1{
-  padding:13px 26px;
-  border-radius:9px;
-  background:var(--fg);
-  color:var(--accent-inv);
-  font-size:14px;
-  font-weight:600;
-  transition:.15s;
-}
-.land-btn-1:hover{background:#fff}
-.land-btn-2{
-  padding:13px 26px;
-  border-radius:9px;
-  background:var(--bg-3);
-  border:1px solid var(--line-2);
-  color:var(--fg);
-  font-size:14px;
-  font-weight:500;
-  transition:.15s;
-}
-.land-btn-2:hover{background:var(--line);border-color:var(--line-2)}
-
-.land-features{
-  max-width:1080px;
-  margin:0 auto;
-  width:100%;
-  padding:60px 24px 80px;
+/* Hero */
+.lhero{
+  max-width:1200px;margin:0 auto;
+  padding:80px 32px 60px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:16px;
-}
-.feat{
-  background:var(--bg-2);
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:24px;
-  transition:.15s;
-}
-.feat:hover{border-color:var(--line-2)}
-.feat-num{
-  font-size:11px;
-  color:var(--fg-dimmer);
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  margin-bottom:14px;
-  letter-spacing:.5px;
-}
-.feat-h{
-  font-size:15px;
-  font-weight:600;
-  margin-bottom:8px;
-  color:var(--fg);
-  letter-spacing:-.2px;
-}
-.feat-p{
-  font-size:13px;
-  color:var(--fg-dim);
-  line-height:1.6;
-}
-.land-foot{
-  border-top:1px solid var(--line);
-  padding:24px 32px;
-  display:flex;
+  grid-template-columns:1.05fr 1fr;
+  gap:64px;
   align-items:center;
-  justify-content:space-between;
-  font-size:12px;
-  color:var(--fg-dimmer);
-  flex-wrap:wrap;
-  gap:12px;
 }
-.land-foot b{color:var(--fg-dim);font-weight:600}
+.lhero-left{display:flex;flex-direction:column}
+.lhero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:5px 11px;border:1px solid var(--line-2);border-radius:999px;
+  font-size:11.5px;color:var(--fg-dim);letter-spacing:.3px;
+  margin-bottom:24px;align-self:flex-start;
+}
+.lhero-eyebrow i{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--green);display:block;
+}
+.lhero-h1{
+  font-size:56px;font-weight:700;letter-spacing:-1.8px;
+  line-height:1.05;color:var(--fg);margin-bottom:22px;
+}
+.lhero-h1 .dim{color:var(--fg-dimmer)}
+.lhero-p{
+  font-size:16px;color:var(--fg-dim);line-height:1.65;
+  max-width:520px;margin-bottom:32px;
+}
+.lhero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.lbtn-1{
+  padding:13px 24px;border-radius:9px;
+  background:var(--fg);color:var(--accent-inv);
+  font-size:14px;font-weight:600;transition:.15s;
+}
+.lbtn-1:hover{background:#fff}
+.lbtn-2{
+  padding:13px 24px;border-radius:9px;
+  background:transparent;border:1px solid var(--line-2);
+  color:var(--fg);font-size:14px;font-weight:500;transition:.15s;
+}
+.lbtn-2:hover{background:var(--bg-3);border-color:#3a3a42}
 
-/* ============ APP ============ */
-#app{display:none;min-height:100vh;background:var(--bg)}
-.app-nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:18px 32px;
-  border-bottom:1px solid var(--line);
-  background:var(--bg);
-  position:sticky;
-  top:0;
-  z-index:10;
-}
-.app-back{
-  font-size:13px;
-  color:var(--fg-dim);
-  padding:7px 12px;
-  border:1px solid var(--line-2);
-  border-radius:7px;
-  transition:.15s;
-}
-.app-back:hover{color:var(--fg);background:var(--bg-3)}
-.app-tag{
-  font-size:11.5px;
-  color:var(--fg-dim);
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  padding:5px 10px;
-  border:1px solid var(--line-2);
-  border-radius:6px;
-  background:var(--bg-2);
-}
-
-.wrap{
-  max-width:1200px;
-  margin:0 auto;
-  padding:32px 24px 80px;
-}
-
-.panel{
+/* Hero mockup panel */
+.lhero-right{position:relative}
+.mock{
   background:var(--bg-2);
   border:1px solid var(--line);
   border-radius:14px;
-  padding:24px;
-  margin-bottom:20px;
+  overflow:hidden;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.6);
 }
-.panel-h{
-  font-size:11px;
-  color:var(--fg-dim);
-  text-transform:uppercase;
-  letter-spacing:1.4px;
-  font-weight:600;
-  margin-bottom:16px;
+.mock-head{
+  padding:11px 14px;
+  background:var(--bg-3);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:8px;
 }
-.row{display:flex;gap:10px;flex-wrap:wrap}
+.mock-dots{display:flex;gap:5px}
+.mock-dot{width:9px;height:9px;border-radius:50%;background:var(--line-2)}
+.mock-title{
+  font-family:var(--mono);font-size:11px;color:var(--fg-dimmer);
+  margin-left:8px;letter-spacing:.2px;
+}
+.mock-body{padding:18px 16px;font-family:var(--mono);font-size:11.5px;line-height:1.75}
+.mock-line{display:flex;gap:12px;padding:2px 0}
+.mock-n{color:var(--fg-dimmer);user-select:none;width:18px;text-align:right;flex-shrink:0}
+.mock-key{color:#8fb3ff}
+.mock-val{color:#c9a37c}
+.mock-str{color:#a5d6a7}
+.mock-com{color:#565f75}
+.mock-tag{color:#e39bb0}
+.mock-attr{color:#c8b46a}
+.mock-cursor{
+  display:inline-block;width:7px;height:13px;
+  background:var(--fg);vertical-align:-2px;
+  animation:blink 1s step-end infinite;
+}
+@keyframes blink{50%{opacity:0}}
 
-.field{flex:1;min-width:240px;position:relative}
-.field input{
-  width:100%;
-  background:var(--bg);
-  border:1px solid var(--line-2);
-  border-radius:10px;
-  padding:14px 16px;
-  color:var(--fg);
-  font-size:14px;
-  font-family:inherit;
-  outline:none;
+/* Stat row */
+.lstats{
+  max-width:1200px;margin:0 auto;
+  padding:0 32px 60px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.lstat{
+  padding:26px 24px;border-right:1px solid var(--line);
+}
+.lstat:last-child{border-right:none}
+.lstat-v{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--fg);letter-spacing:-.5px}
+.lstat-l{font-size:11.5px;color:var(--fg-dim);margin-top:4px;text-transform:uppercase;letter-spacing:.7px}
+
+/* Workflow section */
+.lflow{max-width:1200px;margin:0 auto;padding:80px 32px 40px}
+.lflow-head{margin-bottom:36px;max-width:600px}
+.lflow-h{font-size:28px;font-weight:700;letter-spacing:-.8px;margin-bottom:10px}
+.lflow-p{font-size:14.5px;color:var(--fg-dim);line-height:1.6}
+.lflow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.lstep{padding:28px 24px;border-right:1px solid var(--line);background:var(--bg-2)}
+.lstep:last-child{border-right:none}
+.lstep-n{font-family:var(--mono);font-size:11px;color:var(--fg-dimmer);margin-bottom:16px;letter-spacing:.8px}
+.lstep-h{font-size:15px;font-weight:600;margin-bottom:8px;letter-spacing:-.2px}
+.lstep-p{font-size:13px;color:var(--fg-dim);line-height:1.6}
+
+/* Features grid */
+.lfeat{max-width:1200px;margin:0 auto;padding:40px 32px 80px}
+.lfeat-head{margin-bottom:32px}
+.lfeat-h{font-size:28px;font-weight:700;letter-spacing:-.8px;margin-bottom:10px}
+.lfeat-p{font-size:14.5px;color:var(--fg-dim);max-width:600px;line-height:1.6}
+.lfeat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.feat{
+  background:var(--bg-2);border:1px solid var(--line);
+  border-radius:12px;padding:22px;transition:.15s;
+}
+.feat:hover{border-color:var(--line-2);background:var(--bg-3)}
+.feat-ico{
+  width:34px;height:34px;border-radius:8px;
+  background:var(--bg-3);border:1px solid var(--line-2);
+  display:grid;place-items:center;margin-bottom:16px;
+  color:var(--fg-dim);
+}
+.feat-ico svg{width:16px;height:16px}
+.feat-h{font-size:14.5px;font-weight:600;margin-bottom:7px;letter-spacing:-.15px}
+.feat-p{font-size:12.8px;color:var(--fg-dim);line-height:1.6}
+
+/* Landing footer */
+.lfoot{
+  border-top:1px solid var(--line);
+  padding:26px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:12px;color:var(--fg-dimmer);flex-wrap:wrap;gap:12px;
+  max-width:1200px;margin:0 auto;
+}
+.lfoot b{color:var(--fg-dim);font-weight:600}
+
+/* ============ APP ============ */
+#app{display:none;min-height:100vh;background:var(--bg)}
+.anav{
+  position:sticky;top:0;z-index:50;
+  height:56px;padding:0 28px;
+  background:var(--bg);border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.aback{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 12px;border:1px solid var(--line-2);
+  border-radius:7px;font-size:12.5px;color:var(--fg-dim);
   transition:.15s;
 }
-.field input::placeholder{color:var(--fg-dimmer)}
-.field input:focus{
-  border-color:var(--fg-dim);
-  background:var(--bg-3);
+.aback:hover{color:var(--fg);background:var(--bg-3)}
+.aback svg{width:13px;height:13px}
+.abrand{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;letter-spacing:-.2px}
+.abrand-mark{width:22px;height:22px;border-radius:5px;background:var(--bg-3);border:1px solid var(--line-2);display:grid;place-items:center;font-size:11px;font-weight:700}
+
+.awrap{max-width:1200px;margin:0 auto;padding:32px 24px 80px}
+
+.apane{
+  background:var(--bg-2);border:1px solid var(--line);
+  border-radius:14px;padding:22px;margin-bottom:20px;
+}
+.apane-h{
+  font-size:10.5px;color:var(--fg-dim);text-transform:uppercase;
+  letter-spacing:1.4px;font-weight:600;margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+.apane-h::before{content:'';width:3px;height:11px;background:var(--fg-dim);border-radius:2px}
+
+.arow{display:flex;gap:10px;flex-wrap:wrap}
+.afield{flex:1;min-width:240px;position:relative}
+.afield input{
+  width:100%;background:var(--bg);
+  border:1px solid var(--line-2);border-radius:10px;
+  padding:14px 16px 14px 42px;color:var(--fg);font-size:14px;
+  outline:none;transition:.15s;
+}
+.afield input::placeholder{color:var(--fg-dimmer)}
+.afield input:focus{border-color:#4a4a55;background:var(--bg-3)}
+.afield::before{
+  content:'';position:absolute;left:16px;top:50%;
+  width:14px;height:14px;transform:translateY(-50%);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235f5f6b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>");
+  background-size:contain;background-repeat:no-repeat;
+  pointer-events:none;
 }
 
-.btn{
-  padding:14px 24px;
-  border-radius:10px;
-  font-size:14px;
-  font-weight:600;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  transition:.15s;
-  white-space:nowrap;
+.abtn{
+  padding:14px 24px;border-radius:10px;
+  font-size:13.5px;font-weight:600;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:.15s;white-space:nowrap;
 }
-.btn-1{background:var(--fg);color:var(--accent-inv)}
-.btn-1:hover:not(:disabled){background:#fff}
-.btn-1:disabled{opacity:.35;cursor:not-allowed}
-.btn-2{
-  background:var(--bg-3);
-  color:var(--fg-dim);
-  border:1px solid var(--line-2);
-}
-.btn-2:hover{color:var(--fg);background:var(--line)}
-.btn-ok{
-  background:var(--green);
-  color:#04170d;
-}
-.btn-ok:hover:not(:disabled){background:#4fd08f}
-.btn-ok:disabled{opacity:.35;cursor:not-allowed}
-.btn svg{width:15px;height:15px}
+.abtn svg{width:15px;height:15px}
+.abtn-1{background:var(--fg);color:var(--accent-inv)}
+.abtn-1:hover:not(:disabled){background:#fff}
+.abtn-1:disabled{opacity:.35;cursor:not-allowed}
+.abtn-2{background:var(--bg-3);color:var(--fg-dim);border:1px solid var(--line-2)}
+.abtn-2:hover{color:var(--fg);background:var(--line)}
+.abtn-ok{background:var(--green);color:#04170d}
+.abtn-ok:hover:not(:disabled){background:#4fd08f}
+.abtn-ok:disabled{opacity:.35;cursor:not-allowed}
 
-.status{
-  margin-top:14px;
-  padding:12px 16px;
-  border-radius:9px;
-  font-size:13px;
-  display:none;
-  align-items:center;
-  gap:10px;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+.astat{
+  margin-top:14px;padding:11px 15px;border-radius:9px;
+  font-size:12.5px;display:none;align-items:center;gap:10px;
+  font-family:var(--mono);
 }
-.status.show{display:flex}
-.status.load{background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg-dim)}
-.status.err{background:#1c1010;border:1px solid #3a1e1e;color:#e88a8a}
-.status.ok{background:#0d1a12;border:1px solid #1c3a26;color:#6dbb8f}
-
-.spin{
-  width:13px;height:13px;
-  border:2px solid var(--line-2);
-  border-top-color:var(--fg);
-  border-radius:50%;
-  animation:sp .7s linear infinite;
-  flex-shrink:0;
+.astat.show{display:flex}
+.astat.load{background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg-dim)}
+.astat.err{background:#1c1010;border:1px solid #3a1e1e;color:#e88a8a}
+.astat.ok{background:#0d1a12;border:1px solid #1c3a26;color:#6dbb8f}
+.aspin{
+  width:12px;height:12px;border:2px solid var(--line-2);
+  border-top-color:var(--fg);border-radius:50%;
+  animation:sp .7s linear infinite;flex-shrink:0;
 }
 @keyframes sp{to{transform:rotate(360deg)}}
 
@@ -329,304 +279,259 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 #result.show{display:block;animation:fade .25s}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 
-.bar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap:wrap;
-  background:var(--bg-2);
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:20px 24px;
-  margin-bottom:20px;
+/* Target bar */
+.abar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;
+  background:var(--bg-2);border:1px solid var(--line);
+  border-radius:14px;padding:18px 22px;margin-bottom:16px;
 }
-.bar-info{flex:1;min-width:200px}
-.bar-lbl{
-  font-size:10.5px;
-  color:var(--fg-dim);
-  text-transform:uppercase;
-  letter-spacing:1.2px;
-  font-weight:600;
-  margin-bottom:5px;
+.abar-info{flex:1;min-width:200px}
+.abar-l{
+  font-size:10.5px;color:var(--fg-dim);text-transform:uppercase;
+  letter-spacing:1.2px;font-weight:600;margin-bottom:5px;
 }
-.bar-url{
-  font-size:13px;
-  color:var(--fg);
-  word-break:break-all;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+.abar-url{
+  font-size:13px;color:var(--fg);word-break:break-all;
+  font-family:var(--mono);
 }
-.bar-url:hover{text-decoration:underline}
+.abar-url:hover{text-decoration:underline}
 
-.sgrid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
-  gap:10px;
-  margin-bottom:20px;
+/* Stat cards */
+.asgrid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));
+  gap:10px;margin-bottom:20px;
 }
-.sc{
-  background:var(--bg-2);
-  border:1px solid var(--line);
-  border-radius:11px;
-  padding:16px;
-  transition:.15s;
+.asc{
+  background:var(--bg-2);border:1px solid var(--line);
+  border-radius:11px;padding:15px 16px;transition:.15s;
+  position:relative;overflow:hidden;
 }
-.sc:hover{border-color:var(--line-2)}
-.sc-v{
-  font-size:22px;
-  font-weight:700;
-  color:var(--fg);
-  letter-spacing:-.6px;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  line-height:1.1;
+.asc::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--line-2);transition:.15s;
 }
-.sc-l{
-  font-size:10.5px;
-  color:var(--fg-dim);
-  text-transform:uppercase;
-  letter-spacing:.9px;
-  margin-top:6px;
-  font-weight:500;
+.asc:hover{border-color:var(--line-2)}
+.asc:hover::after{background:var(--fg-dim)}
+.asc-v{
+  font-size:21px;font-weight:700;color:var(--fg);
+  letter-spacing:-.5px;font-family:var(--mono);line-height:1.15;
+}
+.asc-l{
+  font-size:10px;color:var(--fg-dim);text-transform:uppercase;
+  letter-spacing:.9px;margin-top:6px;font-weight:500;
 }
 
-.tabs-box{
-  background:var(--bg-2);
-  border:1px solid var(--line);
-  border-radius:14px;
-  overflow:hidden;
+/* Tabs */
+.atabs-box{
+  background:var(--bg-2);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;
 }
-.tabs{
-  display:flex;
-  overflow-x:auto;
-  background:var(--bg-3);
+.atabs{
+  display:flex;overflow-x:auto;background:var(--bg-3);
   border-bottom:1px solid var(--line);
   scrollbar-width:thin;
 }
-.tabs::-webkit-scrollbar{height:5px}
-.tabs::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:3px}
-.tab{
-  padding:13px 18px;
-  font-size:12.5px;
-  color:var(--fg-dim);
-  border-bottom:2px solid transparent;
-  white-space:nowrap;
-  font-weight:500;
-  transition:.15s;
-  letter-spacing:.1px;
+.atabs::-webkit-scrollbar{height:5px}
+.atabs::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:3px}
+.atab{
+  padding:13px 17px;font-size:12.5px;
+  color:var(--fg-dim);border-bottom:2px solid transparent;
+  white-space:nowrap;font-weight:500;transition:.15s;
 }
-.tab:hover{color:var(--fg)}
-.tab.on{color:var(--fg);border-bottom-color:var(--fg)}
+.atab:hover{color:var(--fg)}
+.atab.on{color:var(--fg);border-bottom-color:var(--fg)}
 
-.tc{display:none;padding:22px}
-.tc.on{display:block}
+.atc{display:none;padding:22px}
+.atc.on{display:block}
 
-.mlist{display:flex;flex-direction:column}
-.mrow{
-  display:flex;
-  gap:16px;
-  padding:12px 0;
-  border-bottom:1px solid var(--line);
-  font-size:13px;
+/* Content components */
+.aml{display:flex;flex-direction:column}
+.amr{
+  display:flex;gap:16px;padding:12px 0;
+  border-bottom:1px solid var(--line);font-size:13px;
 }
-.mrow:last-child{border-bottom:none}
-.mk{
-  min-width:110px;
-  color:var(--fg-dim);
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.7px;
-  font-weight:600;
-  padding-top:2px;
-  flex-shrink:0;
+.amr:last-child{border-bottom:none}
+.amk{
+  min-width:110px;color:var(--fg-dim);font-size:11px;
+  text-transform:uppercase;letter-spacing:.7px;font-weight:600;
+  padding-top:2px;flex-shrink:0;
 }
-.mv{
-  color:var(--fg);
-  word-break:break-word;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:12.5px;
+.amv{
+  color:var(--fg);word-break:break-word;
+  font-family:var(--mono);font-size:12.5px;
 }
-.mv a{color:var(--blue)}
-.mv a:hover{text-decoration:underline}
+.amv a{color:var(--blue)}
+.amv a:hover{text-decoration:underline}
 
-.items{display:flex;flex-direction:column;gap:6px}
-.it{
-  background:var(--bg-3);
-  border:1px solid var(--line);
-  border-radius:9px;
-  padding:11px 14px;
-  font-size:12.5px;
-  word-break:break-word;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  transition:.15s;
+.aitems{display:flex;flex-direction:column;gap:6px}
+.ait{
+  background:var(--bg-3);border:1px solid var(--line);
+  border-radius:9px;padding:11px 14px;
+  font-size:12.5px;word-break:break-word;
+  font-family:var(--mono);transition:.15s;
 }
-.it:hover{border-color:var(--line-2)}
-.it a{color:var(--blue)}
-.it a:hover{text-decoration:underline}
-.it .sub{
-  color:var(--fg-dimmer);
-  font-size:11px;
-  display:block;
-  margin-bottom:4px;
-  font-family:inherit;
+.ait:hover{border-color:var(--line-2)}
+.ait a{color:var(--blue)}
+.ait a:hover{text-decoration:underline}
+.ait .sub{
+  color:var(--fg-dimmer);font-size:11px;
+  display:block;margin-bottom:4px;font-family:inherit;
 }
 
-.para{
-  font-size:13px;
-  line-height:1.7;
-  color:#c8c8d0;
-  padding:14px 16px;
-  background:var(--bg-3);
+.apara{
+  font-size:13px;line-height:1.7;color:#c8c8d0;
+  padding:14px 16px;background:var(--bg-3);
   border-left:2px solid var(--line-2);
-  border-radius:7px;
-  margin-bottom:10px;
+  border-radius:7px;margin-bottom:10px;
 }
 
-.igrid{
+.aigrid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
   gap:12px;
 }
-.ic{
-  background:var(--bg-3);
-  border:1px solid var(--line);
-  border-radius:9px;
-  overflow:hidden;
-  transition:.15s;
+.aic{
+  background:var(--bg-3);border:1px solid var(--line);
+  border-radius:9px;overflow:hidden;transition:.15s;
 }
-.ic:hover{border-color:var(--line-2)}
-.ic img{
-  width:100%;
-  height:120px;
-  object-fit:cover;
-  display:block;
-  background:#000;
-}
-.ic-i{
-  padding:9px 11px;
-  font-size:10.5px;
-  color:var(--fg-dim);
-  word-break:break-all;
-  max-height:50px;
-  overflow:hidden;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+.aic:hover{border-color:var(--line-2)}
+.aic img{width:100%;height:120px;object-fit:cover;display:block;background:#000}
+.aic-i{
+  padding:9px 11px;font-size:10.5px;color:var(--fg-dim);
+  word-break:break-all;max-height:50px;overflow:hidden;
+  font-family:var(--mono);
 }
 
-.tw{
-  overflow-x:auto;
-  border:1px solid var(--line);
-  border-radius:9px;
-  margin-bottom:14px;
-}
+.atw{overflow-x:auto;border:1px solid var(--line);border-radius:9px;margin-bottom:14px}
 table{width:100%;border-collapse:collapse;font-size:12.5px}
 th,td{
-  padding:10px 13px;
-  text-align:left;
-  border-bottom:1px solid var(--line);
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  padding:10px 13px;text-align:left;
+  border-bottom:1px solid var(--line);font-family:var(--mono);
 }
 th{
-  background:var(--bg-3);
-  color:var(--fg-dim);
-  font-weight:600;
-  font-size:10.5px;
-  text-transform:uppercase;
-  letter-spacing:.7px;
+  background:var(--bg-3);color:var(--fg-dim);font-weight:600;
+  font-size:10.5px;text-transform:uppercase;letter-spacing:.7px;
 }
 tr:last-child td{border-bottom:none}
 
 pre{
-  background:#050506;
-  border:1px solid var(--line);
-  border-radius:9px;
-  padding:16px;
-  overflow:auto;
-  font-size:11.5px;
-  line-height:1.6;
-  color:#b8b8c2;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  max-height:520px;
-  white-space:pre;
-  tab-size:2;
+  background:#050506;border:1px solid var(--line);
+  border-radius:9px;padding:16px;overflow:auto;
+  font-size:11.5px;line-height:1.6;color:#b8b8c2;
+  font-family:var(--mono);max-height:520px;
+  white-space:pre;tab-size:2;
 }
 
-.st{
-  font-size:11px;
-  color:var(--fg-dim);
-  font-weight:600;
-  text-transform:uppercase;
-  letter-spacing:1.2px;
+.ast{
+  font-size:11px;color:var(--fg-dim);font-weight:600;
+  text-transform:uppercase;letter-spacing:1.2px;
   margin:22px 0 12px;
 }
-.st:first-child{margin-top:0}
+.ast:first-child{margin-top:0}
 
-.empty{
-  color:var(--fg-dim);
-  font-size:13px;
-  text-align:center;
-  padding:40px 20px;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+.aempty{
+  color:var(--fg-dim);font-size:13px;text-align:center;
+  padding:40px 20px;font-family:var(--mono);
 }
 
-.mod{
-  background:var(--bg-3);
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:16px;
-  margin-bottom:10px;
+.amod{
+  background:var(--bg-3);border:1px solid var(--line);
+  border-radius:10px;padding:16px;margin-bottom:10px;
 }
-.mod-h{
-  font-size:12px;
-  color:var(--fg);
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  word-break:break-all;
-  margin-bottom:10px;
-  font-weight:600;
+.amod-h{
+  font-size:12px;color:var(--fg);font-family:var(--mono);
+  word-break:break-all;margin-bottom:10px;font-weight:600;
 }
-.mod-meta{
-  display:flex;
-  gap:16px;
-  flex-wrap:wrap;
-  font-size:11px;
-  color:var(--fg-dim);
-  margin-bottom:10px;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+.amod-meta{
+  display:flex;gap:16px;flex-wrap:wrap;font-size:11px;
+  color:var(--fg-dim);margin-bottom:10px;font-family:var(--mono);
 }
-.mod-meta b{color:var(--fg);font-weight:600}
-.mod-imports{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.amod-meta b{color:var(--fg);font-weight:600}
+.amod-imports{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
 .chip{
-  font-size:10.5px;
-  padding:4px 9px;
-  background:var(--bg);
-  border:1px solid var(--line-2);
-  color:var(--fg-dim);
-  border-radius:5px;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10.5px;padding:4px 9px;background:var(--bg);
+  border:1px solid var(--line-2);color:var(--fg-dim);
+  border-radius:5px;font-family:var(--mono);
 }
 
-footer.app-foot{
-  text-align:center;
-  padding:36px 0 0;
-  color:var(--fg-dimmer);
-  font-size:11.5px;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  border-top:1px solid var(--line);
-  margin-top:48px;
+/* Preview tab */
+.pv-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;flex-wrap:wrap;
+  background:var(--bg-3);border:1px solid var(--line);
+  border-radius:9px;padding:11px 14px;margin-bottom:14px;
 }
-footer.app-foot b{color:var(--fg-dim)}
+.pv-url{
+  font-size:11.5px;color:var(--fg-dim);font-family:var(--mono);
+  word-break:break-all;flex:1;min-width:180px;
+}
+.pv-open{
+  padding:7px 12px;border-radius:6px;
+  background:var(--bg);border:1px solid var(--line-2);
+  color:var(--fg-dim);font-size:11.5px;font-weight:500;
+  transition:.15s;display:inline-flex;align-items:center;gap:6px;
+}
+.pv-open:hover{color:var(--fg);border-color:#3a3a42}
+.pv-open svg{width:12px;height:12px}
+.pv-frame-wrap{
+  border:1px solid var(--line);border-radius:10px;
+  overflow:hidden;background:#fff;
+  height:560px;position:relative;
+}
+.pv-frame-wrap iframe{
+  width:100%;height:100%;border:0;display:block;
+  background:#fff;
+}
+.pv-note{
+  font-size:11.5px;color:var(--fg-dimmer);
+  font-family:var(--mono);margin-top:10px;line-height:1.6;
+}
 
-@media(max-width:720px){
-  .land-nav{padding:16px 20px}
-  .land-nav-links{display:none}
-  .land-h1{font-size:36px;letter-spacing:-1px}
-  .land-sub{font-size:14.5px}
-  .land-hero{padding:56px 20px 40px}
-  .land-features{padding:40px 20px 60px}
-  .wrap{padding:20px 16px 60px}
-  .app-nav{padding:14px 16px}
-  .panel{padding:18px}
-  .sgrid{grid-template-columns:repeat(2,1fr)}
-  .mrow{flex-direction:column;gap:4px}
-  .mk{min-width:auto}
+.afoot{
+  text-align:center;padding:36px 0 0;color:var(--fg-dimmer);
+  font-size:11.5px;font-family:var(--mono);
+  border-top:1px solid var(--line);margin-top:48px;
+}
+.afoot b{color:var(--fg-dim)}
+
+/* Responsive */
+@media(max-width:960px){
+  .lhero{grid-template-columns:1fr;gap:48px;padding:56px 24px 40px}
+  .lhero-h1{font-size:42px;letter-spacing:-1.3px}
+  .lhero-right{order:2}
+  .lstats{grid-template-columns:repeat(2,1fr)}
+  .lstat{border-bottom:1px solid var(--line)}
+  .lstat:nth-child(2n){border-right:none}
+  .lstat:nth-child(n+3){border-bottom:none}
+  .lflow-grid{grid-template-columns:1fr}
+  .lstep{border-right:none;border-bottom:1px solid var(--line)}
+  .lstep:last-child{border-bottom:none}
+  .lfeat-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .lnav{padding:0 18px}
+  .lnav-links{display:none}
+  .lhero{padding:44px 18px 32px}
+  .lhero-h1{font-size:34px;letter-spacing:-1px}
+  .lhero-p{font-size:14.5px}
+  .lstats{padding:0 18px 40px}
+  .lstat{padding:20px 16px}
+  .lstat-v{font-size:18px}
+  .lflow{padding:56px 18px 32px}
+  .lflow-h{font-size:22px}
+  .lfeat{padding:32px 18px 56px}
+  .lfeat-h{font-size:22px}
+  .lfeat-grid{grid-template-columns:1fr}
+  .lfoot{padding:20px 18px}
+  .awrap{padding:20px 14px 60px}
+  .anav{padding:0 14px}
+  .abrand{font-size:12.5px}
+  .apane{padding:16px}
+  .asgrid{grid-template-columns:repeat(2,1fr)}
+  .amr{flex-direction:column;gap:4px}
+  .amk{min-width:auto}
+  .pv-frame-wrap{height:420px}
 }
 </style>
 </head>
@@ -634,119 +539,197 @@ footer.app-foot b{color:var(--fg-dim)}
 
 <!-- ============ LANDING ============ -->
 <div id="landing">
-  <nav class="land-nav">
-    <div class="land-brand">
-      <div class="land-mark">E</div>
-      <div class="land-brand-name">Egaa <span>Scraper</span></div>
+  <nav class="lnav">
+    <div class="lnav-brand">
+      <div class="lnav-mark">C</div>
+      Copy <span>Website</span>
     </div>
-    <div class="land-nav-links">
+    <div class="lnav-links">
+      <a href="#how">Cara Kerja</a>
       <a href="#features">Fitur</a>
-      <a href="#about">Tentang</a>
     </div>
-    <button class="land-cta" onclick="openApp()">Mulai Scrape</button>
+    <button class="lnav-cta" onclick="openApp()">Buka Aplikasi</button>
   </nav>
 
-  <section class="land-hero">
-    <div class="land-tag">Full Website Source Extractor</div>
-    <h1 class="land-h1">
-      Ekstrak seluruh<br />
-      sumber website <span class="dim">dalam satu klik.</span>
-    </h1>
-    <p class="land-sub">
-      Ambil HTML, CSS, JavaScript, module imports, gambar, tabel, dan formulir
-      dari website mana pun. Unduh semuanya dalam satu file ZIP terstruktur.
-    </p>
-    <div class="land-btns">
-      <button class="land-btn-1" onclick="openApp()">Mulai Scrape</button>
-      <a class="land-btn-2" href="#features">Lihat Fitur</a>
+  <section class="lhero">
+    <div class="lhero-left">
+      <div class="lhero-eyebrow"><i></i>Website Source Copier</div>
+      <h1 class="lhero-h1">
+        Salin seluruh<br />
+        sumber website <span class="dim">ke satu file.</span>
+      </h1>
+      <p class="lhero-p">
+        Ekstrak HTML, CSS, JavaScript, module imports, gambar, tabel, dan form
+        dari website mana pun. Semua hasil dibungkus rapi ke dalam satu file
+        ZIP siap unduh.
+      </p>
+      <div class="lhero-btns">
+        <button class="lbtn-1" onclick="openApp()">Mulai Sekarang</button>
+        <a class="lbtn-2" href="#how">Pelajari Cara Kerja</a>
+      </div>
+    </div>
+    <div class="lhero-right">
+      <div class="mock">
+        <div class="mock-head">
+          <div class="mock-dots">
+            <span class="mock-dot"></span>
+            <span class="mock-dot"></span>
+            <span class="mock-dot"></span>
+          </div>
+          <div class="mock-title">index.html</div>
+        </div>
+        <div class="mock-body">
+          <div class="mock-line"><span class="mock-n">1</span><span class="mock-com">&lt;!-- hasil salinan --&gt;</span></div>
+          <div class="mock-line"><span class="mock-n">2</span><span class="mock-tag">&lt;html</span> <span class="mock-attr">lang</span>=<span class="mock-str">"id"</span><span class="mock-tag">&gt;</span></div>
+          <div class="mock-line"><span class="mock-n">3</span><span class="mock-tag">&lt;head&gt;</span></div>
+          <div class="mock-line"><span class="mock-n">4</span>&nbsp;&nbsp;<span class="mock-tag">&lt;title&gt;</span><span class="mock-str">Contoh</span><span class="mock-tag">&lt;/title&gt;</span></div>
+          <div class="mock-line"><span class="mock-n">5</span>&nbsp;&nbsp;<span class="mock-tag">&lt;meta</span> <span class="mock-attr">charset</span>=<span class="mock-str">"UTF-8"</span><span class="mock-tag">&gt;</span></div>
+          <div class="mock-line"><span class="mock-n">6</span><span class="mock-tag">&lt;/head&gt;</span></div>
+          <div class="mock-line"><span class="mock-n">7</span><span class="mock-tag">&lt;body&gt;</span></div>
+          <div class="mock-line"><span class="mock-n">8</span>&nbsp;&nbsp;<span class="mock-tag">&lt;div</span> <span class="mock-attr">class</span>=<span class="mock-str">"app"</span><span class="mock-tag">&gt;</span></div>
+          <div class="mock-line"><span class="mock-n">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="mock-key">const</span> data = <span class="mock-key">await</span> scrape(url)<span class="mock-cursor"></span></div>
+          <div class="mock-line"><span class="mock-n">10</span>&nbsp;&nbsp;<span class="mock-tag">&lt;/div&gt;</span></div>
+          <div class="mock-line"><span class="mock-n">11</span><span class="mock-tag">&lt;/body&gt;</span></div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="land-features" id="features">
-    <div class="feat">
-      <div class="feat-num">01</div>
-      <div class="feat-h">HTML Lengkap</div>
-      <p class="feat-p">Simpan struktur HTML asli website target tanpa perubahan.</p>
+  <section class="lstats">
+    <div class="lstat"><div class="lstat-v">12</div><div class="lstat-l">Kategori Data</div></div>
+    <div class="lstat"><div class="lstat-v">ZIP</div><div class="lstat-l">Format Unduhan</div></div>
+    <div class="lstat"><div class="lstat-v">JS</div><div class="lstat-l">Module Analyzer</div></div>
+    <div class="lstat"><div class="lstat-v">Live</div><div class="lstat-l">Preview Hasil</div></div>
+  </section>
+
+  <section class="lflow" id="how">
+    <div class="lflow-head">
+      <h2 class="lflow-h">Tiga langkah sederhana</h2>
+      <p class="lflow-p">Tidak perlu instalasi. Cukup masukkan URL, biarkan sistem bekerja, lalu unduh hasilnya.</p>
     </div>
-    <div class="feat">
-      <div class="feat-num">02</div>
-      <div class="feat-h">Analisa JS Module</div>
-      <p class="feat-p">Deteksi import dan export di setiap file JavaScript secara otomatis.</p>
-    </div>
-    <div class="feat">
-      <div class="feat-num">03</div>
-      <div class="feat-h">Asset Downloader</div>
-      <p class="feat-p">Ambil isi script, stylesheet, dan inline asset langsung ke disk.</p>
-    </div>
-    <div class="feat">
-      <div class="feat-num">04</div>
-      <div class="feat-h">Struktur ZIP Rapi</div>
-      <p class="feat-p">Hasil scraping dibungkus dalam folder website, data, dan lists.</p>
-    </div>
-    <div class="feat">
-      <div class="feat-num">05</div>
-      <div class="feat-h">Metadata Lengkap</div>
-      <p class="feat-p">Title, description, keywords, Open Graph, dan favicon terekstrak.</p>
-    </div>
-    <div class="feat">
-      <div class="feat-num">06</div>
-      <div class="feat-h">Preview Real-time</div>
-      <p class="feat-p">Lihat hasil scraping per kategori sebelum mengunduh file ZIP.</p>
+    <div class="lflow-grid">
+      <div class="lstep">
+        <div class="lstep-n">LANGKAH 01</div>
+        <div class="lstep-h">Masukkan URL</div>
+        <p class="lstep-p">Tempel alamat website target pada kolom input di halaman aplikasi.</p>
+      </div>
+      <div class="lstep">
+        <div class="lstep-n">LANGKAH 02</div>
+        <div class="lstep-h">Proses Salin</div>
+        <p class="lstep-p">Sistem mengambil HTML, asset, dan menganalisis JS module secara otomatis.</p>
+      </div>
+      <div class="lstep">
+        <div class="lstep-n">LANGKAH 03</div>
+        <div class="lstep-h">Preview & Unduh</div>
+        <p class="lstep-p">Lihat pratinjau hasil salinan lalu unduh dalam satu file ZIP terstruktur.</p>
+      </div>
     </div>
   </section>
 
-  <footer class="land-foot" id="about">
-    <div>Egaa Scraper </div>
+  <section class="lfeat" id="features">
+    <div class="lfeat-head">
+      <h2 class="lfeat-h">Fitur lengkap</h2>
+      <p class="lfeat-p">Semua yang dibutuhkan untuk menyalin dan menganalisis struktur website target.</p>
+    </div>
+    <div class="lfeat-grid">
+      <div class="feat">
+        <div class="feat-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div class="feat-h">HTML Lengkap</div>
+        <p class="feat-p">Struktur HTML asli website target tersimpan utuh tanpa perubahan.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="feat-h">Analisa JS Module</div>
+        <p class="feat-p">Deteksi import dan export di setiap file JavaScript secara otomatis.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <div class="feat-h">Asset Downloader</div>
+        <p class="feat-p">Ambil isi script, stylesheet, dan inline asset langsung ke disk.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="feat-h">Struktur ZIP Rapi</div>
+        <p class="feat-p">Hasil dikelompokkan ke folder website, data, dan lists yang terorganisir.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </div>
+        <div class="feat-h">Metadata Lengkap</div>
+        <p class="feat-p">Title, description, keywords, Open Graph, dan favicon terekstrak.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="feat-h">Preview Live</div>
+        <p class="feat-p">Lihat tampilan website hasil salinan langsung di dalam aplikasi.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="lfoot">
+    <div>Copy Website</div>
     <div>Dibuat oleh <b>Egaa</b></div>
   </footer>
 </div>
 
 <!-- ============ APP ============ -->
 <div id="app">
-  <nav class="app-nav">
-    <button class="app-back" onclick="closeApp()">Kembali</button>
-    <div class="app-tag">Egaa Scraper </div>
+  <nav class="anav">
+    <button class="aback" onclick="closeApp()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Kembali
+    </button>
+    <div class="abrand">
+      <div class="abrand-mark">C</div>
+      Copy Website
+    </div>
   </nav>
 
-  <div class="wrap">
-    <div class="panel">
-      <div class="panel-h">Target URL</div>
-      <div class="row">
-        <div class="field">
+  <div class="awrap">
+    <div class="apane">
+      <div class="apane-h">Target URL</div>
+      <div class="arow">
+        <div class="afield">
           <input type="text" id="urlInput" placeholder="https://target-website.com" autocomplete="off" spellcheck="false" />
         </div>
-        <button class="btn btn-1" id="goBtn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-          Scrape
+        <button class="abtn abtn-1" id="goBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Salin
         </button>
-        <button class="btn btn-2" id="rstBtn">Reset</button>
+        <button class="abtn abtn-2" id="rstBtn">Reset</button>
       </div>
-      <div class="status" id="status"></div>
+      <div class="astat" id="status"></div>
     </div>
 
     <div id="result">
-      <div class="bar">
-        <div class="bar-info">
-          <div class="bar-lbl">Scraped Target</div>
-          <a class="bar-url" id="targetUrl" href="#" target="_blank" rel="noopener"></a>
+      <div class="abar">
+        <div class="abar-info">
+          <div class="abar-l">Target Website</div>
+          <a class="abar-url" id="targetUrl" href="#" target="_blank" rel="noopener"></a>
         </div>
-        <button class="btn btn-ok" id="dlBtn" disabled>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
-          </svg>
+        <button class="abtn abtn-ok" id="dlBtn" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download ZIP
         </button>
       </div>
 
-      <div class="sgrid" id="sgrid"></div>
+      <div class="asgrid" id="sgrid"></div>
 
-      <div class="tabs-box">
-        <div class="tabs" id="tabs">
-          <button class="tab on" data-t="meta">Metadata</button>
+      <div class="atabs-box">
+        <div class="atabs" id="tabs">
+          <button class="tab on" data-t="preview">Preview</button>
+          <button class="tab" data-t="meta">Metadata</button>
           <button class="tab" data-t="modules">JS Modules</button>
           <button class="tab" data-t="scripts">Scripts</button>
           <button class="tab" data-t="styles">Styles</button>
@@ -760,7 +743,8 @@ footer.app-foot b{color:var(--fg-dim)}
           <button class="tab" data-t="raw">Raw HTML</button>
         </div>
 
-        <div class="tc on" id="t-meta"></div>
+        <div class="tc on" id="t-preview"></div>
+        <div class="tc" id="t-meta"></div>
         <div class="tc" id="t-modules"></div>
         <div class="tc" id="t-scripts"></div>
         <div class="tc" id="t-styles"></div>
@@ -775,8 +759,8 @@ footer.app-foot b{color:var(--fg-dim)}
       </div>
     </div>
 
-    <footer class="app-foot">
-      Egaa Scraper Website &nbsp;|&nbsp; Dibuat oleh <b>Egaa</b>
+    <footer class="afoot">
+      Copy Website &nbsp;|&nbsp; Dibuat oleh <b>Egaa</b>
     </footer>
   </div>
 </div>
@@ -793,19 +777,14 @@ footer.app-foot b{color:var(--fg-dim)}
       .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
       .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
-
   function fmtB(b){
     if(!b) return '0 B';
     var k = 1024, u = ['B','KB','MB','GB'];
     var i = Math.floor(Math.log(b)/Math.log(k));
     return (b/Math.pow(k,i)).toFixed(1) + ' ' + u[i];
   }
-
-  function setStatus(k,h){
-    statusEl.className = 'status show ' + k;
-    statusEl.innerHTML = h;
-  }
-  function hideStatus(){ statusEl.className = 'status'; statusEl.innerHTML = ''; }
+  function setStatus(k,h){ statusEl.className = 'astat show ' + k; statusEl.innerHTML = h; }
+  function hideStatus(){ statusEl.className = 'astat'; statusEl.innerHTML = ''; }
 
   window.openApp = function(){
     $('landing').style.display = 'none';
@@ -815,7 +794,7 @@ footer.app-foot b{color:var(--fg-dim)}
   };
   window.closeApp = function(){
     $('app').style.display = 'none';
-    $('landing').style.display = 'flex';
+    $('landing').style.display = 'block';
     window.scrollTo(0,0);
   };
 
@@ -833,7 +812,7 @@ footer.app-foot b{color:var(--fg-dim)}
     if(!url){ setStatus('err','Masukkan URL terlebih dahulu.'); return; }
     goBtn.disabled = true; dlBtn.disabled = true;
     resultEl.classList.remove('show');
-    setStatus('load','<span class="spin"></span>Mengambil HTML dan asset website...');
+    setStatus('load','<span class="aspin"></span>Mengambil HTML dan asset website...');
     try{
       var res = await fetch('/api/scrape', {
         method:'POST',
@@ -875,7 +854,7 @@ footer.app-foot b{color:var(--fg-dim)}
     if(!cur) return;
     dlBtn.disabled = true;
     var orig = dlBtn.innerHTML;
-    dlBtn.innerHTML = '<span class="spin"></span>Menyiapkan...';
+    dlBtn.innerHTML = '<span class="aspin"></span>Menyiapkan...';
     try{
       var res = await fetch('/api/download', {
         method:'POST',
@@ -889,7 +868,7 @@ footer.app-foot b{color:var(--fg-dim)}
       var host = new URL(cur.url).hostname || 'website';
       var ts = new Date().toISOString().replace(/[:.]/g,'-').slice(0,19);
       a.href = url;
-      a.download = 'egaa-scrape-' + host + '-' + ts + '.zip';
+      a.download = 'copy-website-' + host + '-' + ts + '.zip';
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -918,80 +897,101 @@ footer.app-foot b{color:var(--fg-dim)}
       ['HTML', fmtB(s.htmlSize)]
     ];
     sgrid.innerHTML = items.map(function(x){
-      return '<div class="sc"><div class="sc-v">' + esc(x[1]) + '</div><div class="sc-l">' + esc(x[0]) + '</div></div>';
+      return '<div class="asc"><div class="asc-v">' + esc(x[1]) + '</div><div class="asc-l">' + esc(x[0]) + '</div></div>';
     }).join('');
 
+    // PREVIEW
+    $('t-preview').innerHTML =
+      '<div class="pv-bar">' +
+        '<div class="pv-url">' + esc(d.url) + '</div>' +
+        '<a class="pv-open" href="' + esc(d.url) + '" target="_blank" rel="noopener">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>' +
+          'Buka di tab baru' +
+        '</a>' +
+      '</div>' +
+      '<div class="pv-frame-wrap"><iframe id="pvFrame" src="' + esc(d.url) + '" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe></div>' +
+      '<div class="pv-note">Pratinjau menggunakan iframe langsung ke website target. Beberapa situs mungkin menolak tampil karena kebijakan X-Frame-Options. Gunakan tombol buka di tab baru jika pratinjau kosong.</div>';
+
+    // META
     var m = d.meta;
-    $('t-meta').innerHTML = '<div class="mlist">' +
-      '<div class="mrow"><span class="mk">Title</span><span class="mv">' + esc(m.title) + '</span></div>' +
-      '<div class="mrow"><span class="mk">Description</span><span class="mv">' + esc(m.description) + '</span></div>' +
-      '<div class="mrow"><span class="mk">Keywords</span><span class="mv">' + esc(m.keywords) + '</span></div>' +
-      '<div class="mrow"><span class="mk">OG Image</span><span class="mv">' + (m.ogImage ? '<a href="' + esc(m.ogImage) + '" target="_blank">' + esc(m.ogImage) + '</a>' : '-') + '</span></div>' +
-      '<div class="mrow"><span class="mk">Favicon</span><span class="mv">' + (m.favicon ? '<a href="' + esc(m.favicon) + '" target="_blank">' + esc(m.favicon) + '</a>' : '-') + '</span></div>' +
+    $('t-meta').innerHTML = '<div class="aml">' +
+      '<div class="amr"><span class="amk">Title</span><span class="amv">' + esc(m.title) + '</span></div>' +
+      '<div class="amr"><span class="amk">Description</span><span class="amv">' + esc(m.description) + '</span></div>' +
+      '<div class="amr"><span class="amk">Keywords</span><span class="amv">' + esc(m.keywords) + '</span></div>' +
+      '<div class="amr"><span class="amk">OG Image</span><span class="amv">' + (m.ogImage ? '<a href="' + esc(m.ogImage) + '" target="_blank">' + esc(m.ogImage) + '</a>' : '-') + '</span></div>' +
+      '<div class="amr"><span class="amk">Favicon</span><span class="amv">' + (m.favicon ? '<a href="' + esc(m.favicon) + '" target="_blank">' + esc(m.favicon) + '</a>' : '-') + '</span></div>' +
       '</div>';
 
+    // MODULES
     if(d.assetModules && d.assetModules.length){
       $('t-modules').innerHTML = d.assetModules.map(function(mod,i){
-        return '<div class="mod">' +
-          '<div class="mod-h">[' + (i+1) + '] ' + esc(mod.url) + '</div>' +
-          '<div class="mod-meta">' +
+        return '<div class="amod">' +
+          '<div class="amod-h">[' + (i+1) + '] ' + esc(mod.url) + '</div>' +
+          '<div class="amod-meta">' +
             '<span>type: <b>' + esc(mod.type) + '</b></span>' +
             '<span>size: <b>' + fmtB(mod.size) + '</b></span>' +
             '<span>exports: <b>' + mod.exportCount + '</b></span>' +
             '<span>imports: <b>' + mod.imports.length + '</b></span>' +
           '</div>' +
-          (mod.imports.length ? '<div class="mod-imports">' + mod.imports.map(function(imp){
+          (mod.imports.length ? '<div class="amod-imports">' + mod.imports.map(function(imp){
             return '<span class="chip">' + esc(imp) + '</span>';
           }).join('') + '</div>' : '') +
         '</div>';
       }).join('');
     } else {
-      $('t-modules').innerHTML = '<div class="empty">Tidak ada JS module yang terdeteksi.</div>';
+      $('t-modules').innerHTML = '<div class="aempty">Tidak ada JS module yang terdeteksi.</div>';
     }
 
+    // SCRIPTS
     $('t-scripts').innerHTML = d.scripts.length ? d.scripts.map(function(s){
-      return '<div class="it"><span class="sub">' + esc(s.type) + (s.size ? ' · ' + fmtB(s.size) : '') + '</span>' +
+      return '<div class="ait"><span class="sub">' + esc(s.type) + (s.size ? ' · ' + fmtB(s.size) : '') + '</span>' +
         (s.url ? '<a href="' + esc(s.url) + '" target="_blank">' + esc(s.url) + '</a>' : '(inline script)') + '</div>';
-    }).join('') : '<div class="empty">Tidak ada script.</div>';
+    }).join('') : '<div class="aempty">Tidak ada script.</div>';
 
+    // STYLES
     var stylesHtml = '';
     if(d.stylesheets.length){
-      stylesHtml += '<div class="st">External Stylesheets</div><div class="items">' + d.stylesheets.map(function(s){
-        return '<div class="it">' + (s.size ? '<span class="sub">' + fmtB(s.size) + '</span>' : '') +
+      stylesHtml += '<div class="ast">External Stylesheets</div><div class="aitems">' + d.stylesheets.map(function(s){
+        return '<div class="ait">' + (s.size ? '<span class="sub">' + fmtB(s.size) + '</span>' : '') +
           '<a href="' + esc(s.url) + '" target="_blank">' + esc(s.url) + '</a></div>';
       }).join('') + '</div>';
     }
     if(d.inlineStyles && d.inlineStyles.length){
-      stylesHtml += '<div class="st">Inline CSS</div><pre>' + esc(d.inlineStyles.join('\n\n/* --- */\n\n').slice(0,30000)) + '</pre>';
+      stylesHtml += '<div class="ast">Inline CSS</div><pre>' + esc(d.inlineStyles.join('\n\n/* --- */\n\n').slice(0,30000)) + '</pre>';
     }
-    $('t-styles').innerHTML = stylesHtml || '<div class="empty">Tidak ada CSS.</div>';
+    $('t-styles').innerHTML = stylesHtml || '<div class="aempty">Tidak ada CSS.</div>';
 
+    // HEADINGS
     var h = d.headings, hHtml = '', hasH = false;
     ['h1','h2','h3','h4','h5','h6'].forEach(function(tag){
       if(h[tag] && h[tag].length){
         hasH = true;
-        hHtml += '<div class="st">' + tag.toUpperCase() + ' (' + h[tag].length + ')</div>';
-        hHtml += '<div class="items">' + h[tag].map(function(x){ return '<div class="it">' + esc(x) + '</div>'; }).join('') + '</div>';
+        hHtml += '<div class="ast">' + tag.toUpperCase() + ' (' + h[tag].length + ')</div>';
+        hHtml += '<div class="aitems">' + h[tag].map(function(x){ return '<div class="ait">' + esc(x) + '</div>'; }).join('') + '</div>';
       }
     });
-    $('t-headings').innerHTML = hasH ? hHtml : '<div class="empty">Tidak ada heading.</div>';
+    $('t-headings').innerHTML = hasH ? hHtml : '<div class="aempty">Tidak ada heading.</div>';
 
+    // PARAGRAPHS
     $('t-paras').innerHTML = d.paragraphs.length ? d.paragraphs.map(function(p){
-      return '<div class="para">' + esc(p) + '</div>';
-    }).join('') : '<div class="empty">Tidak ada paragraf.</div>';
+      return '<div class="apara">' + esc(p) + '</div>';
+    }).join('') : '<div class="aempty">Tidak ada paragraf.</div>';
 
-    $('t-links').innerHTML = d.links.length ? '<div class="items">' + d.links.map(function(l){
-      return '<div class="it">' + (l.text ? '<span class="sub">' + esc(l.text) + '</span>' : '') +
+    // LINKS
+    $('t-links').innerHTML = d.links.length ? '<div class="aitems">' + d.links.map(function(l){
+      return '<div class="ait">' + (l.text ? '<span class="sub">' + esc(l.text) + '</span>' : '') +
         '<a href="' + esc(l.href) + '" target="_blank">' + esc(l.href) + '</a></div>';
-    }).join('') + '</div>' : '<div class="empty">Tidak ada link.</div>';
+    }).join('') + '</div>' : '<div class="aempty">Tidak ada link.</div>';
 
-    $('t-imgs').innerHTML = d.images.length ? '<div class="igrid">' + d.images.map(function(i){
-      return '<div class="ic"><img src="' + esc(i.url) + '" alt="' + esc(i.alt) + '" loading="lazy" onerror="this.style.opacity=0.15" />' +
-        '<div class="ic-i">' + esc(i.alt || i.url) + '</div></div>';
-    }).join('') + '</div>' : '<div class="empty">Tidak ada gambar.</div>';
+    // IMAGES
+    $('t-imgs').innerHTML = d.images.length ? '<div class="aigrid">' + d.images.map(function(i){
+      return '<div class="aic"><img src="' + esc(i.url) + '" alt="' + esc(i.alt) + '" loading="lazy" onerror="this.style.opacity=0.15" />' +
+        '<div class="aic-i">' + esc(i.alt || i.url) + '</div></div>';
+    }).join('') + '</div>' : '<div class="aempty">Tidak ada gambar.</div>';
 
+    // TABLES
     $('t-tables').innerHTML = d.tables.length ? d.tables.map(function(rows,i){
-      var html = '<div class="st">Tabel ' + (i+1) + ' · ' + rows.length + ' baris</div><div class="tw"><table>';
+      var html = '<div class="ast">Tabel ' + (i+1) + ' · ' + rows.length + ' baris</div><div class="atw"><table>';
       rows.forEach(function(row,ri){
         html += '<tr>';
         row.forEach(function(c){ html += ri === 0 ? '<th>' + esc(c) + '</th>' : '<td>' + esc(c) + '</td>'; });
@@ -999,23 +999,26 @@ footer.app-foot b{color:var(--fg-dim)}
       });
       html += '</table></div>';
       return html;
-    }).join('') : '<div class="empty">Tidak ada tabel.</div>';
+    }).join('') : '<div class="aempty">Tidak ada tabel.</div>';
 
+    // FORMS
     $('t-forms').innerHTML = d.forms.length ? d.forms.map(function(f,i){
-      return '<div class="st">Form ' + (i+1) + '</div>' +
-        '<div class="mlist">' +
-          '<div class="mrow"><span class="mk">Method</span><span class="mv">' + esc(f.method) + '</span></div>' +
-          '<div class="mrow"><span class="mk">Action</span><span class="mv">' + esc(f.action || '-') + '</span></div>' +
+      return '<div class="ast">Form ' + (i+1) + '</div>' +
+        '<div class="aml">' +
+          '<div class="amr"><span class="amk">Method</span><span class="amv">' + esc(f.method) + '</span></div>' +
+          '<div class="amr"><span class="amk">Action</span><span class="amv">' + esc(f.action || '-') + '</span></div>' +
         '</div>' +
-        '<div class="items" style="margin-top:12px;">' + f.inputs.map(function(inp){
-          return '<div class="it"><span class="sub">' + esc(inp.tag) + (inp.type ? ' · ' + esc(inp.type) : '') + '</span>' +
+        '<div class="aitems" style="margin-top:12px;">' + f.inputs.map(function(inp){
+          return '<div class="ait"><span class="sub">' + esc(inp.tag) + (inp.type ? ' · ' + esc(inp.type) : '') + '</span>' +
             esc(inp.name || '(tanpa name)') + (inp.placeholder ? ' · ' + esc(inp.placeholder) : '') + '</div>';
         }).join('') + '</div>';
-    }).join('') : '<div class="empty">Tidak ada form.</div>';
+    }).join('') : '<div class="aempty">Tidak ada form.</div>';
 
+    // TEXT
     $('t-text').innerHTML = d.bodyText ? '<pre style="white-space:pre-wrap;font-family:inherit;font-size:12.5px;line-height:1.7;">' +
-      esc(d.bodyText.slice(0,60000)) + '</pre>' : '<div class="empty">Tidak ada text.</div>';
+      esc(d.bodyText.slice(0,60000)) + '</pre>' : '<div class="aempty">Tidak ada text.</div>';
 
+    // RAW
     $('t-raw').innerHTML = '<pre>' + esc(d.rawHtml.slice(0,200000)) + '</pre>';
   }
 })();
