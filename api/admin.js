@@ -1,9 +1,8 @@
 const { state, getClientIP, pushLog, pushNotification } = require('./_store');
 
-// Kredensial admin
-const ADMIN_VERIFY_1 = 'ANGGA';        // nama ayah
-const ADMIN_VERIFY_2 = 'ega123';       // password
-const ADMIN_VERIFY_3 = 'alegra';       // password akhir
+const ADMIN_VERIFY_1 = 'ANGGA';
+const ADMIN_VERIFY_2 = 'ega123';
+const ADMIN_VERIFY_3 = 'alegra';
 
 function verifyAdmin(v1, v2, v3) {
   return (
@@ -13,12 +12,11 @@ function verifyAdmin(v1, v2, v3) {
   );
 }
 
-// Simple token generator
 function makeToken() {
   return 'adm_' + Date.now() + '_' + Math.random().toString(36).slice(2, 12);
 }
-const activeTokens = {};   // token -> { ip, createdAt }
-const TOKEN_TTL = 1000 * 60 * 60 * 4; // 4 jam
+const activeTokens = {};
+const TOKEN_TTL = 1000 * 60 * 60 * 24 * 7; // 7 hari
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -38,7 +36,7 @@ module.exports = async (req, res) => {
 
   // === LOGIN ===
   if (action === 'login') {
-    const { v1, v2, v3 } = body;
+    const { v1, v2, v3, remember } = body;
     pushLog(clientIP, userAgent, '', 'admin_login_attempt');
 
     if (!verifyAdmin(v1, v2, v3)) {
@@ -48,11 +46,33 @@ module.exports = async (req, res) => {
     }
 
     const token = makeToken();
-    activeTokens[token] = { ip: clientIP, createdAt: Date.now() };
+    activeTokens[token] = {
+      ip: clientIP,
+      createdAt: Date.now(),
+      remember: !!remember
+    };
     pushLog(clientIP, userAgent, '', 'admin_login_success');
     pushNotification('admin_login', 'Admin berhasil login', clientIP, null);
 
-    return res.status(200).json({ success: true, token });
+    return res.status(200).json({
+      success: true,
+      token,
+      expiresIn: TOKEN_TTL
+    });
+  }
+
+  // === VERIFY TOKEN (untuk auto-login) ===
+  if (action === 'verify') {
+    const token = req.headers['x-admin-token'] || (body && body.token);
+    if (!token || !activeTokens[token]) {
+      return res.status(401).json({ success: false, valid: false });
+    }
+    const s = activeTokens[token];
+    if (Date.now() - s.createdAt > TOKEN_TTL) {
+      delete activeTokens[token];
+      return res.status(401).json({ success: false, valid: false });
+    }
+    return res.status(200).json({ success: true, valid: true });
   }
 
   // === CEK TOKEN untuk semua aksi lain ===
@@ -66,12 +86,25 @@ module.exports = async (req, res) => {
     return res.status(401).json({ success: false, error: 'Sesi kadaluarsa. Login ulang.' });
   }
 
-  // === ACTION: STATS ===
+  // === LOGOUT ===
+  if (action === 'logout') {
+    delete activeTokens[token];
+    pushLog(clientIP, userAgent, '', 'admin_logout');
+    return res.status(200).json({ success: true });
+  }
+
+  // === STATS ===
   if (action === 'stats') {
     const totalScrapes = state.logs.filter(l => l.action === 'scrape_success').length;
     const totalDownloads = state.logs.filter(l => l.action === 'download_zip').length;
     const totalBlocked = state.logs.filter(l => l.action.startsWith('attempt_protected')).length;
     const unreadNotifs = state.notifications.filter(n => !n.read).length;
+    const recentActivity = state.logs.slice(0, 5).map(l => ({
+      ip: l.ip,
+      action: l.action,
+      url: l.url,
+      time: l.time
+    }));
     return res.status(200).json({
       success: true,
       stats: {
@@ -82,18 +115,17 @@ module.exports = async (req, res) => {
         uniqueIPs: new Set(state.logs.map(l => l.ip)).size,
         unreadNotifs,
         settings: state.settings,
-        uptime: process.uptime()
+        uptime: process.uptime(),
+        recentActivity
       }
     });
   }
 
-  // === ACTION: GET LOGS ===
   if (action === 'logs') {
     const limit = Math.min(parseInt(body.limit) || 200, 1000);
     return res.status(200).json({ success: true, logs: state.logs.slice(0, limit) });
   }
 
-  // === ACTION: GET ATTEMPTS (counter per IP) ===
   if (action === 'attempts') {
     const arr = Object.keys(state.attempts).map(ip => ({
       ip,
@@ -102,7 +134,6 @@ module.exports = async (req, res) => {
     return res.status(200).json({ success: true, attempts: arr });
   }
 
-  // === ACTION: GET BANNED ===
   if (action === 'banned') {
     const arr = Object.keys(state.bannedIPs).map(ip => ({
       ip,
@@ -111,7 +142,6 @@ module.exports = async (req, res) => {
     return res.status(200).json({ success: true, banned: arr });
   }
 
-  // === ACTION: BAN IP ===
   if (action === 'ban') {
     const { ip, reason } = body;
     if (!ip) return res.status(400).json({ success: false, error: 'IP wajib diisi.' });
@@ -125,7 +155,6 @@ module.exports = async (req, res) => {
     return res.status(200).json({ success: true });
   }
 
-  // === ACTION: UNBAN IP ===
   if (action === 'unban') {
     const { ip } = body;
     if (!ip) return res.status(400).json({ success: false, error: 'IP wajib diisi.' });
@@ -135,7 +164,6 @@ module.exports = async (req, res) => {
     return res.status(200).json({ success: true });
   }
 
-  // === ACTION: RESET COUNTER ===
   if (action === 'reset_attempts') {
     const { ip } = body;
     if (ip) delete state.attempts[ip];
@@ -144,7 +172,6 @@ module.exports = async (req, res) => {
     return res.status(200).json({ success: true });
   }
 
-  // === ACTION: NOTIFICATIONS ===
   if (action === 'notifications') {
     return res.status(200).json({
       success: true,
@@ -152,7 +179,6 @@ module.exports = async (req, res) => {
     });
   }
 
-  // === ACTION: MARK NOTIF READ ===
   if (action === 'mark_read') {
     const { id } = body;
     if (id) {
@@ -164,7 +190,6 @@ module.exports = async (req, res) => {
     return res.status(200).json({ success: true });
   }
 
-  // === ACTION: UPDATE SETTINGS ===
   if (action === 'update_settings') {
     const { protectionEnabled, maxAttempts, notifyOnAttempt } = body;
     if (typeof protectionEnabled === 'boolean') state.settings.protectionEnabled = protectionEnabled;
@@ -174,7 +199,6 @@ module.exports = async (req, res) => {
     return res.status(200).json({ success: true, settings: state.settings });
   }
 
-  // === ACTION: CLEAR LOGS ===
   if (action === 'clear_logs') {
     state.logs = [];
     pushLog(clientIP, userAgent, '', 'admin_clear_logs');
