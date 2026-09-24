@@ -2,6 +2,8 @@
   "version": 2,
   "rewrites": [
     { "source": "/api/scrape", "destination": "/api/scrape" },
-    { "source": "/api/download", "destination": "/api/download" }
+    { "source": "/api/download", "destination": "/api/download" },
+    { "source": "/api/admin", "destination": "/api/admin" },
+    { "source": "/admin", "destination": "/public/admin.html" }
   ]
 }
