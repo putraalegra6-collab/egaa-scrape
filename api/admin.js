@@ -1,22 +1,16 @@
-const { state, getClientIP, pushLog, pushNotification } = require('./_store');
+const { state, getClientIP, pushLog, pushNotification, signToken, verifyToken } = require('./_store');
 
-const ADMIN_VERIFY_1 = 'ANGGA';
-const ADMIN_VERIFY_2 = 'ega123';
-const ADMIN_VERIFY_3 = 'alegra';
+const ADMIN_VERIFY_1 = 'egaa';       // Nama (case insensitive)
+const ADMIN_VERIFY_2 = 'ega123';     // Password 1
+const ADMIN_VERIFY_3 = 'alegra';     // Password 2
 
 function verifyAdmin(v1, v2, v3) {
   return (
-    String(v1 || '').toUpperCase() === ADMIN_VERIFY_1 &&
+    String(v1 || '').toLowerCase() === ADMIN_VERIFY_1.toLowerCase() &&
     String(v2 || '') === ADMIN_VERIFY_2 &&
     String(v3 || '') === ADMIN_VERIFY_3
   );
 }
-
-function makeToken() {
-  return 'adm_' + Date.now() + '_' + Math.random().toString(36).slice(2, 12);
-}
-const activeTokens = {};
-const TOKEN_TTL = 1000 * 60 * 60 * 24 * 7; // 7 hari
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -41,54 +35,38 @@ module.exports = async (req, res) => {
 
     if (!verifyAdmin(v1, v2, v3)) {
       pushLog(clientIP, userAgent, '', 'admin_login_failed');
-      pushNotification('admin_login_failed', 'Ada percobaan login admin gagal', clientIP, null);
+      pushNotification('admin_login_failed', 'Percobaan login admin gagal', clientIP, null);
       return res.status(401).json({ success: false, error: 'Verifikasi gagal. Periksa kembali data yang dimasukkan.' });
     }
 
-    const token = makeToken();
-    activeTokens[token] = {
-      ip: clientIP,
-      createdAt: Date.now(),
-      remember: !!remember
-    };
+    const ttl = remember ? 30 * 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000; // 30 hari atau 12 jam
+    const token = signToken({ ip: clientIP, remember: !!remember }, ttl);
+
     pushLog(clientIP, userAgent, '', 'admin_login_success');
     pushNotification('admin_login', 'Admin berhasil login', clientIP, null);
 
-    return res.status(200).json({
-      success: true,
-      token,
-      expiresIn: TOKEN_TTL
-    });
+    return res.status(200).json({ success: true, token });
   }
 
-  // === VERIFY TOKEN (untuk auto-login) ===
+  // === VERIFY ===
   if (action === 'verify') {
     const token = req.headers['x-admin-token'] || (body && body.token);
-    if (!token || !activeTokens[token]) {
-      return res.status(401).json({ success: false, valid: false });
-    }
-    const s = activeTokens[token];
-    if (Date.now() - s.createdAt > TOKEN_TTL) {
-      delete activeTokens[token];
-      return res.status(401).json({ success: false, valid: false });
+    const payload = verifyToken(token);
+    if (!payload) {
+      return res.status(200).json({ success: true, valid: false });
     }
     return res.status(200).json({ success: true, valid: true });
   }
 
-  // === CEK TOKEN untuk semua aksi lain ===
+  // === AUTH CHECK ===
   const token = req.headers['x-admin-token'] || (body && body.token);
-  if (!token || !activeTokens[token]) {
+  const payload = verifyToken(token);
+  if (!payload) {
     return res.status(401).json({ success: false, error: 'Sesi tidak valid. Login ulang.' });
   }
-  const session = activeTokens[token];
-  if (Date.now() - session.createdAt > TOKEN_TTL) {
-    delete activeTokens[token];
-    return res.status(401).json({ success: false, error: 'Sesi kadaluarsa. Login ulang.' });
-  }
 
-  // === LOGOUT ===
+  // === LOGOUT (stateless, tidak ada yang perlu dihapus di server) ===
   if (action === 'logout') {
-    delete activeTokens[token];
     pushLog(clientIP, userAgent, '', 'admin_logout');
     return res.status(200).json({ success: true });
   }
@@ -100,17 +78,12 @@ module.exports = async (req, res) => {
     const totalBlocked = state.logs.filter(l => l.action.startsWith('attempt_protected')).length;
     const unreadNotifs = state.notifications.filter(n => !n.read).length;
     const recentActivity = state.logs.slice(0, 5).map(l => ({
-      ip: l.ip,
-      action: l.action,
-      url: l.url,
-      time: l.time
+      ip: l.ip, action: l.action, url: l.url, time: l.time
     }));
     return res.status(200).json({
       success: true,
       stats: {
-        totalScrapes,
-        totalDownloads,
-        totalBlocked,
+        totalScrapes, totalDownloads, totalBlocked,
         bannedCount: Object.keys(state.bannedIPs).length,
         uniqueIPs: new Set(state.logs.map(l => l.ip)).size,
         unreadNotifs,
@@ -127,18 +100,13 @@ module.exports = async (req, res) => {
   }
 
   if (action === 'attempts') {
-    const arr = Object.keys(state.attempts).map(ip => ({
-      ip,
-      ...state.attempts[ip]
-    })).sort((a, b) => b.count - a.count);
+    const arr = Object.keys(state.attempts).map(ip => ({ ip, ...state.attempts[ip] }))
+      .sort((a, b) => b.count - a.count);
     return res.status(200).json({ success: true, attempts: arr });
   }
 
   if (action === 'banned') {
-    const arr = Object.keys(state.bannedIPs).map(ip => ({
-      ip,
-      ...state.bannedIPs[ip]
-    }));
+    const arr = Object.keys(state.bannedIPs).map(ip => ({ ip, ...state.bannedIPs[ip] }));
     return res.status(200).json({ success: true, banned: arr });
   }
 
