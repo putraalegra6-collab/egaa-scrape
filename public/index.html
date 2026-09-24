@@ -43,11 +43,11 @@ input{font-family:inherit}
 .lhero-h1{font-size:64px;font-weight:700;letter-spacing:-2.6px;line-height:1.02;color:var(--fg);margin-bottom:26px}
 .lhero-h1 .dim{color:var(--fg-dimmer)}
 .lhero-p{font-size:16.5px;color:var(--fg-dim);line-height:1.7;max-width:540px;margin-bottom:40px}
-.lhero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
-.lbtn-1{padding:16px 30px;border-radius:11px;background:var(--fg);color:var(--bg);font-size:14.5px;font-weight:600;transition:.15s;display:inline-flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 10px 30px -12px rgba(255,255,255,.4)}
+.lhero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;align-items:center}
+.lbtn-1{padding:15px 26px;border-radius:11px;background:var(--fg);color:var(--bg);font-size:14px;font-weight:600;transition:.15s;display:inline-flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 10px 30px -12px rgba(255,255,255,.4);width:auto}
 .lbtn-1:hover{background:#fff;transform:translateY(-2px)}
 .lbtn-1 svg{width:14px;height:14px}
-.lbtn-2{padding:16px 30px;border-radius:11px;background:var(--bg-2);border:1px solid var(--line-2);color:var(--fg);font-size:14.5px;font-weight:500;transition:.15s;display:inline-flex;align-items:center;justify-content:center}
+.lbtn-2{padding:15px 26px;border-radius:11px;background:var(--bg-2);border:1px solid var(--line-2);color:var(--fg);font-size:14px;font-weight:500;transition:.15s;display:inline-flex;align-items:center;justify-content:center;width:auto}
 .lbtn-2:hover{background:var(--bg-3);border-color:#3a3a46}
 .lhero-meta{display:flex;gap:28px;flex-wrap:wrap;font-size:12px;color:var(--fg-dimmer);font-family:var(--mono);align-items:center}
 .lhero-meta span{display:inline-flex;align-items:center;gap:8px}
@@ -141,7 +141,7 @@ input{font-family:inherit}
 .lcta-h{font-size:36px;font-weight:700;letter-spacing:-1.3px;margin-bottom:16px;position:relative;z-index:1}
 .lcta-h .dim{color:var(--fg-dimmer)}
 .lcta-p{font-size:15.5px;color:var(--fg-dim);line-height:1.7;max-width:540px;margin:0 auto 32px;position:relative;z-index:1}
-.lcta-btn{padding:17px 34px;border-radius:12px;background:var(--fg);color:var(--bg);font-size:15px;font-weight:600;transition:.15s;display:inline-flex;align-items:center;justify-content:center;gap:10px;position:relative;z-index:1;box-shadow:0 12px 34px -12px rgba(255,255,255,.4)}
+.lcta-btn{padding:16px 30px;border-radius:12px;background:var(--fg);color:var(--bg);font-size:14.5px;font-weight:600;transition:.15s;display:inline-flex;align-items:center;justify-content:center;gap:10px;position:relative;z-index:1;box-shadow:0 12px 34px -12px rgba(255,255,255,.4);width:auto}
 .lcta-btn:hover{background:#fff;transform:translateY(-2px)}
 .lcta-btn svg{width:15px;height:15px}
 
@@ -177,7 +177,7 @@ input{font-family:inherit}
 .afield input::placeholder{color:var(--fg-dimmer);font-weight:400}
 .afield input:focus{border-color:#4a4a5a;background:var(--bg-3);box-shadow:0 0 0 3px rgba(91,141,239,.08)}
 .afield::before{content:'';position:absolute;left:16px;top:50%;width:15px;height:15px;transform:translateY(-50%);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235f5f6e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>");background-size:contain;background-repeat:no-repeat;pointer-events:none}
-.abtn{padding:15px 26px;border-radius:11px;font-size:14px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:9px;transition:.15s;white-space:nowrap}
+.abtn{padding:15px 26px;border-radius:11px;font-size:14px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:9px;transition:.15s;white-space:nowrap;width:auto}
 .abtn svg{width:15px;height:15px}
 .abtn-1{background:var(--fg);color:var(--bg);box-shadow:0 8px 24px -10px rgba(255,255,255,.35)}
 .abtn-1:hover:not(:disabled){background:#fff;transform:translateY(-1px)}
@@ -352,61 +352,62 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   .lnav-cta{padding:8px 12px;font-size:12px}
   .lnav-cta svg{width:12px;height:12px}
 
-  .lhero{padding:48px 18px 40px;gap:40px}
-  .lhero-eyebrow{padding:5px 11px;font-size:11px;margin-bottom:22px}
-  .lhero-h1{font-size:34px;letter-spacing:-1.1px;margin-bottom:20px}
-  .lhero-p{font-size:14.5px;margin-bottom:28px}
-  .lhero-btns{flex-direction:column;gap:10px;margin-bottom:28px}
-  .lbtn-1,.lbtn-2{padding:14px 22px;font-size:14px;width:100%}
-  .lhero-meta{font-size:11px;gap:14px 20px;flex-wrap:wrap}
+  .lhero{padding:44px 18px 36px;gap:36px}
+  .lhero-eyebrow{padding:5px 11px;font-size:11px;margin-bottom:20px}
+  .lhero-h1{font-size:32px;letter-spacing:-1px;margin-bottom:18px}
+  .lhero-p{font-size:14px;margin-bottom:24px;line-height:1.65}
+  .lhero-btns{flex-direction:row;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+  .lbtn-1,.lbtn-2{padding:12px 18px;font-size:13px;width:auto;flex:0 1 auto}
+  .lbtn-1 svg{width:13px;height:13px}
+  .lhero-meta{font-size:11px;gap:12px 18px;flex-wrap:wrap}
   .lhero-meta svg{width:11px;height:11px}
 
   .mock-head{padding:10px 12px}
   .mock-dot{width:9px;height:9px}
   .mock-title{font-size:10.5px;margin-left:10px}
-  .mock-body{padding:16px 14px;font-size:10.5px;line-height:1.75}
+  .mock-body{padding:16px 14px;font-size:10.5px;line-height:1.7}
   .mock-line{gap:10px}
   .mock-n{width:16px}
   .mock-badge{bottom:10px;right:10px;padding:8px 11px;font-size:10px}
 
-  .lstats{padding:0 18px 40px;grid-template-columns:1fr 1fr;gap:10px}
+  .lstats{padding:0 18px 36px;grid-template-columns:1fr 1fr;gap:10px}
   .lstat{padding:18px 16px;border-radius:11px}
-  .lstat-v{font-size:22px}
-  .lstat-l{font-size:10px;margin-top:6px;letter-spacing:.7px}
+  .lstat-v{font-size:20px}
+  .lstat-l{font-size:10px;margin-top:6px;letter-spacing:.6px}
 
-  .lsec-head{margin-bottom:32px;padding:0 18px}
+  .lsec-head{margin-bottom:28px;padding:0 18px}
   .lsec-eyebrow{font-size:10px;letter-spacing:1.4px;margin-bottom:12px}
-  .lsec-h{font-size:24px;letter-spacing:-.8px;margin-bottom:10px}
-  .lsec-p{font-size:13.5px}
+  .lsec-h{font-size:22px;letter-spacing:-.7px;margin-bottom:10px}
+  .lsec-p{font-size:13px}
 
-  .lflow,.lfeat,.lsecurity,.lcta{padding:0 18px 56px}
+  .lflow,.lfeat,.lsecurity,.lcta{padding:0 18px 48px}
   .lflow-grid,.lfeat-grid{gap:12px}
-  .lstep{padding:24px 20px;border-radius:12px}
-  .lstep::before{font-size:38px;top:18px;right:16px}
-  .lstep-ico{width:38px;height:38px;border-radius:10px;margin-bottom:16px}
+  .lstep{padding:22px 20px;border-radius:12px}
+  .lstep::before{font-size:36px;top:16px;right:16px}
+  .lstep-ico{width:36px;height:36px;border-radius:10px;margin-bottom:14px}
   .lstep-ico svg{width:16px;height:16px}
-  .lstep-h{font-size:15px;margin-bottom:8px}
+  .lstep-h{font-size:15px;margin-bottom:6px}
   .lstep-p{font-size:12.5px}
 
   .feat{padding:20px;border-radius:12px}
-  .feat-ico{width:36px;height:36px;border-radius:10px;margin-bottom:16px}
+  .feat-ico{width:36px;height:36px;border-radius:10px;margin-bottom:14px}
   .feat-ico svg{width:16px;height:16px}
   .feat-h{font-size:14.5px;margin-bottom:8px}
   .feat-p{font-size:12.5px}
 
-  .lsec-inner{padding:32px 22px;border-radius:16px;gap:28px}
-  .lsec-tag{font-size:11px;padding:5px 11px;margin-bottom:18px}
-  .lsec-h{font-size:22px;margin-bottom:12px}
-  .lsec-p{font-size:13.5px}
-  .lsec-item{padding:13px 14px;gap:11px;border-radius:10px}
-  .lsec-item-ic{width:28px;height:28px;border-radius:8px}
+  .lsec-inner{padding:28px 20px;border-radius:16px;gap:24px}
+  .lsec-tag{font-size:11px;padding:5px 11px;margin-bottom:16px}
+  .lsec-h{font-size:20px;margin-bottom:10px}
+  .lsec-p{font-size:13px}
+  .lsec-item{padding:12px 14px;gap:11px;border-radius:10px}
+  .lsec-item-ic{width:26px;height:26px;border-radius:7px}
   .lsec-item-t{font-size:12.5px}
   .lsec-item-p{font-size:11.5px}
 
-  .lcta-inner{padding:40px 22px;border-radius:16px}
-  .lcta-h{font-size:22px;margin-bottom:12px}
-  .lcta-p{font-size:13.5px;margin-bottom:24px}
-  .lcta-btn{padding:14px 24px;font-size:14px;width:100%}
+  .lcta-inner{padding:36px 20px;border-radius:16px}
+  .lcta-h{font-size:20px;margin-bottom:12px}
+  .lcta-p{font-size:13px;margin-bottom:22px}
+  .lcta-btn{padding:12px 20px;font-size:13px;width:auto}
 
   .lfoot{padding:24px 18px;font-size:11.5px;flex-direction:column;align-items:flex-start;gap:10px}
 
@@ -419,16 +420,16 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   .awrap{padding:24px 16px 60px}
   .ahead{margin-bottom:24px}
   .ahead-eyebrow{font-size:11px;padding:4px 10px;margin-bottom:12px}
-  .ahead-h1{font-size:24px;letter-spacing:-.7px;margin-bottom:8px}
-  .ahead-p{font-size:13.5px}
+  .ahead-h1{font-size:22px;letter-spacing:-.6px;margin-bottom:8px}
+  .ahead-p{font-size:13px}
 
   .apane{padding:18px;border-radius:14px;margin-bottom:16px}
   .apane-h{font-size:10.5px;margin-bottom:12px}
-  .arow{flex-direction:column;gap:10px}
-  .afield{min-width:auto}
-  .afield input{padding:14px 14px 14px 42px;font-size:14px;border-radius:10px}
+  .arow{flex-direction:row;flex-wrap:wrap;gap:10px}
+  .afield{min-width:100%;flex:1 1 100%}
+  .afield input{padding:13px 14px 13px 42px;font-size:14px;border-radius:10px}
   .afield::before{left:14px;width:14px;height:14px}
-  .abtn{padding:14px 20px;font-size:13.5px;width:100%;border-radius:10px}
+  .abtn{padding:13px 18px;font-size:13px;flex:1 1 auto;border-radius:10px;min-width:calc(50% - 5px)}
   .abtn svg{width:14px;height:14px}
 
   .aex{gap:6px;margin-bottom:16px}
@@ -446,10 +447,10 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   .aidle-li{padding:11px 0;font-size:12.5px;gap:10px}
   .aidle-li-ic{width:18px;height:18px}
 
-  .abar{padding:16px 18px;border-radius:14px;margin-bottom:16px;flex-direction:column;align-items:stretch}
-  .abar-info{min-width:0}
+  .abar{padding:16px 18px;border-radius:14px;margin-bottom:16px;flex-direction:row;align-items:center;flex-wrap:wrap}
+  .abar-info{min-width:0;flex:1 1 100%}
   .abar-url{font-size:12.5px}
-  .abar .abtn{width:100%}
+  .abar .abtn{width:auto;flex:1 1 100%;margin-top:12px}
 
   .asgrid{grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:16px}
   .asc{padding:12px 13px;border-radius:10px}
@@ -480,7 +481,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   .apimod-item{padding:9px 11px;font-size:11px;gap:8px}
   .pv-bar{padding:11px 13px}
   .pv-frame-wrap{height:400px}
-  .pre,pre{font-size:11px;padding:13px}
+  pre{font-size:11px;padding:13px}
   .afoot{padding:32px 0 0;font-size:11px;margin-top:40px}
   .blocked-card{padding:28px 22px;border-radius:16px}
   .blocked-btn{padding:14px 22px;font-size:14px}
@@ -647,7 +648,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
           Sistem Keamanan
         </div>
         <h2 class="lsec-h">Website ini <span class="dim">dilindungi.</span></h2>
-        <p class="lsec-p">Setiap percobaan menyalin domain ini dicatat, diverifikasi, dan langsung diblokir. Website ini tidak bisa copy oleh sistem manapun.</p>
+        <p class="lsec-p">Setiap percobaan menyalin domain ini dicatat, diverifikasi, dan langsung diblokir. Website ini tidak bisa dicopy oleh sistem manapun.</p>
       </div>
       <div class="lsec-right">
         <div class="lsec-item">
@@ -677,7 +678,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
 
   <section class="lcta" id="start">
     <div class="lcta-inner">
-      <h2 class="lcta-h">Siap menyalin <span class="dim">website pertamamu?</span></h2>
+      <h2 class="lcta-h">Siap copy <span class="dim">website pertamamu?</span></h2>
       <p class="lcta-p">Buka aplikasi dan mulai proses copy. Hasil lengkap bisa diunduh dalam satu file ZIP dengan struktur folder yang rapi.</p>
       <button class="lcta-btn" onclick="openApp()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -711,7 +712,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   <div class="awrap">
     <div class="ahead">
       <div class="ahead-eyebrow"><i></i>Siap digunakan</div>
-      <h1 class="ahead-h1">copy sumber website</h1>
+      <h1 class="ahead-h1">Copy sumber website</h1>
       <p class="ahead-p">Masukkan alamat website yang ingin dicopy. Sistem akan mengambil HTML, asset, module JavaScript, dan endpoint API secara otomatis.</p>
     </div>
 
@@ -834,7 +835,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   var idleEl = $('idle');
   var cur = null;
 
-  var PROTECTED_DOMAINS = ['egaa-scrape.vercel.app'];
+  var PROTECTED_DOMAINS = ['egaa-copywebsite.vercel.app', 'egaa-scrape.vercel.app'];
 
   function esc(s){
     return String(s == null ? '' : s)
