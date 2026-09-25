@@ -4,6 +4,6 @@
     { "source": "/api/scrape", "destination": "/api/scrape" },
     { "source": "/api/download", "destination": "/api/download" },
     { "source": "/api/admin", "destination": "/api/admin" },
-    { "source": "/admin", "destination": "/admin.html" }
+    { "source": "/api/playlist", "destination": "/api/playlist" }
   ]
 }
