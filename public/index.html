@@ -6,12 +6,14 @@
 <title>Copy Website</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a0c;--bg-2:#0f0f12;--bg-3:#141418;--bg-4:#1a1a20;--line:#1f1f26;--line-2:#2a2a34;--fg:#f2f2f5;--fg-dim:#9a9aa8;--fg-dimmer:#5f5f6e;--blue:#5b8def;--green:#3fbf7f;--red:#e05252;--yellow:#e0b252;--purple:#8b5cf6;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+:root{--bg:#0a0a0c;--bg-2:#0f0f12;--bg-3:#141418;--bg-4:#1a1a20;--line:#1f1f26;--line-2:#2a2a34;--fg:#f2f2f5;--fg-dim:#9a9aa8;--fg-dimmer:#5f5f6e;--blue:#5b8def;--green:#3fbf7f;--red:#e05252;--yellow:#e0b252;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 html,body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,system-ui,sans-serif;font-size:14px;line-height:1.5;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 input,textarea,select{font-family:inherit}
 ::selection{background:rgba(91,141,239,.3);color:#fff}
+
+/* LANDING */
 #landing{min-height:100vh;background:var(--bg);position:relative;overflow:hidden}
 #landing::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1000px;height:600px;background:radial-gradient(ellipse at center,rgba(91,141,239,.08),transparent 60%);pointer-events:none;z-index:0}
 .lnav{position:sticky;top:0;z-index:50;background:rgba(10,10,12,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
@@ -120,6 +122,8 @@ input,textarea,select{font-family:inherit}
 .lfoot-brand{display:flex;align-items:center;gap:10px}
 .lfoot-mark{width:24px;height:24px;border-radius:6px;background:var(--bg-3);border:1px solid var(--line-2);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--fg-dim)}
 .lfoot b{color:var(--fg-dim);font-weight:600}
+
+/* APP */
 #app{display:none;min-height:100vh;background:var(--bg);position:relative}
 #app::before{content:'';position:absolute;top:0;left:0;right:0;height:400px;background:radial-gradient(ellipse at 50% -30%,rgba(91,141,239,.06),transparent 60%);pointer-events:none}
 .anav{position:sticky;top:0;z-index:50;height:60px;padding:0 24px;background:rgba(10,10,12,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -135,7 +139,8 @@ input,textarea,select{font-family:inherit}
 .abrand{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;flex-shrink:0}
 .abrand-mark{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#2e2e3a,#1a1a20);border:1px solid var(--line-2);display:grid;place-items:center;font-size:12px;font-weight:700}
 @media(max-width:900px){.abrand{display:none}}
-.awrap{max-width:1140px;margin:0 auto;padding:40px 28px 100px;position:relative;z-index:1}
+
+.awrap{max-width:1140px;margin:0 auto;padding:40px 28px 140px;position:relative;z-index:1}
 .ahead{margin-bottom:32px}
 .ahead-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border:1px solid var(--line-2);border-radius:999px;font-size:11.5px;color:var(--fg-dim);margin-bottom:16px;background:var(--bg-2);font-weight:500}
 .ahead-eyebrow i{width:5px;height:5px;border-radius:50%;background:var(--green);display:block;animation:pulse 2s ease-in-out infinite}
@@ -193,6 +198,8 @@ input,textarea,select{font-family:inherit}
 .aidle-li-ic{width:20px;height:20px;border-radius:5px;background:rgba(63,191,127,.1);border:1px solid rgba(63,191,127,.2);display:grid;place-items:center;flex-shrink:0}
 .aidle-li-ic svg{width:11px;height:11px;color:var(--green)}
 .aidle-li b{color:var(--fg);font-weight:500}
+
+/* HISTORY */
 .ahistory{display:none}
 .ahistory.show{display:block}
 .ahistory-list{display:flex;flex-direction:column;gap:8px;margin-top:16px}
@@ -207,65 +214,84 @@ input,textarea,select{font-family:inherit}
 .ahistory-actions{display:flex;gap:6px;flex-shrink:0}
 .ahistory-btn{padding:7px 11px;border-radius:7px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg-dim);font-size:11.5px;font-weight:500;transition:.15s;display:inline-flex;align-items:center;gap:5px}
 .ahistory-btn:hover{color:var(--fg);border-color:#3a3a46}
-.ahistory-btn svg{width:11px;height:11px}
 .ahistory-empty{text-align:center;padding:48px 20px;color:var(--fg-dim);font-family:var(--mono);font-size:12.5px;border:1px dashed var(--line);border-radius:12px}
-.amusic-top{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;align-items:center;justify-content:space-between}
-.amusic-actions{display:flex;gap:8px;flex-wrap:wrap}
-.amusic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-.amusic-card{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.2s;position:relative}
-.amusic-card:hover{border-color:var(--line-2);transform:translateY(-3px)}
+
+/* MUSIC */
+.amusic-hero{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px;padding:20px 24px;background:var(--bg-2);border:1px solid var(--line);border-radius:16px;position:relative;overflow:hidden}
+.amusic-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.3),transparent)}
+.amusic-hero-info{display:flex;align-items:center;gap:14px}
+.amusic-hero-ico{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#5b8def);display:grid;place-items:center;flex-shrink:0;color:#fff}
+.amusic-hero-ico svg{width:20px;height:20px}
+.amusic-hero-t{font-size:15px;font-weight:600;color:var(--fg)}
+.amusic-hero-p{font-size:12px;color:var(--fg-dim);margin-top:2px}
+.amusic-hero-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+.amusic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.amusic-card{background:var(--bg-2);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.25s;position:relative;cursor:pointer}
+.amusic-card:hover{border-color:var(--line-2);transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(0,0,0,.6)}
 .amusic-cover{position:relative;width:100%;padding-top:100%;overflow:hidden;background:var(--bg-3)}
-.amusic-cover img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block}
-.amusic-cover-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.85));opacity:0;transition:.2s;display:flex;align-items:flex-end;padding:12px}
+.amusic-cover img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;transition:.3s}
+.amusic-card:hover .amusic-cover img{transform:scale(1.05)}
+.amusic-cover-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.9));opacity:0;transition:.25s;display:flex;align-items:flex-end;justify-content:space-between;padding:14px}
 .amusic-card:hover .amusic-cover-overlay{opacity:1}
-.amusic-play{width:44px;height:44px;border-radius:50%;background:var(--fg);color:var(--bg);display:grid;place-items:center;transition:.15s;box-shadow:0 8px 24px rgba(0,0,0,.4)}
-.amusic-play:hover{transform:scale(1.08);background:#fff}
-.amusic-play svg{width:18px;height:18px}
+.amusic-play{width:48px;height:48px;border-radius:50%;background:var(--fg);color:var(--bg);display:grid;place-items:center;transition:.15s;box-shadow:0 8px 24px rgba(0,0,0,.5);border:none;cursor:pointer}
+.amusic-play:hover{transform:scale(1.1);background:#fff}
+.amusic-play svg{width:18px;height:18px;margin-left:2px}
 .amusic-info{padding:14px}
-.amusic-title{font-size:13.5px;font-weight:600;color:var(--fg);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.amusic-creator{font-size:11.5px;color:var(--fg-dim);margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.amusic-meta{display:flex;gap:8px;align-items:center;font-size:10.5px;color:var(--fg-dimmer);font-family:var(--mono);flex-wrap:wrap}
+.amusic-title{font-size:14px;font-weight:600;color:var(--fg);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.amusic-creator{font-size:12px;color:var(--fg-dim);margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.amusic-meta{display:flex;gap:10px;align-items:center;font-size:10.5px;color:var(--fg-dimmer);font-family:var(--mono)}
+.amusic-meta span{display:inline-flex;align-items:center;gap:4px}
+.amusic-meta svg{width:11px;height:11px}
 .amusic-actions-row{display:flex;gap:6px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
-.amusic-btn{flex:1;padding:7px 8px;border-radius:7px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg-dim);font-size:10.5px;font-weight:500;transition:.15s;display:inline-flex;align-items:center;justify-content:center;gap:5px}
-.amusic-btn:hover{color:var(--fg);border-color:#3a3a46}
-.amusic-btn svg{width:11px;height:11px}
-.player-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(15,15,18,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--line);z-index:60;display:none;animation:slideUp .3s}
+.amusic-btn{flex:1;padding:8px;border-radius:8px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg-dim);font-size:11px;font-weight:500;transition:.15s;display:inline-flex;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.amusic-btn:hover{color:var(--fg);border-color:#3a3a46;background:var(--bg-4)}
+.amusic-btn svg{width:12px;height:12px}
+
+/* Player bar */
+.player-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(15,15,18,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:1px solid var(--line-2);z-index:60;display:none;animation:slideUp .3s;box-shadow:0 -8px 40px -10px rgba(0,0,0,.6)}
 .player-bar.show{display:block}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.player-inner{max-width:1140px;margin:0 auto;padding:12px 24px;display:flex;gap:14px;align-items:center}
-.player-cover{width:48px;height:48px;border-radius:9px;overflow:hidden;background:var(--bg-3);flex-shrink:0}
+.player-inner{max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;gap:14px;align-items:center}
+.player-cover{width:52px;height:52px;border-radius:11px;overflow:hidden;background:var(--bg-3);flex-shrink:0;position:relative}
 .player-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.player-cover::after{content:'';position:absolute;inset:0;border:1px solid rgba(255,255,255,.06);border-radius:11px;pointer-events:none}
 .player-info{flex:1;min-width:0}
-.player-title{font-size:13.5px;font-weight:600;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.player-creator{font-size:11.5px;color:var(--fg-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.player-title{font-size:14px;font-weight:600;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
+.player-creator{font-size:12px;color:var(--fg-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .player-controls{display:flex;gap:8px;align-items:center;flex-shrink:0}
-.player-btn{width:38px;height:38px;border-radius:50%;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg);display:grid;place-items:center;transition:.15s}
+.player-btn{width:38px;height:38px;border-radius:50%;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg);display:grid;place-items:center;transition:.15s;cursor:pointer}
 .player-btn:hover{background:var(--bg-4);border-color:#3a3a46}
 .player-btn svg{width:15px;height:15px}
-.player-btn.play{width:44px;height:44px;background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.player-btn.play:hover{background:#fff}
-.player-btn.play svg{width:17px;height:17px}
-.player-progress{position:absolute;top:0;left:0;right:0;height:2px;background:var(--line);overflow:hidden}
-.player-progress-inner{height:100%;background:var(--blue);width:0%;transition:width .1s linear}
-.player-close{width:34px;height:34px;border-radius:50%;color:var(--fg-dim);display:grid;place-items:center;transition:.15s;flex-shrink:0}
+.player-btn.play{width:46px;height:46px;background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.player-btn.play:hover{background:#fff;transform:scale(1.05)}
+.player-btn.play svg{width:18px;height:18px}
+.player-progress{position:absolute;top:0;left:0;right:0;height:3px;background:var(--line);overflow:hidden;cursor:pointer}
+.player-progress-inner{height:100%;background:linear-gradient(90deg,var(--blue),var(--purple));width:0%;transition:width .1s linear;border-radius:0 2px 2px 0}
+.player-close{width:36px;height:36px;border-radius:50%;color:var(--fg-dim);display:grid;place-items:center;transition:.15s;flex-shrink:0;cursor:pointer}
 .player-close:hover{color:var(--fg);background:var(--bg-3)}
-.player-close svg{width:14px;height:14px}
-.mini-player{position:fixed;bottom:16px;right:16px;background:rgba(15,15,18,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--line-2);border-radius:14px;z-index:55;padding:10px 14px;display:none;align-items:center;gap:12px;box-shadow:0 20px 50px -15px rgba(0,0,0,.7);animation:slideUp .3s}
+.player-close svg{width:15px;height:15px}
+
+/* Mini player */
+.mini-player{position:fixed;bottom:16px;right:16px;background:rgba(15,15,18,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--line-2);border-radius:16px;z-index:55;padding:12px 16px;display:none;align-items:center;gap:12px;box-shadow:0 20px 50px -15px rgba(0,0,0,.8);animation:slideUp .3s}
 .mini-player.show{display:flex}
-.mini-player-cover{width:42px;height:42px;border-radius:9px;overflow:hidden;background:var(--bg-3);flex-shrink:0}
+.mini-player-cover{width:44px;height:44px;border-radius:10px;overflow:hidden;background:var(--bg-3);flex-shrink:0}
 .mini-player-cover img{width:100%;height:100%;object-fit:cover;display:block}
-.mini-player-info{min-width:0;max-width:170px}
+.mini-player-info{min-width:0;max-width:180px}
 .mini-player-title{font-size:12.5px;font-weight:600;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mini-player-creator{font-size:10.5px;color:var(--fg-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mini-player-controls{display:flex;gap:5px;flex-shrink:0}
-.mini-player-btn{width:34px;height:34px;border-radius:50%;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg);display:grid;place-items:center;transition:.15s}
+.mini-player-creator{font-size:11px;color:var(--fg-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.mini-player-controls{display:flex;gap:6px;flex-shrink:0}
+.mini-player-btn{width:36px;height:36px;border-radius:50%;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg);display:grid;place-items:center;transition:.15s;cursor:pointer}
 .mini-player-btn:hover{background:var(--bg-4)}
-.mini-player-btn.play{background:var(--fg);color:var(--bg);border-color:var(--fg);width:38px;height:38px}
-.mini-player-btn svg{width:13px;height:13px}
-.mini-player-btn.play svg{width:15px;height:15px}
-.mini-player-close{width:28px;height:28px;border-radius:50%;color:var(--fg-dim);display:grid;place-items:center;transition:.15s}
+.mini-player-btn.play{background:var(--fg);color:var(--bg);border-color:var(--fg);width:40px;height:40px}
+.mini-player-btn.play:hover{transform:scale(1.05)}
+.mini-player-btn svg{width:14px;height:14px}
+.mini-player-btn.play svg{width:16px;height:16px}
+.mini-player-close{width:30px;height:30px;border-radius:50%;color:var(--fg-dim);display:grid;place-items:center;transition:.15s;cursor:pointer}
 .mini-player-close:hover{color:var(--fg);background:var(--bg-3)}
-.mini-player-close svg{width:12px;height:12px}
+.mini-player-close svg{width:13px;height:13px}
+
+/* Music Modal */
 .music-modal .modal-card{max-width:520px}
 .music-modal .modal-body{padding:18px 22px}
 .music-modal .modal-field{margin-bottom:14px}
@@ -282,7 +308,7 @@ input,textarea,select{font-family:inherit}
 .music-modal .modal-h{font-size:15.5px}
 .upload-progress{width:100%;height:6px;background:var(--bg-3);border-radius:3px;overflow:hidden;margin-top:10px;display:none}
 .upload-progress.show{display:block}
-.upload-progress-inner{height:100%;background:var(--blue);width:0%;transition:width .3s;border-radius:3px}
+.upload-progress-inner{height:100%;background:linear-gradient(90deg,var(--blue),var(--purple));width:0%;transition:width .3s;border-radius:3px}
 .cover-source{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
 .cover-source-btn{padding:9px 12px;border-radius:9px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg-dim);font-size:12px;font-weight:500;text-align:center;transition:.15s;cursor:pointer}
 .cover-source-btn:hover{color:var(--fg);border-color:#3a3a46}
@@ -293,6 +319,8 @@ input,textarea,select{font-family:inherit}
 .file-cover-input{width:100%;background:var(--bg);border:1px dashed var(--line-2);border-radius:9px;padding:14px;color:var(--fg-dim);font-size:12px;text-align:center;cursor:pointer;transition:.15s;display:block}
 .file-cover-input:hover{border-color:var(--blue);color:var(--fg)}
 .file-cover-input input{display:none}
+
+/* RESULT */
 #result{display:none}
 #result.show{display:block;animation:fade .3s}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
@@ -315,7 +343,7 @@ input,textarea,select{font-family:inherit}
 .atabs-scroll::-webkit-scrollbar{height:4px}
 .atabs-scroll::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:2px}
 .atabs{display:flex;min-width:max-content;padding:0 6px}
-.atab{padding:14px 16px;font-size:12.5px;color:var(--fg-dim);border-bottom:2px solid transparent;white-space:nowrap;font-weight:500;transition:.15s;flex-shrink:0;display:inline-flex;align-items:center;gap:7px}
+.atab{padding:14px 16px;font-size:12.5px;color:var(--fg-dim);border-bottom:2px solid transparent;white-space:nowrap;font-weight:500;transition:.15s;flex-shrink:0;display:inline-flex;align-items:center;gap:7px;cursor:pointer}
 .atab:hover{color:var(--fg)}
 .atab.on{color:var(--fg);border-bottom-color:var(--fg)}
 .atab-badge{font-size:10px;padding:1px 6px;background:var(--bg);border:1px solid var(--line-2);border-radius:5px;color:var(--fg-dimmer);font-family:var(--mono);font-weight:600}
@@ -325,9 +353,8 @@ input,textarea,select{font-family:inherit}
 .pv-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--bg-3);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:14px}
 .pv-url{font-size:12px;color:var(--fg-dim);font-family:var(--mono);word-break:break-all;flex:1;min-width:180px}
 .pv-btns{display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap}
-.pv-btn{padding:6px 11px;border-radius:7px;background:var(--bg);border:1px solid var(--line-2);color:var(--fg-dim);font-size:11.5px;font-weight:500;transition:.15s;display:inline-flex;align-items:center;gap:6px}
+.pv-btn{padding:6px 11px;border-radius:7px;background:var(--bg);border:1px solid var(--line-2);color:var(--fg-dim);font-size:11.5px;font-weight:500;transition:.15s;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
 .pv-btn:hover{color:var(--fg);border-color:#3a3a46;background:var(--bg-4)}
-.pv-btn svg{width:12px;height:12px}
 .pv-btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
 .pv-btn.primary:hover{background:#6d9ff2}
 .pv-frame-wrap{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;height:600px;position:relative}
@@ -336,7 +363,6 @@ input,textarea,select{font-family:inherit}
 .pv-frame-wrap.fullscreen iframe{height:100vh}
 .pv-fs-close{position:fixed;top:16px;right:16px;z-index:9999;padding:10px 16px;background:var(--bg-2);border:1px solid var(--line-2);border-radius:9px;color:var(--fg);font-size:12.5px;font-weight:600;display:none;align-items:center;gap:7px;box-shadow:0 10px 30px rgba(0,0,0,.5);cursor:pointer}
 .pv-fs-close.show{display:inline-flex}
-.pv-fs-close svg{width:13px;height:13px}
 .pv-note{font-size:11.5px;color:var(--fg-dimmer);font-family:var(--mono);margin-top:10px;line-height:1.6}
 .aml{display:flex;flex-direction:column}
 .amr{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:13.5px;align-items:flex-start}
@@ -344,13 +370,11 @@ input,textarea,select{font-family:inherit}
 .amk{min-width:110px;color:var(--fg-dim);font-size:10.5px;text-transform:uppercase;letter-spacing:.8px;font-weight:700;padding-top:3px;flex-shrink:0}
 .amv{color:var(--fg);word-break:break-word;font-family:var(--mono);font-size:12.5px;min-width:0;line-height:1.6}
 .amv a{color:var(--blue)}
-.amv a:hover{text-decoration:underline}
 .aitems{display:flex;flex-direction:column;gap:6px}
 .aitems-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .ait{background:var(--bg-3);border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-size:12.5px;word-break:break-word;font-family:var(--mono);transition:.15s;min-width:0}
 .ait:hover{border-color:var(--line-2);background:var(--bg-4)}
 .ait a{color:var(--blue)}
-.ait a:hover{text-decoration:underline}
 .ait .sub{color:var(--fg-dimmer);font-size:10.5px;display:block;margin-bottom:4px;font-family:inherit}
 .apara{font-size:13px;line-height:1.75;color:#c8c8d0;padding:14px 16px;background:var(--bg-3);border-left:2px solid var(--line-2);border-radius:8px;margin-bottom:10px}
 .aigrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
@@ -369,7 +393,6 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
 .ast::before{content:'';width:3px;height:11px;background:var(--blue);border-radius:2px}
 .aempty{color:var(--fg-dim);font-size:13px;text-align:center;padding:44px 20px;font-family:var(--mono);border:1px dashed var(--line);border-radius:10px}
 .amod{background:var(--bg-3);border:1px solid var(--line);border-radius:11px;padding:16px;margin-bottom:10px}
-.amod:hover{border-color:var(--line-2);background:var(--bg-4)}
 .amod-h{font-size:12px;color:var(--fg);font-family:var(--mono);word-break:break-all;margin-bottom:10px;font-weight:600;display:flex;gap:9px;align-items:flex-start}
 .amod-num{flex-shrink:0;color:var(--fg-dimmer);font-size:10.5px;padding-top:2px;font-weight:700}
 .amod-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:10.5px;color:var(--fg-dim);margin-bottom:10px;font-family:var(--mono)}
@@ -385,15 +408,14 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
 .apimod-url{color:var(--fg);word-break:break-all;min-width:0}
 .afoot{text-align:center;padding:40px 0 0;color:var(--fg-dimmer);font-size:12px;font-family:var(--mono);border-top:1px solid var(--line);margin-top:56px}
 .afoot b{color:var(--fg-dim);font-weight:600}
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:9999;display:grid;place-items:center;padding:20px;animation:fadeIn .25s;overflow-y:auto}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);z-index:9999;display:grid;place-items:center;padding:20px;animation:fadeIn .25s;overflow-y:auto}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .modal-card{background:var(--bg-2);border:1px solid var(--line);border-radius:18px;max-width:560px;width:100%;max-height:92vh;display:flex;flex-direction:column;animation:modalUp .3s}
 @keyframes modalUp{from{transform:translateY(20px) scale(.95);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
 .modal-head{padding:20px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
 .modal-h{font-size:17px;font-weight:700;letter-spacing:-.4px}
-.modal-close{padding:7px;border-radius:7px;color:var(--fg-dim);transition:.15s}
+.modal-close{padding:7px;border-radius:7px;color:var(--fg-dim);transition:.15s;cursor:pointer}
 .modal-close:hover{color:var(--fg);background:var(--bg-3)}
-.modal-close svg{width:18px;height:18px;display:block}
 .modal-body{padding:20px 24px;overflow-y:auto;flex:1}
 .modal-field{margin-bottom:16px}
 .modal-label{display:block;font-size:11px;color:var(--fg-dim);text-transform:uppercase;letter-spacing:1.1px;font-weight:700;margin-bottom:8px}
@@ -403,7 +425,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
 .modal-input::placeholder{color:var(--fg-dimmer)}
 .modal-hint{font-size:11px;color:var(--fg-dimmer);margin-top:6px;line-height:1.5}
 .modal-tabs{display:flex;gap:4px;background:var(--bg-3);border:1px solid var(--line);border-radius:9px;padding:4px;margin-bottom:12px}
-.modal-tab{flex:1;padding:8px 10px;border-radius:6px;font-size:12px;color:var(--fg-dim);transition:.15s;font-weight:500;text-align:center}
+.modal-tab{flex:1;padding:8px 10px;border-radius:6px;font-size:12px;color:var(--fg-dim);transition:.15s;font-weight:500;text-align:center;cursor:pointer}
 .modal-tab.on{color:var(--fg);background:var(--bg-2);border:1px solid var(--line-2)}
 .modal-file-input{width:100%;background:var(--bg);border:1px dashed var(--line-2);border-radius:10px;padding:20px;color:var(--fg-dim);font-size:13px;text-align:center;cursor:pointer;transition:.15s}
 .modal-file-input:hover{border-color:var(--blue);color:var(--fg)}
@@ -420,8 +442,9 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
 .blocked-ico svg{width:26px;height:26px;stroke:#ff5c5c;fill:none;stroke-width:2.4}
 .blocked-btn{padding:15px 26px;background:var(--fg);color:var(--bg);border:none;border-radius:11px;font-size:14.5px;font-weight:700;cursor:pointer;width:100%;font-family:inherit}
 .blocked-btn:hover{background:#fff}
+
 @media(max-width:1024px){.lnav{padding:0 24px}.lnav-center{display:none}.lhero{grid-template-columns:1fr;gap:48px;padding:72px 28px 56px}.lhero-h1{font-size:48px;letter-spacing:-1.8px}.lhero-right{order:2}.lstats{grid-template-columns:repeat(2,1fr);padding:0 28px 56px}.lflow,.lfeat,.lsecurity,.lcta{padding:0 28px 72px}.lflow-grid,.lfeat-grid{grid-template-columns:1fr}.lsec-inner{grid-template-columns:1fr;padding:40px 32px;gap:36px}.aidle{grid-template-columns:1fr}}
-@media(max-width:640px){.lnav{padding:0 16px;height:56px}.lnav-brand{font-size:13px}.lnav-cta{padding:8px 12px;font-size:12px}.lhero{padding:44px 18px 36px;gap:36px}.lhero-h1{font-size:32px;letter-spacing:-1px;margin-bottom:18px}.lhero-p{font-size:14px;margin-bottom:24px}.lhero-btns{flex-direction:row;flex-wrap:wrap;gap:10px;margin-bottom:24px}.lbtn-1,.lbtn-2{padding:12px 18px;font-size:13px;width:auto;flex:0 1 auto}.lhero-meta{font-size:11px;gap:12px 18px}.lstats{padding:0 18px 36px;grid-template-columns:1fr 1fr;gap:10px}.lstat{padding:18px 16px}.lstat-v{font-size:20px}.lsec-head{margin-bottom:28px;padding:0 18px}.lsec-h{font-size:22px}.lsec-p{font-size:13px}.lflow,.lfeat,.lsecurity,.lcta{padding:0 18px 48px}.lstep{padding:22px 20px}.lstep::before{font-size:36px;top:16px;right:16px}.lstep-ico{width:36px;height:36px;margin-bottom:14px}.feat{padding:20px}.feat-ico{width:36px;height:36px;margin-bottom:14px}.lsec-inner{padding:28px 20px;gap:24px}.lsec-h{font-size:20px}.lcta-inner{padding:36px 20px}.lcta-h{font-size:20px}.lcta-btn{padding:12px 20px;font-size:13px}.lfoot{padding:24px 18px;font-size:11.5px;flex-direction:column;align-items:flex-start}.anav{padding:0 12px;height:56px}.anav-tab{padding:6px 11px;font-size:11.5px}.aback{padding:7px 11px;font-size:12px}.awrap{padding:24px 16px 140px}.ahead-h1{font-size:22px}.ahead-p{font-size:13px}.apane{padding:18px;margin-bottom:16px}.arow{flex-direction:row;flex-wrap:wrap;gap:10px}.afield{min-width:100%;flex:1 1 100%}.afield input{padding:13px 14px 13px 42px;font-size:14px}.abtn{padding:13px 18px;font-size:13px;flex:1 1 auto;min-width:calc(50% - 5px)}.aidle{gap:14px}.aidle-card{padding:22px 20px}.ahistory-item{padding:12px 14px;flex-direction:column;align-items:stretch;gap:10px}.ahistory-actions{justify-content:flex-end}.abar{padding:16px 18px;flex-direction:column;align-items:stretch;gap:12px}.abar .abtn{width:100%}.asgrid{grid-template-columns:repeat(2,1fr);gap:8px}.asc{padding:12px 13px}.asc-v{font-size:17px}.atab{padding:12px 13px;font-size:11.5px}.atc{padding:16px}.amr{flex-direction:column;gap:4px}.amk{min-width:auto}.aitems-grid{grid-template-columns:1fr}.aigrid{grid-template-columns:repeat(2,1fr)}.pv-frame-wrap{height:420px}.pv-toolbar{flex-direction:column;align-items:stretch}.pv-btns{width:100%}.pv-btn{flex:1;justify-content:center}.modal-card{max-height:95vh}.modal-head,.modal-body,.modal-foot{padding:16px 18px}.modal-foot{flex-direction:column}.blocked-card{padding:28px 22px}.amusic-grid{grid-template-columns:repeat(2,1fr);gap:10px}.amusic-info{padding:11px}.amusic-title{font-size:12.5px}.amusic-creator{font-size:11px}.amusic-actions-row{margin-top:10px;padding-top:10px}.amusic-btn{padding:6px 6px;font-size:10px}.player-inner{padding:10px 14px;gap:10px}.player-cover{width:42px;height:42px}.player-controls{gap:6px}.player-btn{width:34px;height:34px}.player-btn.play{width:40px;height:40px}.mini-player{bottom:10px;right:10px;left:10px;padding:9px 12px;gap:10px}.mini-player-info{max-width:none;flex:1}}
+@media(max-width:640px){.lnav{padding:0 16px;height:56px}.lnav-brand{font-size:13px}.lnav-cta{padding:8px 12px;font-size:12px}.lhero{padding:44px 18px 36px;gap:36px}.lhero-h1{font-size:32px;letter-spacing:-1px;margin-bottom:18px}.lhero-p{font-size:14px;margin-bottom:24px}.lhero-btns{flex-direction:row;flex-wrap:wrap;gap:10px;margin-bottom:24px}.lbtn-1,.lbtn-2{padding:12px 18px;font-size:13px;width:auto}.lhero-meta{font-size:11px;gap:12px 18px}.lstats{padding:0 18px 36px;grid-template-columns:1fr 1fr;gap:10px}.lstat{padding:18px 16px}.lstat-v{font-size:20px}.lsec-head{margin-bottom:28px;padding:0 18px}.lsec-h{font-size:22px}.lsec-p{font-size:13px}.lflow,.lfeat,.lsecurity,.lcta{padding:0 18px 48px}.lstep{padding:22px 20px}.lstep::before{font-size:36px;top:16px;right:16px}.feat{padding:20px}.lsec-inner{padding:28px 20px;gap:24px}.lsec-h{font-size:20px}.lcta-inner{padding:36px 20px}.lcta-h{font-size:20px}.lcta-btn{padding:12px 20px;font-size:13px}.lfoot{padding:24px 18px;font-size:11.5px;flex-direction:column;align-items:flex-start}.anav{padding:0 12px;height:56px}.anav-tab{padding:6px 11px;font-size:11.5px}.aback{padding:7px 11px;font-size:12px}.awrap{padding:24px 16px 160px}.ahead-h1{font-size:22px}.ahead-p{font-size:13px}.apane{padding:18px;margin-bottom:16px}.arow{flex-direction:row;flex-wrap:wrap;gap:10px}.afield{min-width:100%;flex:1 1 100%}.afield input{padding:13px 14px 13px 42px;font-size:14px}.abtn{padding:13px 18px;font-size:13px}.aidle{gap:14px}.aidle-card{padding:22px 20px}.ahistory-item{padding:12px 14px;flex-direction:column;align-items:stretch;gap:10px}.ahistory-actions{justify-content:flex-end}.abar{padding:16px 18px;flex-direction:column;align-items:stretch;gap:12px}.abar .abtn{width:100%}.asgrid{grid-template-columns:repeat(2,1fr);gap:8px}.asc{padding:12px 13px}.asc-v{font-size:17px}.atab{padding:12px 13px;font-size:11.5px}.atc{padding:16px}.amr{flex-direction:column;gap:4px}.amk{min-width:auto}.aitems-grid{grid-template-columns:1fr}.aigrid{grid-template-columns:repeat(2,1fr)}.pv-frame-wrap{height:420px}.pv-toolbar{flex-direction:column;align-items:stretch}.pv-btns{width:100%}.pv-btn{flex:1;justify-content:center}.modal-card{max-height:95vh}.modal-head,.modal-body,.modal-foot{padding:16px 18px}.modal-foot{flex-direction:column}.blocked-card{padding:28px 22px}.amusic-hero{padding:16px 18px;flex-direction:column;align-items:stretch}.amusic-hero-actions{width:100%}.amusic-hero-actions .abtn{flex:1}.amusic-grid{grid-template-columns:repeat(2,1fr);gap:12px}.amusic-info{padding:12px}.amusic-title{font-size:13px}.amusic-creator{font-size:11px}.amusic-meta{font-size:10px}.amusic-actions-row{gap:4px;margin-top:10px;padding-top:10px}.amusic-btn{padding:7px 6px;font-size:10px}.player-inner{padding:12px 14px;gap:10px}.player-cover{width:46px;height:46px;border-radius:10px}.player-controls{gap:6px}.player-btn{width:36px;height:36px}.player-btn.play{width:42px;height:42px}.mini-player{bottom:10px;right:10px;left:10px;padding:11px 14px;gap:10px}.mini-player-info{max-width:none;flex:1}}
 </style>
 </head>
 <body>
@@ -651,14 +674,20 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       <div class="ahead">
         <div class="ahead-eyebrow"><i></i>Playlist Global</div>
         <h1 class="ahead-h1">Music Player</h1>
-        <p class="ahead-p">Playlist yang bisa diisi siapa saja. Upload dari file lokal atau tempel URL MP3/MP4. Semua orang bisa lihat dan dengar.</p>
+        <p class="ahead-p">Playlist yang bisa diisi siapa saja. Semua orang bisa lihat dan dengar.</p>
       </div>
-      <div class="amusic-top">
-        <div style="font-size:13px;color:var(--fg-dim)"><span id="musicCount">0</span> lagu di playlist</div>
-        <div class="amusic-actions">
-          <button class="abtn abtn-2 abtn-sm" id="musicExportBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Export</button>
-          <button class="abtn abtn-2 abtn-sm" id="musicImportBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Import</button>
-          <button class="abtn abtn-1 abtn-sm" id="musicAddBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Tambah Lagu</button>
+      <div class="amusic-hero">
+        <div class="amusic-hero-info">
+          <div class="amusic-hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+          <div>
+            <div class="amusic-hero-t"><span id="musicCount">0</span> lagu di playlist</div>
+            <div class="amusic-hero-p">Semua orang bisa lihat dan dengar</div>
+          </div>
+        </div>
+        <div class="amusic-hero-actions">
+          <button class="abtn abtn-2 abtn-sm" id="musicExportBtn">Export</button>
+          <button class="abtn abtn-2 abtn-sm" id="musicImportBtn">Import</button>
+          <button class="abtn abtn-1 abtn-sm" id="musicAddBtn">+ Tambah Lagu</button>
         </div>
       </div>
       <div class="amusic-grid" id="musicGrid"></div>
@@ -679,7 +708,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
 </div>
 
 <div class="player-bar" id="playerBar">
-  <div class="player-progress"><div class="player-progress-inner" id="playerProgress"></div></div>
+  <div class="player-progress" id="playerProgressBar"><div class="player-progress-inner" id="playerProgress"></div></div>
   <div class="player-inner">
     <div class="player-cover"><img id="playerCover" src="" alt="" /></div>
     <div class="player-info">
@@ -756,13 +785,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     }
     $('historyList').innerHTML = list.map(function(h, i){
       var host = ''; try { host = new URL(h.url).hostname; } catch {}
-      return '<div class="ahistory-item">' +
-        '<div class="ahistory-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>' +
-        '<div class="ahistory-c"><div class="ahistory-host">' + esc(host || h.url) + '</div><div class="ahistory-url">' + esc(h.url) + '</div><div class="ahistory-time">' + esc(fmtTime(h.time)) + ' · ' + (h.stats ? h.stats.totalLinks + ' link, ' + h.stats.totalImages + ' gambar, ' + fmtB(h.stats.htmlSize) : '') + '</div></div>' +
-        '<div class="ahistory-actions">' +
-          '<button class="ahistory-btn" onclick="openHistoryItem(' + i + ')">Buka</button>' +
-          '<button class="ahistory-btn" onclick="deleteHistoryItem(' + i + ')">Hapus</button>' +
-        '</div></div>';
+      return '<div class="ahistory-item"><div class="ahistory-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div><div class="ahistory-c"><div class="ahistory-host">' + esc(host || h.url) + '</div><div class="ahistory-url">' + esc(h.url) + '</div><div class="ahistory-time">' + esc(fmtTime(h.time)) + '</div></div><div class="ahistory-actions"><button class="ahistory-btn" onclick="openHistoryItem(' + i + ')">Buka</button><button class="ahistory-btn" onclick="deleteHistoryItem(' + i + ')">Hapus</button></div></div>';
     }).join('');
   }
   window.openHistoryItem = function(i){
@@ -795,19 +818,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   function showBlockedAlert(){
     var overlay = document.createElement('div');
     overlay.className = 'blocked-overlay';
-    overlay.innerHTML =
-      '<div class="blocked-card">' +
-        '<div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;">' +
-          '<div class="blocked-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></div>' +
-          '<div><div style="font-size:11px;color:#ff5c5c;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:5px;">Akses Ditolak</div>' +
-          '<div style="font-size:23px;font-weight:800;color:#ededf0;letter-spacing:-.7px;">Website Ini Dilindungi</div></div>' +
-        '</div>' +
-        '<div style="font-size:14.5px;color:#c8c8d0;line-height:1.7;margin-bottom:24px;padding:18px;background:#1a0e0e;border:1px solid #3a1a1a;border-radius:11px;">' +
-          '<div style="font-weight:700;color:#ff8a8a;margin-bottom:8px;font-size:15px;">Lu ngapain kontol ngecopy Website sendiri ngentot lu</div>' +
-          'Website lain aja sana jangan Website ini. Website ini di lindungi paham kaga lu' +
-        '</div>' +
-        '<button class="blocked-btn" id="closeBlocked">Mengerti, saya keluar</button>' +
-      '</div>';
+    overlay.innerHTML = '<div class="blocked-card"><div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;"><div class="blocked-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></div><div><div style="font-size:11px;color:#ff5c5c;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:5px;">Akses Ditolak</div><div style="font-size:23px;font-weight:800;color:#ededf0;letter-spacing:-.7px;">Website Ini Dilindungi</div></div></div><div style="font-size:14.5px;color:#c8c8d0;line-height:1.7;margin-bottom:24px;padding:18px;background:#1a0e0e;border:1px solid #3a1a1a;border-radius:11px;"><div style="font-weight:700;color:#ff8a8a;margin-bottom:8px;font-size:15px;">Lu ngapain kontol ngecopy Website sendiri ngentot lu</div>Website lain aja sana jangan Website ini. Website ini di lindungi paham kaga lu</div><button class="blocked-btn" id="closeBlocked">Mengerti, saya keluar</button></div>';
     document.body.appendChild(overlay);
     overlay.querySelector('#closeBlocked').addEventListener('click', function(){ overlay.remove(); });
   }
@@ -882,7 +893,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     dlBtn.disabled = true; var orig = dlBtn.innerHTML; dlBtn.innerHTML = '<span class="aspin"></span>';
     try{
       var res = await fetch('/api/download', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(cur) });
-      if(!res.ok) throw new Error('Gagal membuat ZIP');
+      if(!res.ok) throw new Error('Gagal');
       var blob = await res.blob();
       var url = URL.createObjectURL(blob);
       var a = document.createElement('a');
@@ -897,15 +908,8 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   function generateShareText(d){
     var host = ''; try { host = new URL(d.url).hostname; } catch {}
     var txt = '# HASIL COPY WEBSITE\n\nURL: ' + d.url + '\nHost: ' + host + '\nWaktu: ' + new Date().toISOString() + '\n\n';
-    txt += 'STATISTIK\nLink: ' + d.stats.totalLinks + ' | Gambar: ' + d.stats.totalImages + ' | Script: ' + d.stats.totalScripts + ' | HTML: ' + d.stats.htmlSize + ' bytes\n\n';
     txt += 'HTML:\n' + (d.rawHtml || '').slice(0, 30000) + '\n\n';
-    if (d.scripts && d.scripts.length) {
-      txt += 'JAVASCRIPT:\n';
-      d.scripts.filter(function(s){ return s.url; }).slice(0, 3).forEach(function(s){
-        txt += '--- ' + s.url + ' ---\n' + (s.contentPreview || '').slice(0, 8000) + '\n\n';
-      });
-    }
-    txt += 'Dihasilkan oleh Copy Website - https://egaa-copywebsite.vercel.app\n';
+    txt += 'Dihasilkan oleh Copy Website\n';
     return txt;
   }
   function downloadTextFile(filename, content){
@@ -942,27 +946,9 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     var text = generateShareText(cur);
     var host = ''; try { host = new URL(cur.url).hostname; } catch {}
     var filename = 'copy-' + host + '-' + Date.now() + '.md';
-    var previewText = text.slice(0, 2500) + (text.length > 2500 ? '\n\n... (+' + (text.length - 2500) + ' chars)' : '');
+    var previewText = text.slice(0, 2500);
     var modal = $('shareModal');
-    modal.innerHTML =
-      '<div class="modal-overlay" id="shareOverlay">' +
-        '<div class="modal-card">' +
-          '<div class="modal-head"><div class="modal-h">Bagikan ke AI</div><button class="modal-close" id="shareClose">X</button></div>' +
-          '<div class="modal-body">' +
-            '<p style="font-size:13px;color:var(--fg-dim);line-height:1.65;margin-bottom:16px;">Pilih AI. Hasil copy akan disalin otomatis ke clipboard, tinggal paste.</p>' +
-            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">' +
-              '<button class="share-opt" data-action="deepseek" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;color:var(--fg);font-family:inherit;">DeepSeek</button>' +
-              '<button class="share-opt" data-action="chatgpt" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;color:var(--fg);font-family:inherit;">ChatGPT</button>' +
-              '<button class="share-opt" data-action="claude" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;color:var(--fg);font-family:inherit;">Claude</button>' +
-              '<button class="share-opt" data-action="gemini" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;color:var(--fg);font-family:inherit;">Gemini</button>' +
-              '<button class="share-opt" data-action="copy" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;color:var(--fg);font-family:inherit;">Copy Semua</button>' +
-              '<button class="share-opt" data-action="download" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;color:var(--fg);font-family:inherit;">Download .md</button>' +
-            '</div>' +
-            '<div style="background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px;font-family:var(--mono);font-size:11.5px;color:#c8c8d0;line-height:1.6;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;">' + esc(previewText) + '</div>' +
-          '</div>' +
-          '<div class="modal-foot"><button class="abtn abtn-2" id="shareCancel">Tutup</button><button class="abtn abtn-1" id="shareConfirm">Copy Semua</button></div>' +
-        '</div>' +
-      '</div>';
+    modal.innerHTML = '<div class="modal-overlay" id="shareOverlay"><div class="modal-card"><div class="modal-head"><div class="modal-h">Bagikan ke AI</div><button class="modal-close" id="shareClose">X</button></div><div class="modal-body"><p style="font-size:13px;color:var(--fg-dim);line-height:1.65;margin-bottom:16px;">Pilih AI. Hasil copy akan disalin otomatis ke clipboard, tinggal paste.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;"><button class="share-opt" data-action="deepseek" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg);font-family:inherit;cursor:pointer;">DeepSeek</button><button class="share-opt" data-action="chatgpt" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg);font-family:inherit;cursor:pointer;">ChatGPT</button><button class="share-opt" data-action="claude" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg);font-family:inherit;cursor:pointer;">Claude</button><button class="share-opt" data-action="gemini" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg);font-family:inherit;cursor:pointer;">Gemini</button><button class="share-opt" data-action="copy" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg);font-family:inherit;cursor:pointer;">Copy Semua</button><button class="share-opt" data-action="download" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg);font-family:inherit;cursor:pointer;">Download .md</button></div><div style="background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px;font-family:var(--mono);font-size:11.5px;color:#c8c8d0;line-height:1.6;max-height:260px;overflow-y:auto;white-space:pre-wrap;">' + esc(previewText) + '</div></div><div class="modal-foot"><button class="abtn abtn-2" id="shareCancel">Tutup</button><button class="abtn abtn-1" id="shareConfirm">Copy Semua</button></div></div></div>';
     function closeModal(){ modal.innerHTML = ''; }
     $('shareClose').addEventListener('click', closeModal);
     $('shareCancel').addEventListener('click', closeModal);
@@ -985,7 +971,6 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   }
   shareBtn.addEventListener('click', openShareModal);
 
-  // MUSIC PLAYER
   var MUSIC_KEY = 'copywebsite_music';
   var musicList = [];
   var audio = $('audioEl');
@@ -1022,41 +1007,15 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       return;
     }
     grid.innerHTML = musicList.map(function(m, i){
-      return '<div class="amusic-card">' +
-        '<div class="amusic-cover">' +
-          '<img src="' + esc(m.cover) + '" alt="' + esc(m.title) + '" onerror="this.style.opacity=0.3" />' +
-          '<div class="amusic-cover-overlay">' +
-            '<button class="amusic-play" onclick="playMusicIdx(' + i + ')"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>' +
-          '</div>' +
-        '</div>' +
-        '<div class="amusic-info">' +
-          '<div class="amusic-title">' + esc(m.title) + '</div>' +
-          '<div class="amusic-creator">' + esc(m.creator || '-') + '</div>' +
-          '<div class="amusic-meta"><span>oleh ' + esc(m.uploader) + '</span><span>· ' + (m.playCount || 0) + ' play</span></div>' +
-        '</div>' +
-        '<div class="amusic-actions-row">' +
-          '<button class="amusic-btn" onclick="playMusicIdx(' + i + ')">Play</button>' +
-          '<button class="amusic-btn" onclick="editMusicIdx(' + i + ')">Edit</button>' +
-          '<button class="amusic-btn" onclick="deleteMusicIdx(' + i + ')">Hapus</button>' +
-        '</div>' +
-      '</div>';
+      return '<div class="amusic-card"><div class="amusic-cover"><img src="' + esc(m.cover) + '" alt="' + esc(m.title) + '" onerror="this.style.opacity=0.3" /><div class="amusic-cover-overlay"><button class="amusic-play" onclick="event.stopPropagation();playMusicIdx(' + i + ')"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></div></div><div class="amusic-info"><div class="amusic-title">' + esc(m.title) + '</div><div class="amusic-creator">' + esc(m.creator || '-') + '</div><div class="amusic-meta"><span>' + esc(m.uploader) + '</span><span>· ' + (m.playCount || 0) + ' play</span></div></div><div class="amusic-actions-row"><button class="amusic-btn" onclick="event.stopPropagation();playMusicIdx(' + i + ')">Play</button><button class="amusic-btn" onclick="event.stopPropagation();editMusicIdx(' + i + ')">Edit</button><button class="amusic-btn" onclick="event.stopPropagation();deleteMusicIdx(' + i + ')">Hapus</button></div></div>';
     }).join('');
   }
 
   function updatePlayerVisibility(){
-    if (!currentMusic) {
-      playerBar.classList.remove('show');
-      miniPlayer.classList.remove('show');
-      return;
-    }
+    if (!currentMusic) { playerBar.classList.remove('show'); miniPlayer.classList.remove('show'); return; }
     var appVisible = $('app').style.display === 'block';
-    if (appVisible) {
-      playerBar.classList.add('show');
-      miniPlayer.classList.remove('show');
-    } else {
-      playerBar.classList.remove('show');
-      miniPlayer.classList.add('show');
-    }
+    if (appVisible) { playerBar.classList.add('show'); miniPlayer.classList.remove('show'); }
+    else { playerBar.classList.remove('show'); miniPlayer.classList.add('show'); }
   }
   window.updatePlayerVisibility = updatePlayerVisibility;
 
@@ -1070,12 +1029,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     $('miniCreator').textContent = currentMusic.creator + ' · oleh ' + currentMusic.uploader;
     if ('mediaSession' in navigator) {
       try {
-        navigator.mediaSession.metadata = new MediaMetadata({
-          title: currentMusic.title,
-          artist: currentMusic.creator,
-          album: 'Added by ' + currentMusic.uploader,
-          artwork: [{ src: currentMusic.cover, sizes: '512x512', type: 'image/jpeg' }]
-        });
+        navigator.mediaSession.metadata = new MediaMetadata({ title: currentMusic.title, artist: currentMusic.creator, album: 'Added by ' + currentMusic.uploader, artwork: [{ src: currentMusic.cover, sizes: '512x512' }] });
         navigator.mediaSession.setActionHandler('play', function(){ audio.play(); updatePlayIcons(); });
         navigator.mediaSession.setActionHandler('pause', function(){ audio.pause(); updatePlayIcons(); });
         navigator.mediaSession.setActionHandler('previoustrack', function(){ if (currentIdx > 0) playMusicIdx(currentIdx - 1); });
@@ -1093,27 +1047,23 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   window.playMusicIdx = function(i){
     var m = musicList[i];
     if (!m) return;
+    if (!m.audioUrl) { alert('Lagu ini tidak punya URL audio.'); return; }
     currentMusic = m;
     currentIdx = i;
     audio.src = m.audioUrl;
-    audio.play().then(function(){ updatePlayIcons(); }).catch(function(e){ alert('Gagal play: ' + e.message); });
+    audio.load();
+    audio.play().then(function(){ updatePlayIcons(); }).catch(function(e){ alert('Gagal play: ' + e.message + '\n\nURL: ' + m.audioUrl + '\n\nCek URL harus langsung ke file .mp3/.mp4, bukan halaman web.'); });
     updatePlayerInfo();
     updatePlayerVisibility();
     updatePlayIcons();
     try { fetch('/api/playlist', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ action:'play', id: m.id }) }).catch(function(){}); } catch(e){}
   };
-  window.editMusicIdx = function(i){
-    var m = musicList[i];
-    if (!m) return;
-    openMusicModal(m, i);
-  };
+  window.editMusicIdx = function(i){ var m = musicList[i]; if (m) openMusicModal(m, i); };
   window.deleteMusicIdx = async function(i){
     var m = musicList[i];
     if (!m) return;
     if (!confirm('Hapus lagu "' + m.title + '"?')) return;
-    try {
-      await fetch('/api/playlist', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ action:'delete', id: m.id }) });
-    } catch(e){}
+    try { await fetch('/api/playlist', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ action:'delete', id: m.id }) }); } catch(e){}
     musicList.splice(i, 1);
     saveLocalMusic(musicList);
     renderMusic();
@@ -1133,6 +1083,11 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   });
   audio.addEventListener('play', updatePlayIcons);
   audio.addEventListener('pause', updatePlayIcons);
+  audio.addEventListener('error', function(){
+    if (currentMusic) {
+      alert('Error: Gagal memuat audio.\n\nURL: ' + currentMusic.audioUrl + '\n\nPastikan URL langsung ke file audio (.mp3/.mp4), bukan halaman web.');
+    }
+  });
 
   $('playerPlayBtn').addEventListener('click', function(){ if (audio.paused) audio.play(); else audio.pause(); });
   $('miniPlayBtn').addEventListener('click', function(){ if (audio.paused) audio.play(); else audio.pause(); });
@@ -1141,6 +1096,13 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   $('playerClose').addEventListener('click', function(){ audio.pause(); currentMusic = null; playerBar.classList.remove('show'); });
   $('miniClose').addEventListener('click', function(){ audio.pause(); currentMusic = null; miniPlayer.classList.remove('show'); });
 
+  $('playerProgressBar').addEventListener('click', function(e){
+    if (!audio.duration) return;
+    var rect = this.getBoundingClientRect();
+    var pct = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pct * audio.duration;
+  });
+
   function openMusicModal(existing, editIdx){
     var isEdit = existing && typeof editIdx === 'number';
     var m = existing || { title:'', uploader:'', creator:'', cover:'', audioUrl:'', audioType:'url' };
@@ -1148,10 +1110,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     modal.innerHTML =
       '<div class="modal-overlay music-modal" id="musicOverlay">' +
         '<div class="modal-card">' +
-          '<div class="modal-head">' +
-            '<div class="modal-h">' + (isEdit ? 'Edit Lagu' : 'Tambah Lagu') + '</div>' +
-            '<button class="modal-close" id="musicClose">X</button>' +
-          '</div>' +
+          '<div class="modal-head"><div class="modal-h">' + (isEdit ? 'Edit Lagu' : 'Tambah Lagu') + '</div><button class="modal-close" id="musicClose">X</button></div>' +
           '<div class="modal-body">' +
             '<div class="modal-err" id="musicErr"></div>' +
             '<div class="modal-field"><label class="modal-label">Judul Lagu <span class="req">*</span></label><input class="modal-input" id="mTitle" placeholder="Contoh: Bertaut" value="' + esc(m.title) + '" /></div>' +
@@ -1159,30 +1118,16 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
             '<div class="modal-field"><label class="modal-label">Nama Penambah <span class="req">*</span></label><input class="modal-input" id="mUploader" placeholder="Nama kamu" value="' + esc(m.uploader) + '" /></div>' +
             '<div class="modal-field">' +
               '<label class="modal-label">Foto Cover <span class="req">*</span></label>' +
-              '<div class="cover-source">' +
-                '<button type="button" class="cover-source-btn on" data-src="url">URL Foto</button>' +
-                '<button type="button" class="cover-source-btn" data-src="file">Upload File</button>' +
-              '</div>' +
-              '<div id="coverUrlMode">' +
-                '<input class="modal-input" id="mCover" placeholder="https://files.catbox.moe/xxxxx.jpg" value="' + esc(m.cover) + '" />' +
-                '<div class="cover-shortcut"><a href="https://catbox.moe/" target="_blank" rel="noopener">Catbox</a><a href="https://egabox.lovable.app/" target="_blank" rel="noopener">EgaaBox</a></div>' +
-                '<div class="modal-hint">Upload foto ke Catbox / EgaaBox, tempel link di sini.</div>' +
-              '</div>' +
-              '<div id="coverFileMode" style="display:none">' +
-                '<label class="file-cover-input"><input type="file" id="mCoverFile" accept="image/*" />Klik pilih foto dari galeri</label>' +
-                '<div class="modal-hint" id="mCoverFileHint">Foto tersimpan lokal.</div>' +
-              '</div>' +
+              '<div class="cover-source"><button type="button" class="cover-source-btn on" data-src="url">URL Foto</button><button type="button" class="cover-source-btn" data-src="file">Upload File</button></div>' +
+              '<div id="coverUrlMode"><input class="modal-input" id="mCover" placeholder="https://files.catbox.moe/xxxxx.jpg" value="' + esc(m.cover) + '" /><div class="cover-shortcut"><a href="https://catbox.moe/" target="_blank" rel="noopener">Catbox</a><a href="https://egabox.lovable.app/" target="_blank" rel="noopener">EgaaBox</a></div><div class="modal-hint">Pakai URL langsung ke file gambar (jpg/png/webp/gif).</div></div>' +
+              '<div id="coverFileMode" style="display:none"><label class="file-cover-input"><input type="file" id="mCoverFile" accept="image/*" />Klik pilih foto dari galeri</label><div class="modal-hint" id="mCoverFileHint">Foto tersimpan lokal.</div></div>' +
               '<div class="modal-preview" id="mCoverPreview">' + (m.cover ? '<img src="' + esc(m.cover) + '" onerror="this.parentNode.textContent=\'Gagal muat\'" />' : 'Preview cover') + '</div>' +
             '</div>' +
             '<div class="modal-field">' +
               '<label class="modal-label">Sumber Audio <span class="req">*</span></label>' +
               '<div class="modal-tabs"><button type="button" class="modal-tab on" data-src="url">URL</button><button type="button" class="modal-tab" data-src="file">Upload File</button></div>' +
-              '<div id="audioUrlMode"><input class="modal-input" id="mAudioUrl" placeholder="https://files.catbox.moe/lagu.mp3" value="' + esc(m.audioUrl) + '" /><div class="modal-hint">Link MP3/MP4.</div></div>' +
-              '<div id="audioFileMode" style="display:none">' +
-                '<label class="modal-file-input"><input type="file" id="mAudioFile" accept="audio/*,video/*" />Klik pilih file audio/video</label>' +
-                '<div class="modal-hint" id="mFileHint">File di-upload ke Vercel Blob, permanen, max 1GB.</div>' +
-                '<div class="upload-progress" id="uploadProgress"><div class="upload-progress-inner" id="uploadProgressInner"></div></div>' +
-              '</div>' +
+              '<div id="audioUrlMode"><input class="modal-input" id="mAudioUrl" placeholder="https://files.catbox.moe/lagu.mp3" value="' + esc(m.audioUrl) + '" /><div class="modal-hint">URL harus langsung ke file .mp3 / .mp4 / .wav (bukan halaman web). Contoh: files.catbox.moe/xxx.mp3</div></div>' +
+              '<div id="audioFileMode" style="display:none"><label class="modal-file-input"><input type="file" id="mAudioFile" accept="audio/*,video/*" />Klik pilih file audio/video</label><div class="modal-hint" id="mFileHint">File di-upload ke Vercel Blob, permanen, max 1GB.</div><div class="upload-progress" id="uploadProgress"><div class="upload-progress-inner" id="uploadProgressInner"></div></div></div>' +
             '</div>' +
           '</div>' +
           '<div class="modal-foot"><button class="abtn abtn-2" id="musicCancel">Batal</button><button class="abtn abtn-1" id="musicSave">Simpan</button></div>' +
@@ -1199,24 +1144,20 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     var uploadedAudioFile = null;
 
     if (m.cover && m.cover.indexOf('data:') === 0) {
-      coverSrc = 'file';
-      uploadedCoverData = m.cover;
+      coverSrc = 'file'; uploadedCoverData = m.cover;
       modal.querySelectorAll('.cover-source-btn').forEach(function(b){ b.classList.toggle('on', b.dataset.src === 'file'); });
-      $('coverUrlMode').style.display = 'none';
-      $('coverFileMode').style.display = 'block';
+      $('coverUrlMode').style.display = 'none'; $('coverFileMode').style.display = 'block';
     }
     if (m.audioType === 'file') {
       audioSrc = 'file';
       modal.querySelectorAll('.modal-tab').forEach(function(b){ b.classList.toggle('on', b.dataset.src === 'file'); });
-      $('audioUrlMode').style.display = 'none';
-      $('audioFileMode').style.display = 'block';
+      $('audioUrlMode').style.display = 'none'; $('audioFileMode').style.display = 'block';
     }
 
     modal.querySelectorAll('.cover-source-btn').forEach(function(t){
       t.addEventListener('click', function(){
         modal.querySelectorAll('.cover-source-btn').forEach(function(x){ x.classList.remove('on'); });
-        t.classList.add('on');
-        coverSrc = t.dataset.src;
+        t.classList.add('on'); coverSrc = t.dataset.src;
         $('coverUrlMode').style.display = coverSrc === 'url' ? 'block' : 'none';
         $('coverFileMode').style.display = coverSrc === 'file' ? 'block' : 'none';
       });
@@ -1224,8 +1165,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     modal.querySelectorAll('.modal-tab').forEach(function(t){
       t.addEventListener('click', function(){
         modal.querySelectorAll('.modal-tab').forEach(function(x){ x.classList.remove('on'); });
-        t.classList.add('on');
-        audioSrc = t.dataset.src;
+        t.classList.add('on'); audioSrc = t.dataset.src;
         $('audioUrlMode').style.display = audioSrc === 'url' ? 'block' : 'none';
         $('audioFileMode').style.display = audioSrc === 'file' ? 'block' : 'none';
       });
@@ -1260,7 +1200,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       var uploader = $('mUploader').value.trim();
       var cover = coverSrc === 'url' ? $('mCover').value.trim() : uploadedCoverData;
 
-      if (!title) return showMusicErr('Judul lagu wajib diisi.');
+      if (!title) return showMusicErr('Judul wajib diisi.');
       if (!creator) return showMusicErr('Pencipta wajib diisi.');
       if (!uploader) return showMusicErr('Nama penambah wajib diisi.');
       if (!cover) return showMusicErr('Foto cover wajib diisi.');
@@ -1271,76 +1211,41 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
 
       try {
         var audioUrl = '';
-
         if (audioSrc === 'file') {
           if (!uploadedAudioFile) throw new Error('Pilih file audio dulu.');
-
           saveBtn.textContent = 'Menyiapkan...';
           var progWrap = $('uploadProgress');
           var progInner = $('uploadProgressInner');
           if (progWrap) progWrap.classList.add('show');
           if (progInner) progInner.style.width = '10%';
-
           var blobLib = window.VercelBlob || window.blob;
           var uploadFn = blobLib && (blobLib.upload || (blobLib.default && blobLib.default.upload));
           if (!uploadFn) throw new Error('Library upload belum siap. Refresh halaman.');
-
           saveBtn.textContent = 'Upload ' + (uploadedAudioFile.size / 1024 / 1024).toFixed(2) + ' MB...';
           if (progInner) progInner.style.width = '30%';
-
           var blob = await uploadFn(uploadedAudioFile.name, uploadedAudioFile, {
-            access: 'public',
-            handleUploadUrl: '/api/playlist',
-            onUploadProgress: function(progress){
-              if (progInner) {
-                var pct = 30 + (progress.percentage * 0.6);
-                progInner.style.width = pct + '%';
-              }
-            }
+            access: 'public', handleUploadUrl: '/api/playlist',
+            onUploadProgress: function(progress){ if (progInner) progInner.style.width = (30 + (progress.percentage * 0.6)) + '%'; }
           });
-
           if (progInner) progInner.style.width = '95%';
           audioUrl = blob.url;
-
         } else {
           audioUrl = $('mAudioUrl').value.trim();
           if (!audioUrl) throw new Error('URL audio wajib diisi.');
         }
-
         saveBtn.textContent = 'Menyimpan...';
-
-        var songData = {
-          title: title, creator: creator, uploader: uploader,
-          cover: cover, audioUrl: audioUrl, audioType: audioSrc
-        };
-
-        var body = isEdit
-          ? { action: 'update', id: m.id, song: songData }
-          : { action: 'add', song: songData };
-
-        var res = await fetch('/api/playlist', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        });
-
+        var songData = { title: title, creator: creator, uploader: uploader, cover: cover, audioUrl: audioUrl, audioType: audioSrc };
+        var body = isEdit ? { action: 'update', id: m.id, song: songData } : { action: 'add', song: songData };
+        var res = await fetch('/api/playlist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
         var data = await res.json();
         if (!res.ok || !data.success) throw new Error(data.error || ('HTTP ' + res.status));
-
-        if (isEdit) {
-          if (musicList[editIdx]) musicList[editIdx] = Object.assign(musicList[editIdx], songData);
-        } else {
-          if (data.song) musicList.unshift(data.song);
-        }
+        if (isEdit) { if (musicList[editIdx]) musicList[editIdx] = Object.assign(musicList[editIdx], songData); }
+        else { if (data.song) musicList.unshift(data.song); }
         saveLocalMusic(musicList);
         renderMusic();
         closeModal();
         setTimeout(loadMusic, 500);
-
-      } catch(e) {
-        showMusicErr('Gagal: ' + e.message);
-      }
-
+      } catch(e) { showMusicErr('Gagal: ' + e.message); }
       saveBtn.disabled = false;
       saveBtn.textContent = 'Simpan';
     });
@@ -1354,10 +1259,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   }
 
   $('musicAddBtn').addEventListener('click', function(){ openMusicModal(null, null); });
-  $('musicExportBtn').addEventListener('click', function(){
-    var data = JSON.stringify(musicList, null, 2);
-    downloadTextFile('playlist-copywebsite.json', data);
-  });
+  $('musicExportBtn').addEventListener('click', function(){ downloadTextFile('playlist-copywebsite.json', JSON.stringify(musicList, null, 2)); });
   $('musicImportBtn').addEventListener('click', function(){
     var input = document.createElement('input');
     input.type = 'file'; input.accept = 'application/json';
@@ -1384,8 +1286,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     var s = d.stats;
     var items = [['Link', s.totalLinks],['Gambar', s.totalImages],['Heading', s.totalHeadings],['Paragraf', s.totalParagraphs],['Script', s.totalScripts],['Style', s.totalStylesheets],['Video', s.totalVideos || 0],['HTML', fmtB(s.htmlSize)]];
     sgrid.innerHTML = items.map(function(x){ return '<div class="asc"><div class="asc-v">' + esc(x[1]) + '</div><div class="asc-l">' + esc(x[0]) + '</div></div>'; }).join('');
-    updateBadge('meta', '');
-    updateBadge('modules', d.assetModules ? d.assetModules.length : 0);
+    updateBadge('meta', ''); updateBadge('modules', d.assetModules ? d.assetModules.length : 0);
     updateBadge('api', d.apiAnalyses ? d.apiAnalyses.reduce(function(a, x){ return a + x.endpoints.length; }, 0) : 0);
     updateBadge('scripts', d.scripts ? d.scripts.length : 0);
     updateBadge('styles', (d.stylesheets ? d.stylesheets.length : 0) + (d.inlineStyles ? d.inlineStyles.length : 0));
@@ -1393,14 +1294,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     updateBadge('links', s.totalLinks); updateBadge('imgs', s.totalImages);
     updateBadge('tables', s.totalTables); updateBadge('forms', s.totalForms);
     updateBadge('text', ''); updateBadge('raw', '');
-    $('t-preview').innerHTML =
-      '<div class="pv-toolbar"><div class="pv-url">' + esc(d.url) + '</div><div class="pv-btns">' +
-        '<button class="pv-btn" id="pvRefresh">Refresh</button>' +
-        '<button class="pv-btn primary" id="pvFullscreen">Fullscreen</button>' +
-      '</div></div>' +
-      '<div class="pv-frame-wrap" id="pvFrameWrap"><iframe id="pvFrame" src="' + esc(d.url) + '" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe></div>' +
-      '<div class="pv-note">Jika kosong, coba Fullscreen.</div>' +
-      '<button class="pv-fs-close" id="pvFsClose">Keluar</button>';
+    $('t-preview').innerHTML = '<div class="pv-toolbar"><div class="pv-url">' + esc(d.url) + '</div><div class="pv-btns"><button class="pv-btn" id="pvRefresh">Refresh</button><button class="pv-btn primary" id="pvFullscreen">Fullscreen</button></div></div><div class="pv-frame-wrap" id="pvFrameWrap"><iframe id="pvFrame" src="' + esc(d.url) + '" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe></div><div class="pv-note">Jika kosong, coba Fullscreen.</div><button class="pv-fs-close" id="pvFsClose">Keluar</button>';
     setTimeout(function(){
       var fw = $('pvFrameWrap'); var fr = $('pvFrame'); var fc = $('pvFsClose');
       $('pvFullscreen').addEventListener('click', function(){ fw.classList.add('fullscreen'); fc.classList.add('show'); document.body.style.overflow = 'hidden'; });
@@ -1408,16 +1302,9 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       $('pvRefresh').addEventListener('click', function(){ fr.src = fr.src; });
     }, 10);
     var m = d.meta;
-    $('t-meta').innerHTML = '<div class="aml">' +
-      '<div class="amr"><span class="amk">Title</span><span class="amv">' + esc(m.title) + '</span></div>' +
-      '<div class="amr"><span class="amk">Description</span><span class="amv">' + esc(m.description) + '</span></div>' +
-      '<div class="amr"><span class="amk">Keywords</span><span class="amv">' + esc(m.keywords) + '</span></div>' +
-      '<div class="amr"><span class="amk">OG Image</span><span class="amv">' + (m.ogImage ? '<a href="' + esc(m.ogImage) + '" target="_blank">' + esc(m.ogImage) + '</a>' : '-') + '</span></div>' +
-      '<div class="amr"><span class="amk">Favicon</span><span class="amv">' + (m.favicon ? '<a href="' + esc(m.favicon) + '" target="_blank">' + esc(m.favicon) + '</a>' : '-') + '</span></div></div>';
+    $('t-meta').innerHTML = '<div class="aml"><div class="amr"><span class="amk">Title</span><span class="amv">' + esc(m.title) + '</span></div><div class="amr"><span class="amk">Description</span><span class="amv">' + esc(m.description) + '</span></div><div class="amr"><span class="amk">Keywords</span><span class="amv">' + esc(m.keywords) + '</span></div><div class="amr"><span class="amk">OG Image</span><span class="amv">' + (m.ogImage ? '<a href="' + esc(m.ogImage) + '" target="_blank">' + esc(m.ogImage) + '</a>' : '-') + '</span></div><div class="amr"><span class="amk">Favicon</span><span class="amv">' + (m.favicon ? '<a href="' + esc(m.favicon) + '" target="_blank">' + esc(m.favicon) + '</a>' : '-') + '</span></div></div>';
     if (d.assetModules && d.assetModules.length) {
-      $('t-modules').innerHTML = d.assetModules.map(function(mod,i){
-        return '<div class="amod"><div class="amod-h"><span class="amod-num">[' + (i+1) + ']</span><span>' + esc(mod.url) + '</span></div><div class="amod-meta"><span>type: <b>' + esc(mod.type) + '</b></span><span>size: <b>' + fmtB(mod.size) + '</b></span><span>exports: <b>' + mod.exportCount + '</b></span><span>imports: <b>' + mod.imports.length + '</b></span></div>' + (mod.imports.length ? '<div class="amod-imports">' + mod.imports.map(function(imp){ return '<span class="chip">' + esc(imp) + '</span>'; }).join('') + '</div>' : '') + '</div>';
-      }).join('');
+      $('t-modules').innerHTML = d.assetModules.map(function(mod,i){ return '<div class="amod"><div class="amod-h"><span class="amod-num">[' + (i+1) + ']</span><span>' + esc(mod.url) + '</span></div><div class="amod-meta"><span>type: <b>' + esc(mod.type) + '</b></span><span>size: <b>' + fmtB(mod.size) + '</b></span><span>exports: <b>' + mod.exportCount + '</b></span><span>imports: <b>' + mod.imports.length + '</b></span></div>' + (mod.imports.length ? '<div class="amod-imports">' + mod.imports.map(function(imp){ return '<span class="chip">' + esc(imp) + '</span>'; }).join('') + '</div>' : '') + '</div>'; }).join('');
     } else { $('t-modules').innerHTML = '<div class="aempty">Tidak ada JS module.</div>'; }
     if (d.apiAnalyses && d.apiAnalyses.length) {
       var allEp = []; d.apiAnalyses.forEach(function(a){ a.endpoints.forEach(function(e){ allEp.push(e); }); });
