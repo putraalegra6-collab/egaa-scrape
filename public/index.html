@@ -146,7 +146,6 @@ input,textarea,select{font-family:inherit}
 .ahead-eyebrow i{width:5px;height:5px;border-radius:50%;background:var(--green);display:block;animation:pulse 2s ease-in-out infinite}
 .ahead-h1{font-size:36px;font-weight:700;letter-spacing:-1.2px;line-height:1.15;margin-bottom:10px}
 .ahead-p{font-size:14.5px;color:var(--fg-dim);line-height:1.65;max-width:620px}
-
 .apane{background:var(--bg-2);border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:20px;position:relative;overflow:hidden}
 .apane::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(91,141,239,.25),transparent)}
 .apane-h{font-size:11px;color:var(--fg-dim);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:9px}
@@ -171,7 +170,6 @@ input,textarea,select{font-family:inherit}
 .abtn-sm svg{width:13px;height:13px}
 .abtn-share{background:var(--blue);color:#fff;box-shadow:0 8px 24px -10px rgba(91,141,239,.4)}
 .abtn-share:hover{background:#6d9ff2;transform:translateY(-1px)}
-
 .astat{margin-top:14px;padding:12px 16px;border-radius:10px;font-size:13px;display:none;align-items:center;gap:11px;font-family:var(--mono)}
 .astat.show{display:flex}
 .astat.load{background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg-dim)}
@@ -243,7 +241,7 @@ input,textarea,select{font-family:inherit}
 .amusic-btn:hover{color:var(--fg);border-color:#3a3a46}
 .amusic-btn svg{width:11px;height:11px}
 
-/* Player bar (sticky bottom) */
+/* Player bar */
 .player-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(15,15,18,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--line);z-index:60;display:none;animation:slideUp .3s}
 .player-bar.show{display:block}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
@@ -265,7 +263,54 @@ input,textarea,select{font-family:inherit}
 .player-close{width:34px;height:34px;border-radius:50%;color:var(--fg-dim);display:grid;place-items:center;transition:.15s;flex-shrink:0}
 .player-close:hover{color:var(--fg);background:var(--bg-3)}
 .player-close svg{width:14px;height:14px}
-@media(max-width:640px){.player-inner{padding:10px 14px;gap:10px}.player-cover{width:42px;height:42px}.player-controls{gap:6px}.player-btn{width:34px;height:34px}.player-btn.play{width:40px;height:40px}}
+
+/* Mini player (landing) */
+.mini-player{position:fixed;bottom:16px;right:16px;background:rgba(15,15,18,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--line-2);border-radius:14px;z-index:55;padding:10px 14px;display:none;align-items:center;gap:12px;box-shadow:0 20px 50px -15px rgba(0,0,0,.7);animation:slideUp .3s}
+.mini-player.show{display:flex}
+.mini-player-cover{width:42px;height:42px;border-radius:9px;overflow:hidden;background:var(--bg-3);flex-shrink:0}
+.mini-player-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.mini-player-info{min-width:0;max-width:170px}
+.mini-player-title{font-size:12.5px;font-weight:600;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini-player-creator{font-size:10.5px;color:var(--fg-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini-player-controls{display:flex;gap:5px;flex-shrink:0}
+.mini-player-btn{width:34px;height:34px;border-radius:50%;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg);display:grid;place-items:center;transition:.15s}
+.mini-player-btn:hover{background:var(--bg-4)}
+.mini-player-btn.play{background:var(--fg);color:var(--bg);border-color:var(--fg);width:38px;height:38px}
+.mini-player-btn svg{width:13px;height:13px}
+.mini-player-btn.play svg{width:15px;height:15px}
+.mini-player-close{width:28px;height:28px;border-radius:50%;color:var(--fg-dim);display:grid;place-items:center;transition:.15s}
+.mini-player-close:hover{color:var(--fg);background:var(--bg-3)}
+.mini-player-close svg{width:12px;height:12px}
+
+/* Music Modal */
+.music-modal .modal-card{max-width:520px}
+.music-modal .modal-body{padding:18px 22px}
+.music-modal .modal-field{margin-bottom:14px}
+.music-modal .modal-label{font-size:10.5px;letter-spacing:1px;margin-bottom:6px}
+.music-modal .modal-input{padding:11px 13px;font-size:13.5px;border-radius:9px}
+.music-modal .modal-hint{font-size:10.5px;margin-top:5px;line-height:1.45}
+.music-modal .modal-tabs{padding:3px;border-radius:8px;margin-bottom:10px}
+.music-modal .modal-tab{padding:7px 10px;font-size:11.5px;border-radius:5px}
+.music-modal .modal-preview{max-width:160px;aspect-ratio:1;margin:10px auto;border-radius:11px;font-size:10.5px;padding:10px}
+.music-modal .modal-file-input{padding:14px;font-size:12px;border-radius:9px}
+.music-modal .modal-foot{padding:14px 22px;gap:8px}
+.music-modal .modal-foot .abtn{padding:12px 18px;font-size:13px;border-radius:10px}
+.music-modal .modal-head{padding:16px 20px}
+.music-modal .modal-h{font-size:15.5px}
+
+.cover-source{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.cover-source-btn{padding:9px 12px;border-radius:9px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg-dim);font-size:12px;font-weight:500;text-align:center;transition:.15s;cursor:pointer}
+.cover-source-btn:hover{color:var(--fg);border-color:#3a3a46}
+.cover-source-btn.on{background:var(--bg-2);border-color:var(--blue);color:var(--fg)}
+
+.cover-shortcut{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.cover-shortcut a{padding:5px 10px;border-radius:6px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg-dim);font-size:11px;font-family:var(--mono);font-weight:500;transition:.15s;display:inline-flex;align-items:center;gap:5px}
+.cover-shortcut a:hover{color:var(--fg);border-color:var(--blue);background:var(--bg-4)}
+.cover-shortcut a svg{width:11px;height:11px}
+
+.file-cover-input{width:100%;background:var(--bg);border:1px dashed var(--line-2);border-radius:9px;padding:14px;color:var(--fg-dim);font-size:12px;text-align:center;cursor:pointer;transition:.15s;display:block}
+.file-cover-input:hover{border-color:var(--blue);color:var(--fg)}
+.file-cover-input input{display:none}
 
 /* RESULT */
 #result{display:none}
@@ -379,8 +424,8 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
 .modal-field{margin-bottom:16px}
 .modal-label{display:block;font-size:11px;color:var(--fg-dim);text-transform:uppercase;letter-spacing:1.1px;font-weight:700;margin-bottom:8px}
 .modal-label .req{color:#ff6b6b;margin-left:4px}
-.modal-input,.modal-select{width:100%;background:var(--bg);border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;color:var(--fg);font-size:14px;outline:none;transition:.15s}
-.modal-input:focus,.modal-select:focus{border-color:#4a4a5a;background:var(--bg-3);box-shadow:0 0 0 3px rgba(91,141,239,.08)}
+.modal-input{width:100%;background:var(--bg);border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;color:var(--fg);font-size:14px;outline:none;transition:.15s}
+.modal-input:focus{border-color:#4a4a5a;background:var(--bg-3);box-shadow:0 0 0 3px rgba(91,141,239,.08)}
 .modal-input::placeholder{color:var(--fg-dimmer)}
 .modal-hint{font-size:11px;color:var(--fg-dimmer);margin-top:6px;line-height:1.5}
 .modal-tabs{display:flex;gap:4px;background:var(--bg-3);border:1px solid var(--line);border-radius:9px;padding:4px;margin-bottom:12px}
@@ -440,7 +485,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   .anav-tab{padding:6px 11px;font-size:11.5px}
   .aback{padding:7px 11px;font-size:12px}
 
-  .awrap{padding:24px 16px 100px}
+  .awrap{padding:24px 16px 140px}
   .ahead-h1{font-size:22px}.ahead-p{font-size:13px}
   .apane{padding:18px;margin-bottom:16px}
   .arow{flex-direction:row;flex-wrap:wrap;gap:10px}
@@ -475,6 +520,13 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   .amusic-creator{font-size:11px}
   .amusic-actions-row{margin-top:10px;padding-top:10px}
   .amusic-btn{padding:6px 6px;font-size:10px}
+  .player-inner{padding:10px 14px;gap:10px}
+  .player-cover{width:42px;height:42px}
+  .player-controls{gap:6px}
+  .player-btn{width:34px;height:34px}
+  .player-btn.play{width:40px;height:40px}
+  .mini-player{bottom:10px;right:10px;left:10px;padding:9px 12px;gap:10px}
+  .mini-player-info{max-width:none;flex:1}
 }
 </style>
 </head>
@@ -595,7 +647,6 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   </nav>
 
   <div class="awrap">
-    <!-- COPY TAB -->
     <div id="tab-copy">
       <div class="ahead">
         <div class="ahead-eyebrow"><i></i>Siap digunakan</div>
@@ -689,7 +740,6 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       <footer class="afoot">Copy Website &nbsp;|&nbsp; Dibuat oleh <b>Egaa</b></footer>
     </div>
 
-    <!-- HISTORY TAB -->
     <div id="tab-history" style="display:none">
       <div class="ahead">
         <div class="ahead-eyebrow"><i></i>Tersimpan lokal</div>
@@ -705,7 +755,6 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       </div>
     </div>
 
-    <!-- MUSIC TAB -->
     <div id="tab-music" style="display:none">
       <div class="ahead">
         <div class="ahead-eyebrow"><i></i>Playlist Global</div>
@@ -725,7 +774,20 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   </div>
 </div>
 
-<!-- Player bar -->
+<!-- Mini Player (landing page) -->
+<div class="mini-player" id="miniPlayer">
+  <div class="mini-player-cover"><img id="miniCover" src="" alt="" /></div>
+  <div class="mini-player-info">
+    <div class="mini-player-title" id="miniTitle">-</div>
+    <div class="mini-player-creator" id="miniCreator">-</div>
+  </div>
+  <div class="mini-player-controls">
+    <button class="mini-player-btn play" id="miniPlayBtn"><svg id="miniPlayIcon" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+    <button class="mini-player-close" id="miniClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+</div>
+
+<!-- Player bar (app) -->
 <div class="player-bar" id="playerBar">
   <div class="player-progress"><div class="player-progress-inner" id="playerProgress"></div></div>
   <div class="player-inner">
@@ -744,7 +806,6 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   <audio id="audioEl" preload="metadata"></audio>
 </div>
 
-<!-- Modals -->
 <div id="shareModal"></div>
 <div id="musicModal"></div>
 
@@ -757,7 +818,6 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   var cur = null;
   var HISTORY_KEY = 'copywebsite_history';
   var MAX_HISTORY = 30;
-
   var PROTECTED_DOMAINS = ['egaa-copywebsite.vercel.app', 'egaa-scrape.vercel.app'];
 
   function esc(s){
@@ -870,11 +930,13 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     window.scrollTo(0,0);
     switchTab('copy');
     renderHistory();
+    updatePlayerVisibility();
   };
   window.closeApp = function(){
     $('app').style.display = 'none';
     $('landing').style.display = 'block';
     window.scrollTo(0,0);
+    updatePlayerVisibility();
   };
 
   document.querySelectorAll('.aex-b').forEach(function(b){
@@ -1128,6 +1190,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   var musicList = [];
   var audio = $('audioEl');
   var playerBar = $('playerBar');
+  var miniPlayer = $('miniPlayer');
   var currentMusic = null;
   var currentIdx = -1;
 
@@ -1177,17 +1240,64 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     }).join('');
   }
 
+  function updatePlayerVisibility(){
+    if (!currentMusic) {
+      playerBar.classList.remove('show');
+      miniPlayer.classList.remove('show');
+      return;
+    }
+    var appVisible = $('app').style.display === 'block';
+    if (appVisible) {
+      playerBar.classList.add('show');
+      miniPlayer.classList.remove('show');
+    } else {
+      playerBar.classList.remove('show');
+      miniPlayer.classList.add('show');
+    }
+  }
+  window.updatePlayerVisibility = updatePlayerVisibility;
+
+  function updatePlayerInfo(){
+    if (!currentMusic) return;
+    $('playerCover').src = currentMusic.cover;
+    $('playerTitle').textContent = currentMusic.title;
+    $('playerCreator').textContent = currentMusic.creator + ' · oleh ' + currentMusic.uploader;
+    $('miniCover').src = currentMusic.cover;
+    $('miniTitle').textContent = currentMusic.title;
+    $('miniCreator').textContent = currentMusic.creator + ' · oleh ' + currentMusic.uploader;
+    // Media Session API
+    if ('mediaSession' in navigator) {
+      try {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: currentMusic.title,
+          artist: currentMusic.creator,
+          album: 'Added by ' + currentMusic.uploader,
+          artwork: [{ src: currentMusic.cover, sizes: '512x512', type: 'image/jpeg' }]
+        });
+        navigator.mediaSession.setActionHandler('play', function(){ audio.play(); updatePlayIcons(); });
+        navigator.mediaSession.setActionHandler('pause', function(){ audio.pause(); updatePlayIcons(); });
+        navigator.mediaSession.setActionHandler('previoustrack', function(){ if (currentIdx > 0) playMusicIdx(currentIdx - 1); });
+        navigator.mediaSession.setActionHandler('nexttrack', function(){ if (currentIdx >= 0 && currentIdx < musicList.length - 1) playMusicIdx(currentIdx + 1); });
+      } catch(e){}
+    }
+  }
+  function updatePlayIcons(){
+    var isPlaying = !audio.paused;
+    var playIcon = isPlaying ? '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>' : '<polygon points="5 3 19 12 5 21 5 3"/>';
+    $('playerPlayIcon').innerHTML = playIcon;
+    $('miniPlayIcon').innerHTML = playIcon;
+  }
+
   window.playMusicIdx = function(i){
     var m = musicList[i];
     if (!m) return;
     currentMusic = m;
     currentIdx = i;
     audio.src = m.audioUrl;
-    audio.play().catch(function(e){ alert('Gagal play: ' + e.message); });
-    $('playerCover').src = m.cover;
-    $('playerTitle').textContent = m.title;
-    $('playerCreator').textContent = m.creator + ' · oleh ' + m.uploader;
-    playerBar.classList.add('show');
+    audio.play().then(function(){ updatePlayIcons(); }).catch(function(e){ alert('Gagal play: ' + e.message); });
+    updatePlayerInfo();
+    updatePlayerVisibility();
+    updatePlayIcons();
     try {
       fetch('/api/playlist', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ action:'play', id: m.id }) }).catch(function(){});
     } catch(e){}
@@ -1213,22 +1323,25 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     if (!audio.duration) return;
     var pct = (audio.currentTime / audio.duration) * 100;
     $('playerProgress').style.width = pct + '%';
+    if ('mediaSession' in navigator && navigator.mediaSession.setPositionState) {
+      try { navigator.mediaSession.setPositionState({ duration: audio.duration, playbackRate: audio.playbackRate, position: audio.currentTime }); } catch(e){}
+    }
   });
   audio.addEventListener('ended', function(){
     if (currentIdx >= 0 && currentIdx < musicList.length - 1) {
       playMusicIdx(currentIdx + 1);
     } else {
-      $('playerPlayIcon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+      updatePlayIcons();
     }
   });
+  audio.addEventListener('play', updatePlayIcons);
+  audio.addEventListener('pause', updatePlayIcons);
+
   $('playerPlayBtn').addEventListener('click', function(){
-    if (audio.paused) {
-      audio.play();
-      $('playerPlayIcon').innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
-    } else {
-      audio.pause();
-      $('playerPlayIcon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
-    }
+    if (audio.paused) audio.play(); else audio.pause();
+  });
+  $('miniPlayBtn').addEventListener('click', function(){
+    if (audio.paused) audio.play(); else audio.pause();
   });
   $('playerPrev').addEventListener('click', function(){
     if (currentIdx > 0) playMusicIdx(currentIdx - 1);
@@ -1238,7 +1351,13 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   });
   $('playerClose').addEventListener('click', function(){
     audio.pause();
+    currentMusic = null;
     playerBar.classList.remove('show');
+  });
+  $('miniClose').addEventListener('click', function(){
+    audio.pause();
+    currentMusic = null;
+    miniPlayer.classList.remove('show');
   });
 
   // ============ MUSIC MODAL ============
@@ -1247,19 +1366,54 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     var m = existing || { title:'', uploader:'', creator:'', cover:'', audioUrl:'', audioType:'url' };
     var modal = $('musicModal');
     modal.innerHTML =
-      '<div class="modal-overlay" id="musicOverlay">' +
+      '<div class="modal-overlay music-modal" id="musicOverlay">' +
         '<div class="modal-card">' +
-          '<div class="modal-head"><div class="modal-h">' + (isEdit ? 'Edit Lagu' : 'Tambah Lagu') + '</div><button class="modal-close" id="musicClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>' +
+          '<div class="modal-head">' +
+            '<div class="modal-h">' + (isEdit ? 'Edit Lagu' : 'Tambah Lagu') + '</div>' +
+            '<button class="modal-close" id="musicClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>' +
+          '</div>' +
           '<div class="modal-body">' +
             '<div class="modal-err" id="musicErr"></div>' +
-            '<div class="modal-field"><label class="modal-label">Judul Lagu <span class="req">*</span></label><input class="modal-input" id="mTitle" placeholder="Contoh: Bojack Horseman" value="' + esc(m.title) + '" /></div>' +
-            '<div class="modal-field"><label class="modal-label">Pencipta / Artis <span class="req">*</span></label><input class="modal-input" id="mCreator" placeholder="Contoh: Egaa Official" value="' + esc(m.creator) + '" /></div>' +
-            '<div class="modal-field"><label class="modal-label">Nama Penambah <span class="req">*</span></label><input class="modal-input" id="mUploader" placeholder="Nama kamu" value="' + esc(m.uploader) + '" /></div>' +
-            '<div class="modal-field"><label class="modal-label">Foto Cover (URL) <span class="req">*</span></label><input class="modal-input" id="mCover" placeholder="https://contoh.com/foto.jpg" value="' + esc(m.cover) + '" /><div class="modal-hint">Cari di Google Images, klik kanan, Copy Image Address. Wajib diisi.</div><div class="modal-preview" id="mCoverPreview">' + (m.cover ? '<img src="' + esc(m.cover) + '" onerror="this.parentNode.textContent=\'Gambar gagal dimuat\'" />' : 'Preview cover') + '</div></div>' +
-            '<div class="modal-field"><label class="modal-label">Sumber Audio <span class="req">*</span></label>' +
-              '<div class="modal-tabs"><button class="modal-tab on" data-src="url">URL</button><button class="modal-tab" data-src="file">Upload File</button></div>' +
-              '<div id="srcUrl"><input class="modal-input" id="mAudioUrl" placeholder="https://contoh.com/lagu.mp3 atau .mp4" value="' + esc(m.audioUrl) + '" /><div class="modal-hint">Link MP3 atau MP4 yang ada audionya.</div></div>' +
-              '<div id="srcFile" style="display:none"><label class="modal-file-input"><input type="file" id="mAudioFile" accept="audio/*,video/*" />Klik untuk pilih file audio/video</label><div class="modal-hint" id="mFileHint">File tidak diupload ke server, hanya disimpan lokal di browser ini.</div></div>' +
+            '<div class="modal-field">' +
+              '<label class="modal-label">Judul Lagu <span class="req">*</span></label>' +
+              '<input class="modal-input" id="mTitle" placeholder="Contoh: Bojack Horseman" value="' + esc(m.title) + '" />' +
+            '</div>' +
+            '<div class="modal-field">' +
+              '<label class="modal-label">Pencipta / Artis <span class="req">*</span></label>' +
+              '<input class="modal-input" id="mCreator" placeholder="Contoh: Egaa Official" value="' + esc(m.creator) + '" />' +
+            '</div>' +
+            '<div class="modal-field">' +
+              '<label class="modal-label">Nama Penambah <span class="req">*</span></label>' +
+              '<input class="modal-input" id="mUploader" placeholder="Nama kamu" value="' + esc(m.uploader) + '" />' +
+            '</div>' +
+            '<div class="modal-field">' +
+              '<label class="modal-label">Foto Cover <span class="req">*</span></label>' +
+              '<div class="cover-source">' +
+                '<button type="button" class="cover-source-btn on" data-src="url">URL Foto</button>' +
+                '<button type="button" class="cover-source-btn" data-src="file">Upload File</button>' +
+              '</div>' +
+              '<div id="coverUrlMode">' +
+                '<input class="modal-input" id="mCover" placeholder="https://files.catbox.moe/xxxxx.jpg" value="' + esc(m.cover) + '" />' +
+                '<div class="cover-shortcut">' +
+                  '<a href="https://catbox.moe/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Catbox</a>' +
+                  '<a href="https://egabox.lovable.app/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>EgaaBox</a>' +
+                '</div>' +
+                '<div class="modal-hint">Upload foto ke Catbox atau EgaaBox, lalu tempel link-nya di sini. Format bebas: jpg, png, webp, gif.</div>' +
+              '</div>' +
+              '<div id="coverFileMode" style="display:none">' +
+                '<label class="file-cover-input">' +
+                  '<input type="file" id="mCoverFile" accept="image/*" />' +
+                  'Klik untuk pilih foto dari galeri' +
+                '</label>' +
+                '<div class="modal-hint" id="mCoverFileHint">Foto tersimpan lokal di browser ini.</div>' +
+              '</div>' +
+              '<div class="modal-preview" id="mCoverPreview">' + (m.cover ? '<img src="' + esc(m.cover) + '" onerror="this.parentNode.textContent=\'Gambar gagal dimuat\'" />' : 'Preview cover') + '</div>' +
+            '</div>' +
+            '<div class="modal-field">' +
+              '<label class="modal-label">Sumber Audio <span class="req">*</span></label>' +
+              '<div class="modal-tabs"><button type="button" class="modal-tab on" data-src="url">URL</button><button type="button" class="modal-tab" data-src="file">Upload File</button></div>' +
+              '<div id="audioUrlMode"><input class="modal-input" id="mAudioUrl" placeholder="https://files.catbox.moe/lagu.mp3" value="' + esc(m.audioUrl) + '" /><div class="modal-hint">Link MP3 atau MP4 yang ada audionya.</div></div>' +
+              '<div id="audioFileMode" style="display:none"><label class="modal-file-input"><input type="file" id="mAudioFile" accept="audio/*,video/*" />Klik untuk pilih file audio/video</label><div class="modal-hint" id="mFileHint">File tidak diupload ke server, hanya disimpan lokal di browser ini (max 5MB).</div></div>' +
             '</div>' +
           '</div>' +
           '<div class="modal-foot"><button class="abtn abtn-2" id="musicCancel">Batal</button><button class="abtn abtn-1" id="musicSave">Simpan</button></div>' +
@@ -1269,20 +1423,60 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     $('musicClose').addEventListener('click', closeModal);
     $('musicCancel').addEventListener('click', closeModal);
     $('musicOverlay').addEventListener('click', function(e){ if (e.target.id === 'musicOverlay') closeModal(); });
-    var srcMode = 'url';
-    var uploadedDataUrl = '';
+
+    var coverSrc = 'url';
+    var audioSrc = 'url';
+    var uploadedCoverData = m.cover && m.cover.indexOf('data:') === 0 ? m.cover : '';
+    var uploadedAudioData = m.audioUrl && m.audioUrl.indexOf('data:') === 0 ? m.audioUrl : '';
+    if (uploadedCoverData) {
+      coverSrc = 'file';
+      modal.querySelectorAll('.cover-source-btn').forEach(function(b){ b.classList.toggle('on', b.dataset.src === 'file'); });
+      $('coverUrlMode').style.display = 'none';
+      $('coverFileMode').style.display = 'block';
+      $('mCoverFileHint').textContent = 'Foto tersimpan lokal.';
+    }
+    if (uploadedAudioData) {
+      audioSrc = 'file';
+      modal.querySelectorAll('.modal-tab').forEach(function(b){ b.classList.toggle('on', b.dataset.src === 'file'); });
+      $('audioUrlMode').style.display = 'none';
+      $('audioFileMode').style.display = 'block';
+      $('mFileHint').textContent = 'File audio tersimpan lokal.';
+    }
+
+    modal.querySelectorAll('.cover-source-btn').forEach(function(t){
+      t.addEventListener('click', function(){
+        modal.querySelectorAll('.cover-source-btn').forEach(function(x){ x.classList.remove('on'); });
+        t.classList.add('on');
+        coverSrc = t.dataset.src;
+        $('coverUrlMode').style.display = coverSrc === 'url' ? 'block' : 'none';
+        $('coverFileMode').style.display = coverSrc === 'file' ? 'block' : 'none';
+      });
+    });
     modal.querySelectorAll('.modal-tab').forEach(function(t){
       t.addEventListener('click', function(){
         modal.querySelectorAll('.modal-tab').forEach(function(x){ x.classList.remove('on'); });
         t.classList.add('on');
-        srcMode = t.dataset.src;
-        $('srcUrl').style.display = srcMode === 'url' ? 'block' : 'none';
-        $('srcFile').style.display = srcMode === 'file' ? 'block' : 'none';
+        audioSrc = t.dataset.src;
+        $('audioUrlMode').style.display = audioSrc === 'url' ? 'block' : 'none';
+        $('audioFileMode').style.display = audioSrc === 'file' ? 'block' : 'none';
       });
     });
+
     $('mCover').addEventListener('input', function(){
       var v = $('mCover').value.trim();
       $('mCoverPreview').innerHTML = v ? '<img src="' + esc(v) + '" onerror="this.parentNode.textContent=\'Gambar gagal dimuat\'" />' : 'Preview cover';
+    });
+    $('mCoverFile').addEventListener('change', function(e){
+      var f = e.target.files[0];
+      if (!f) return;
+      if (f.size > 3 * 1024 * 1024) { alert('Foto terlalu besar (max 3MB).'); e.target.value = ''; return; }
+      var reader = new FileReader();
+      reader.onload = function(ev){
+        uploadedCoverData = ev.target.result;
+        $('mCoverPreview').innerHTML = '<img src="' + ev.target.result + '" />';
+        $('mCoverFileHint').textContent = 'Foto terpilih: ' + f.name + ' (' + (f.size / 1024).toFixed(0) + ' KB)';
+      };
+      reader.readAsDataURL(f);
     });
     $('mAudioFile').addEventListener('change', function(e){
       var f = e.target.files[0];
@@ -1290,35 +1484,36 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       if (f.size > 5 * 1024 * 1024) { alert('File terlalu besar (max 5MB). Pakai URL untuk file besar.'); e.target.value = ''; return; }
       var reader = new FileReader();
       reader.onload = function(ev){
-        uploadedDataUrl = ev.target.result;
+        uploadedAudioData = ev.target.result;
         $('mFileHint').textContent = 'File terpilih: ' + f.name + ' (' + (f.size / 1024).toFixed(0) + ' KB)';
       };
       reader.readAsDataURL(f);
     });
+
     $('musicSave').addEventListener('click', async function(){
       var title = $('mTitle').value.trim();
       var creator = $('mCreator').value.trim();
       var uploader = $('mUploader').value.trim();
-      var cover = $('mCover').value.trim();
-      var audioUrl = srcMode === 'url' ? $('mAudioUrl').value.trim() : uploadedDataUrl;
+      var cover = coverSrc === 'url' ? $('mCover').value.trim() : uploadedCoverData;
+      var audioUrl = audioSrc === 'url' ? $('mAudioUrl').value.trim() : uploadedAudioData;
       if (!title) return showMusicErr('Judul lagu wajib diisi.');
       if (!creator) return showMusicErr('Pencipta wajib diisi.');
       if (!uploader) return showMusicErr('Nama penambah wajib diisi.');
       if (!cover) return showMusicErr('Foto cover wajib diisi.');
-      if (!audioUrl) return showMusicErr(srcMode === 'url' ? 'URL audio wajib diisi.' : 'Pilih file audio dulu.');
+      if (!audioUrl) return showMusicErr(audioSrc === 'url' ? 'URL audio wajib diisi.' : 'Pilih file audio dulu.');
       try {
-        var songData = { title: title, creator: creator, uploader: uploader, cover: cover, audioUrl: audioUrl, audioType: srcMode };
-        var endpoint = '/api/playlist';
+        var songData = { title: title, creator: creator, uploader: uploader, cover: cover, audioUrl: audioUrl, audioType: coverSrc };
         var body;
-        if (isEdit) {
-          body = { action: 'update', id: m.id, song: songData };
-        } else {
-          body = { action: 'add', song: songData };
-        }
-        var res = await fetch(endpoint, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+        if (isEdit) { body = { action: 'update', id: m.id, song: songData }; }
+        else { body = { action: 'add', song: songData }; }
+        var res = await fetch('/api/playlist', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
         var data = await res.json();
         if (!data.success) throw new Error(data.error || 'Gagal simpan');
-        await loadMusic();
+        // Update list lokal juga
+        if (isEdit) { musicList[editIdx] = Object.assign(musicList[editIdx], songData); }
+        else { musicList.unshift(Object.assign({ id: data.song ? data.song.id : 'local_' + Date.now(), playCount: 0, createdAt: new Date().toISOString() }, songData)); }
+        saveLocalMusic(musicList);
+        renderMusic();
         closeModal();
       } catch(e) {
         showMusicErr(e.message);
@@ -1328,15 +1523,13 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   }
 
   $('musicAddBtn').addEventListener('click', function(){ openMusicModal(null, null); });
-
   $('musicExportBtn').addEventListener('click', function(){
     var data = JSON.stringify(musicList, null, 2);
     downloadTextFile('playlist-copywebsite.json', data);
   });
   $('musicImportBtn').addEventListener('click', function(){
     var input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'application/json';
+    input.type = 'file'; input.accept = 'application/json';
     input.onchange = function(e){
       var f = e.target.files[0];
       if (!f) return;
@@ -1426,6 +1619,8 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   }
 
   renderHistory();
+  // Load music awal biar mini player tahu
+  loadMusic();
 })();
 </script>
 </body>
