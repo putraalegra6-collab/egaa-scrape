@@ -264,7 +264,7 @@ input,textarea,select{font-family:inherit}
 .player-close:hover{color:var(--fg);background:var(--bg-3)}
 .player-close svg{width:14px;height:14px}
 
-/* Mini player (landing) */
+/* Mini player */
 .mini-player{position:fixed;bottom:16px;right:16px;background:rgba(15,15,18,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--line-2);border-radius:14px;z-index:55;padding:10px 14px;display:none;align-items:center;gap:12px;box-shadow:0 20px 50px -15px rgba(0,0,0,.7);animation:slideUp .3s}
 .mini-player.show{display:flex}
 .mini-player-cover{width:42px;height:42px;border-radius:9px;overflow:hidden;background:var(--bg-3);flex-shrink:0}
@@ -297,17 +297,18 @@ input,textarea,select{font-family:inherit}
 .music-modal .modal-foot .abtn{padding:12px 18px;font-size:13px;border-radius:10px}
 .music-modal .modal-head{padding:16px 20px}
 .music-modal .modal-h{font-size:15.5px}
+.upload-progress{width:100%;height:6px;background:var(--bg-3);border-radius:3px;overflow:hidden;margin-top:10px;display:none}
+.upload-progress.show{display:block}
+.upload-progress-inner{height:100%;background:var(--blue);width:0%;transition:width .3s;border-radius:3px}
 
 .cover-source{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
 .cover-source-btn{padding:9px 12px;border-radius:9px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg-dim);font-size:12px;font-weight:500;text-align:center;transition:.15s;cursor:pointer}
 .cover-source-btn:hover{color:var(--fg);border-color:#3a3a46}
 .cover-source-btn.on{background:var(--bg-2);border-color:var(--blue);color:var(--fg)}
-
 .cover-shortcut{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .cover-shortcut a{padding:5px 10px;border-radius:6px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--fg-dim);font-size:11px;font-family:var(--mono);font-weight:500;transition:.15s;display:inline-flex;align-items:center;gap:5px}
 .cover-shortcut a:hover{color:var(--fg);border-color:var(--blue);background:var(--bg-4)}
 .cover-shortcut a svg{width:11px;height:11px}
-
 .file-cover-input{width:100%;background:var(--bg);border:1px dashed var(--line-2);border-radius:9px;padding:14px;color:var(--fg-dim);font-size:12px;text-align:center;cursor:pointer;transition:.15s;display:block}
 .file-cover-input:hover{border-color:var(--blue);color:var(--fg)}
 .file-cover-input input{display:none}
@@ -604,7 +605,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       <div class="feat"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="feat-h">Preview Fullscreen</div><p class="feat-p">Lihat pratinjau langsung di dalam aplikasi, bisa fullscreen tanpa buka tab baru.</p></div>
       <div class="feat"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div><div class="feat-h">History Copy</div><p class="feat-p">Semua hasil copy tersimpan otomatis. Bisa dibuka lagi atau dihapus.</p></div>
       <div class="feat"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></div><div class="feat-h">Share ke AI</div><p class="feat-p">Bagikan ke DeepSeek, ChatGPT, Claude, Gemini via APK atau website.</p></div>
-      <div class="feat"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><div class="feat-h">Music Player</div><p class="feat-p">Playlist global yang bisa diisi siapa saja. Upload dari file atau URL.</p></div>
+      <div class="feat"><div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><div class="feat-h">Music Player</div><p class="feat-p">Playlist global yang bisa diisi siapa saja. Upload dari file atau URL sampai GB.</p></div>
     </div>
   </section>
   <section class="lsecurity" id="security">
@@ -803,7 +804,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       <button class="player-close" id="playerClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
   </div>
-  <audio id="audioEl" preload="metadata"></audio>
+  <audio id="audioEl" preload="metadata" crossorigin="anonymous"></audio>
 </div>
 
 <div id="shareModal"></div>
@@ -846,7 +847,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   function setStatus(k,h){ statusEl.className = 'astat show ' + k; statusEl.innerHTML = h; }
   function hideStatus(){ statusEl.className = 'astat'; statusEl.innerHTML = ''; }
 
-  // ============ HISTORY ============
+  // HISTORY
   function getHistory(){ try { var raw = localStorage.getItem(HISTORY_KEY); return raw ? JSON.parse(raw) : []; } catch(e){ return []; } }
   function saveHistory(list){ try { localStorage.setItem(HISTORY_KEY, JSON.stringify(list.slice(0, MAX_HISTORY))); } catch(e){} }
   function addToHistory(data){
@@ -890,7 +891,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     localStorage.removeItem(HISTORY_KEY); renderHistory();
   });
 
-  // ============ TAB SWITCH ============
+  // TAB SWITCH
   function switchTab(name){
     document.querySelectorAll('.anav-tab').forEach(function(t){ t.classList.toggle('on', t.dataset.tab === name); });
     $('tab-copy').style.display = name === 'copy' ? 'block' : 'none';
@@ -903,7 +904,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     t.addEventListener('click', function(){ switchTab(t.dataset.tab); });
   });
 
-  // ============ BLOCKED ============
+  // BLOCKED
   function showBlockedAlert(){
     var overlay = document.createElement('div');
     overlay.className = 'blocked-overlay';
@@ -952,7 +953,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     $('t-' + t.dataset.t).classList.add('on');
   });
 
-  // ============ COPY ============
+  // COPY
   goBtn.addEventListener('click', async function(){
     var url = urlInput.value.trim();
     if(!url){ setStatus('err','Masukkan URL terlebih dahulu.'); return; }
@@ -1007,103 +1008,32 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     dlBtn.innerHTML = orig; dlBtn.disabled = false;
   });
 
-  // ============ SHARE ============
+  // SHARE (ringkas)
   function generateShareText(d){
     var host = ''; try { host = new URL(d.url).hostname; } catch {}
-    var txt = '';
-    txt += '# HASIL COPY WEBSITE\n\n';
-    txt += 'URL: ' + d.url + '\nHost: ' + host + '\nWaktu: ' + new Date().toISOString() + '\n\n';
-    txt += '==================================================\nINSTRUKSI UNTUK AI\n==================================================\n';
-    txt += 'Di bawah ini ada hasil copy lengkap dari sebuah website.\n';
-    txt += 'Termasuk struktur HTML, kode JavaScript, CSS, dan daftar asset.\n';
-    txt += 'Tolong analisis dan pahami struktur website ini.\n\n';
-    txt += '==================================================\n1. METADATA\n==================================================\n';
-    txt += 'Title: ' + (d.meta.title || '-') + '\nDescription: ' + (d.meta.description || '-') + '\nKeywords: ' + (d.meta.keywords || '-') + '\nOG Image: ' + (d.meta.ogImage || '-') + '\nFavicon: ' + (d.meta.favicon || '-') + '\n\n';
-    txt += '==================================================\n2. STATISTIK\n==================================================\n';
-    txt += 'Total Link      : ' + d.stats.totalLinks + '\nTotal Gambar    : ' + d.stats.totalImages + '\nTotal Heading   : ' + d.stats.totalHeadings + '\nTotal Paragraf  : ' + d.stats.totalParagraphs + '\nTotal Script    : ' + d.stats.totalScripts + '\nTotal Style     : ' + d.stats.totalStylesheets + '\nTotal Form      : ' + d.stats.totalForms + '\nTotal Tabel     : ' + d.stats.totalTables + '\nHTML Size       : ' + d.stats.htmlSize + ' bytes\n\n';
-    txt += '==================================================\n3. HTML LENGKAP (file: index.html)\n==================================================\n';
-    var htmlContent = d.rawHtml || '';
-    if (htmlContent.length > 30000) { txt += htmlContent.slice(0, 30000); txt += '\n\n...[HTML dipotong, total ' + htmlContent.length + ' karakter. Untuk full, download ZIP]\n'; } else { txt += htmlContent; }
-    txt += '\n\n';
-    txt += '==================================================\n4. STRUKTUR FILE\n==================================================\nindex.html\n';
-    (d.stylesheets || []).forEach(function(s, i){ txt += 'assets/style-' + (i+1) + '.css    (' + (s.size || 0) + ' bytes)\n'; });
-    (d.scripts || []).filter(function(s){ return s.url; }).forEach(function(s, i){ txt += 'assets/script-' + (i+1) + '.js    (' + (s.size || 0) + ' bytes)\n'; });
-    txt += '\n';
+    var txt = '# HASIL COPY WEBSITE\n\nURL: ' + d.url + '\nHost: ' + host + '\nWaktu: ' + new Date().toISOString() + '\n\n';
+    txt += 'STATISTIK\nLink: ' + d.stats.totalLinks + ' | Gambar: ' + d.stats.totalImages + ' | Script: ' + d.stats.totalScripts + ' | HTML: ' + d.stats.htmlSize + ' bytes\n\n';
+    txt += 'HTML:\n' + (d.rawHtml || '').slice(0, 30000) + '\n\n';
     if (d.scripts && d.scripts.length) {
-      txt += '==================================================\n5. KODE JAVASCRIPT\n==================================================\n';
-      d.scripts.filter(function(s){ return s.url; }).slice(0, 3).forEach(function(s, i){
-        txt += '\n--- Script ' + (i+1) + ': ' + s.url + ' ---\n';
-        if (s.contentPreview) {
-          if (s.contentPreview.length > 8000) { txt += s.contentPreview.slice(0, 8000); txt += '\n...[JS dipotong, total ' + (s.size || 0) + ' bytes. Untuk full, download ZIP]\n'; }
-          else { txt += s.contentPreview; }
-        } else { txt += '(isi tidak tersedia, size: ' + (s.size || 0) + ' bytes)\n'; }
+      txt += 'JAVASCRIPT:\n';
+      d.scripts.filter(function(s){ return s.url; }).slice(0, 3).forEach(function(s){
+        txt += '--- ' + s.url + ' ---\n' + (s.contentPreview || '').slice(0, 8000) + '\n\n';
       });
-      txt += '\n';
     }
-    if (d.inlineStyles && d.inlineStyles.length) {
-      txt += '==================================================\n6. KODE CSS\n==================================================\n';
-      var cssContent = d.inlineStyles.join('\n\n/* --- */\n\n');
-      if (cssContent.length > 15000) { txt += cssContent.slice(0, 15000); txt += '\n\n...[CSS dipotong]\n'; } else { txt += cssContent; }
-      txt += '\n\n';
-    }
-    if (d.headings && (d.headings.h1.length || d.headings.h2.length || d.headings.h3.length)) {
-      txt += '==================================================\n7. HEADING\n==================================================\n';
-      ['h1','h2','h3','h4','h5','h6'].forEach(function(tag){
-        if (d.headings[tag] && d.headings[tag].length) { txt += '\n[' + tag.toUpperCase() + ']\n'; d.headings[tag].slice(0, 30).forEach(function(h){ txt += '- ' + h + '\n'; }); }
-      });
-      txt += '\n';
-    }
-    if (d.paragraphs && d.paragraphs.length) {
-      txt += '==================================================\n8. PARAGRAF\n==================================================\n';
-      d.paragraphs.slice(0, 30).forEach(function(p, i){ txt += (i+1) + '. ' + p + '\n\n'; });
-    }
-    if (d.bodyText) {
-      txt += '==================================================\n9. TEXT CONTENT\n==================================================\n';
-      if (d.bodyText.length > 10000) { txt += d.bodyText.slice(0, 10000); txt += '\n\n...[Text dipotong]\n\n'; } else { txt += d.bodyText + '\n\n'; }
-    }
-    if (d.links && d.links.length) {
-      txt += '==================================================\n10. DAFTAR LINK\n==================================================\n';
-      d.links.slice(0, 50).forEach(function(l){ txt += '- ' + (l.text || '(no text)') + ' -> ' + l.href + '\n'; });
-      txt += '\n';
-    }
-    if (d.images && d.images.length) {
-      txt += '==================================================\n11. DAFTAR GAMBAR (URL saja)\n==================================================\n';
-      d.images.slice(0, 30).forEach(function(img, i){ txt += (i+1) + '. ' + img.url + (img.alt ? ' (alt: ' + img.alt + ')' : '') + '\n'; });
-      txt += '\n';
-    }
-    if (d.apiAnalyses && d.apiAnalyses.length) {
-      var allEp = []; d.apiAnalyses.forEach(function(a){ a.endpoints.forEach(function(e){ allEp.push(e); }); });
-      if (allEp.length) {
-        txt += '==================================================\n12. API ENDPOINT\n==================================================\n';
-        allEp.slice(0, 50).forEach(function(e){ txt += e.method + ' ' + e.url + '\n'; });
-        txt += '\n';
-      }
-    }
-    if (d.assetModules && d.assetModules.length) {
-      txt += '==================================================\n13. JS MODULE\n==================================================\n';
-      d.assetModules.slice(0, 20).forEach(function(m, i){
-        txt += (i+1) + '. ' + m.url + '\n   type: ' + m.type + ' | size: ' + m.size + ' | exports: ' + m.exportCount + '\n';
-        if (m.imports.length) txt += '   imports: ' + m.imports.join(', ') + '\n';
-      });
-      txt += '\n';
-    }
-    txt += '\n==================================================\nSELESAI\n==================================================\n';
-    txt += 'Total panjang: ' + txt.length + ' karakter\n';
     txt += 'Dihasilkan oleh Copy Website - https://egaa-copywebsite.vercel.app\n';
     return txt;
-  }
-
-  function downloadTextFile(filename, content){
-    var blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a'); a.href = url; a.download = filename;
-    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
   }
   function copyToClipboard(text){
     if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(text);
     return new Promise(function(resolve, reject){
       try { var ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); resolve(); } catch(e){ reject(e); }
     });
+  }
+  function downloadTextFile(filename, content){
+    var blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a'); a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
   }
   function tryOpenApp(ai){
     var configs = {
@@ -1115,39 +1045,33 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     var cfg = configs[ai]; if (!cfg) { window.open('https://chat.deepseek.com/', '_blank'); return; }
     var ua = navigator.userAgent.toLowerCase();
     var isAndroid = ua.indexOf('android') > -1;
-    var isIOS = /iphone|ipad|ipod/.test(ua);
     var startTime = Date.now();
     if (isAndroid) {
       try { var iframe = document.createElement('iframe'); iframe.style.display = 'none'; iframe.src = cfg.androidIntent; document.body.appendChild(iframe); setTimeout(function(){ try { document.body.removeChild(iframe); } catch(e){} }, 2000); } catch(e){}
       setTimeout(function(){ if (Date.now() - startTime < 2500) { try { window.location.href = cfg.appScheme; } catch(e){} } }, 200);
       setTimeout(function(){ if (!document.hidden && Date.now() - startTime >= 2400) { window.open(cfg.webUrl, '_blank'); } }, 2500);
-    } else if (isIOS) {
-      try { window.location.href = cfg.appScheme; } catch(e){}
-      setTimeout(function(){ if (!document.hidden) window.open(cfg.webUrl, '_blank'); }, 2500);
     } else { window.open(cfg.webUrl, '_blank'); }
   }
-
   function openShareModal(){
     if (!cur) return;
     var text = generateShareText(cur);
     var host = ''; try { host = new URL(cur.url).hostname; } catch {}
     var filename = 'copy-' + host + '-' + Date.now() + '.md';
-    var previewText = text.slice(0, 2500) + (text.length > 2500 ? '\n\n... (dan ' + (text.length - 2500) + ' karakter lainnya)' : '');
+    var previewText = text.slice(0, 2500) + (text.length > 2500 ? '\n\n... (+' + (text.length - 2500) + ' chars)' : '');
     var modal = $('shareModal');
     modal.innerHTML =
       '<div class="modal-overlay" id="shareOverlay">' +
         '<div class="modal-card">' +
           '<div class="modal-head"><div class="modal-h">Bagikan ke AI</div><button class="modal-close" id="shareClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>' +
           '<div class="modal-body">' +
-            '<p style="font-size:13px;color:var(--fg-dim);line-height:1.65;margin-bottom:16px;">Hasil copy akan disalin otomatis ke clipboard. Tombol di bawah buka APK AI (kalau terinstall) atau website-nya. Tinggal paste.</p>' +
-            '<div class="share-options" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">' +
-              '<button class="share-opt" data-action="deepseek" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;display:flex;gap:11px;align-items:flex-start;"><div style="width:34px;height:34px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0;color:#4d6bfe;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div style="font-size:13px;font-weight:600;color:var(--fg);margin-bottom:3px;">DeepSeek</div><div style="font-size:11px;color:var(--fg-dim);line-height:1.5;">Buka APK DeepSeek</div></div></button>' +
-              '<button class="share-opt" data-action="chatgpt" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;display:flex;gap:11px;align-items:flex-start;"><div style="width:34px;height:34px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0;color:#10a37f;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div style="font-size:13px;font-weight:600;color:var(--fg);margin-bottom:3px;">ChatGPT</div><div style="font-size:11px;color:var(--fg-dim);line-height:1.5;">Buka APK ChatGPT</div></div></button>' +
-              '<button class="share-opt" data-action="claude" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;display:flex;gap:11px;align-items:flex-start;"><div style="width:34px;height:34px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0;color:#d97757;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div style="font-size:13px;font-weight:600;color:var(--fg);margin-bottom:3px;">Claude</div><div style="font-size:11px;color:var(--fg-dim);line-height:1.5;">Buka APK Claude</div></div></button>' +
-              '<button class="share-opt" data-action="gemini" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;display:flex;gap:11px;align-items:flex-start;"><div style="width:34px;height:34px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0;color:#4285f4;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div style="font-size:13px;font-weight:600;color:var(--fg);margin-bottom:3px;">Gemini</div><div style="font-size:11px;color:var(--fg-dim);line-height:1.5;">Buka APK Gemini</div></div></button>' +
-              '<button class="share-opt" data-action="copy" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;display:flex;gap:11px;align-items:flex-start;"><div style="width:34px;height:34px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0;color:var(--blue);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div><div><div style="font-size:13px;font-weight:600;color:var(--fg);margin-bottom:3px;">Copy Semua</div><div style="font-size:11px;color:var(--fg-dim);line-height:1.5;">Salin ke clipboard</div></div></button>' +
-              '<button class="share-opt" data-action="download" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;display:flex;gap:11px;align-items:flex-start;"><div style="width:34px;height:34px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0;color:var(--fg-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div><div style="font-size:13px;font-weight:600;color:var(--fg);margin-bottom:3px;">Download .md</div><div style="font-size:11px;color:var(--fg-dim);line-height:1.5;">Simpan sebagai file</div></div></button>' +
-              '<button class="share-opt" data-action="native" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;display:flex;gap:11px;align-items:flex-start;"><div style="width:34px;height:34px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0;color:var(--fg-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div><div><div style="font-size:13px;font-weight:600;color:var(--fg);margin-bottom:3px;">Share Sistem</div><div style="font-size:11px;color:var(--fg-dim);line-height:1.5;">Bagikan ke aplikasi lain</div></div></button>' +
+            '<p style="font-size:13px;color:var(--fg-dim);line-height:1.65;margin-bottom:16px;">Pilih AI. Hasil copy akan disalin otomatis ke clipboard, tinggal paste.</p>' +
+            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">' +
+              '<button class="share-opt" data-action="deepseek" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;display:flex;gap:11px;align-items:flex-start;"><div style="width:34px;height:34px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0;color:#4d6bfe;font-weight:700;font-size:12px;">DS</div><div><div style="font-size:13px;font-weight:600;color:var(--fg);">DeepSeek</div><div style="font-size:11px;color:var(--fg-dim);">Buka APK/web</div></div></button>' +
+              '<button class="share-opt" data-action="chatgpt" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;display:flex;gap:11px;align-items:flex-start;"><div style="width:34px;height:34px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0;color:#10a37f;font-weight:700;font-size:12px;">GP</div><div><div style="font-size:13px;font-weight:600;color:var(--fg);">ChatGPT</div><div style="font-size:11px;color:var(--fg-dim);">Buka APK/web</div></div></button>' +
+              '<button class="share-opt" data-action="claude" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;display:flex;gap:11px;align-items:flex-start;"><div style="width:34px;height:34px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0;color:#d97757;font-weight:700;font-size:12px;">CL</div><div><div style="font-size:13px;font-weight:600;color:var(--fg);">Claude</div><div style="font-size:11px;color:var(--fg-dim);">Buka APK/web</div></div></button>' +
+              '<button class="share-opt" data-action="gemini" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;display:flex;gap:11px;align-items:flex-start;"><div style="width:34px;height:34px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0;color:#4285f4;font-weight:700;font-size:12px;">GM</div><div><div style="font-size:13px;font-weight:600;color:var(--fg);">Gemini</div><div style="font-size:11px;color:var(--fg-dim);">Buka APK/web</div></div></button>' +
+              '<button class="share-opt" data-action="copy" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;display:flex;gap:11px;align-items:flex-start;"><div style="width:34px;height:34px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0;color:var(--blue);font-weight:700;font-size:12px;">CP</div><div><div style="font-size:13px;font-weight:600;color:var(--fg);">Copy Semua</div><div style="font-size:11px;color:var(--fg-dim);">Ke clipboard</div></div></button>' +
+              '<button class="share-opt" data-action="download" style="padding:14px;border-radius:11px;background:var(--bg-3);border:1px solid var(--line-2);text-align:left;cursor:pointer;display:flex;gap:11px;align-items:flex-start;"><div style="width:34px;height:34px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0;color:var(--fg-dim);font-weight:700;font-size:12px;">DL</div><div><div style="font-size:13px;font-weight:600;color:var(--fg);">Download .md</div><div style="font-size:11px;color:var(--fg-dim);">Simpan file</div></div></button>' +
             '</div>' +
             '<div style="font-size:11px;color:var(--fg-dim);text-transform:uppercase;letter-spacing:1.2px;font-weight:600;margin-bottom:10px;">Preview (' + text.length + ' karakter)</div>' +
             '<div style="background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px;font-family:var(--mono);font-size:11.5px;color:#c8c8d0;line-height:1.6;max-height:260px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;">' + esc(previewText) + '</div>' +
@@ -1160,22 +1084,14 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     $('shareCancel').addEventListener('click', closeModal);
     $('shareOverlay').addEventListener('click', function(e){ if (e.target.id === 'shareOverlay') closeModal(); });
     $('shareConfirm').addEventListener('click', async function(){
-      try {
-        await copyToClipboard(text);
-        $('shareConfirm').textContent = 'Tersalin!';
-        setTimeout(function(){ $('shareConfirm').textContent = 'Copy Semua'; }, 2000);
-      } catch(e){ alert('Gagal copy: ' + e.message); }
+      try { await copyToClipboard(text); $('shareConfirm').textContent = 'Tersalin!'; setTimeout(function(){ $('shareConfirm').textContent = 'Copy Semua'; }, 2000); } catch(e){ alert('Gagal: ' + e.message); }
     });
     modal.querySelectorAll('.share-opt').forEach(function(btn){
       btn.addEventListener('click', async function(){
         var act = btn.dataset.action;
-        if (act !== 'download' && act !== 'native') { try { await copyToClipboard(text); } catch(e){} }
-        if (act === 'copy') { try { await copyToClipboard(text); alert('Tersalin!'); } catch(e){ alert('Gagal: ' + e.message); } }
+        if (act !== 'download') { try { await copyToClipboard(text); } catch(e){} }
+        if (act === 'copy') { try { await copyToClipboard(text); alert('Tersalin!'); } catch(e){} }
         else if (act === 'download') { downloadTextFile(filename, text); }
-        else if (act === 'native') {
-          if (navigator.share) { try { await navigator.share({ title: 'Hasil Copy Website - ' + host, text: text }); } catch(e){} }
-          else { try { await copyToClipboard(text); alert('Share sistem tidak didukung. Hasil sudah disalin, paste manual.'); } catch(e){ alert('Browser tidak mendukung.'); } }
-        }
         else if (act === 'deepseek') { tryOpenApp('deepseek'); }
         else if (act === 'chatgpt') { tryOpenApp('chatgpt'); }
         else if (act === 'claude') { tryOpenApp('claude'); }
@@ -1185,7 +1101,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   }
   shareBtn.addEventListener('click', openShareModal);
 
-  // ============ MUSIC ============
+  // ============ MUSIC PLAYER GLOBAL ============
   var MUSIC_KEY = 'copywebsite_music';
   var musicList = [];
   var audio = $('audioEl');
@@ -1199,18 +1115,22 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
 
   async function loadMusic(){
     try {
-      var res = await fetch('/api/playlist', { method: 'GET' });
+      var res = await fetch('/api/playlist', { method: 'GET', cache: 'no-store' });
       var data = await res.json();
-      if (data.success && data.playlist && data.playlist.length) {
+      if (data.success && Array.isArray(data.playlist)) {
         musicList = data.playlist;
+        saveLocalMusic(musicList);
       } else {
         musicList = getLocalMusic();
       }
     } catch(e) {
+      console.warn('Load music gagal, pakai lokal:', e.message);
       musicList = getLocalMusic();
     }
     renderMusic();
   }
+  window.loadMusic = loadMusic;
+
   function renderMusic(){
     $('musicCount').textContent = musicList.length;
     var grid = $('musicGrid');
@@ -1229,7 +1149,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
         '<div class="amusic-info">' +
           '<div class="amusic-title">' + esc(m.title) + '</div>' +
           '<div class="amusic-creator">' + esc(m.creator || '-') + '</div>' +
-          '<div class="amusic-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>' + esc(m.uploader) + '</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>' + (m.playCount || 0) + '</span></div>' +
+          '<div class="amusic-meta"><span>oleh ' + esc(m.uploader) + '</span><span>· ' + (m.playCount || 0) + ' play</span></div>' +
         '</div>' +
         '<div class="amusic-actions-row">' +
           '<button class="amusic-btn" onclick="playMusicIdx(' + i + ')"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Play</button>' +
@@ -1265,7 +1185,6 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     $('miniCover').src = currentMusic.cover;
     $('miniTitle').textContent = currentMusic.title;
     $('miniCreator').textContent = currentMusic.creator + ' · oleh ' + currentMusic.uploader;
-    // Media Session API
     if ('mediaSession' in navigator) {
       try {
         navigator.mediaSession.metadata = new MediaMetadata({
@@ -1283,9 +1202,9 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   }
   function updatePlayIcons(){
     var isPlaying = !audio.paused;
-    var playIcon = isPlaying ? '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>' : '<polygon points="5 3 19 12 5 21 5 3"/>';
-    $('playerPlayIcon').innerHTML = playIcon;
-    $('miniPlayIcon').innerHTML = playIcon;
+    var icon = isPlaying ? '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>' : '<polygon points="5 3 19 12 5 21 5 3"/>';
+    $('playerPlayIcon').innerHTML = icon;
+    $('miniPlayIcon').innerHTML = icon;
   }
 
   window.playMusicIdx = function(i){
@@ -1298,9 +1217,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     updatePlayerInfo();
     updatePlayerVisibility();
     updatePlayIcons();
-    try {
-      fetch('/api/playlist', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ action:'play', id: m.id }) }).catch(function(){});
-    } catch(e){}
+    try { fetch('/api/playlist', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ action:'play', id: m.id }) }).catch(function(){}); } catch(e){}
   };
   window.editMusicIdx = function(i){
     var m = musicList[i];
@@ -1328,39 +1245,20 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     }
   });
   audio.addEventListener('ended', function(){
-    if (currentIdx >= 0 && currentIdx < musicList.length - 1) {
-      playMusicIdx(currentIdx + 1);
-    } else {
-      updatePlayIcons();
-    }
+    if (currentIdx >= 0 && currentIdx < musicList.length - 1) { playMusicIdx(currentIdx + 1); }
+    else { updatePlayIcons(); }
   });
   audio.addEventListener('play', updatePlayIcons);
   audio.addEventListener('pause', updatePlayIcons);
 
-  $('playerPlayBtn').addEventListener('click', function(){
-    if (audio.paused) audio.play(); else audio.pause();
-  });
-  $('miniPlayBtn').addEventListener('click', function(){
-    if (audio.paused) audio.play(); else audio.pause();
-  });
-  $('playerPrev').addEventListener('click', function(){
-    if (currentIdx > 0) playMusicIdx(currentIdx - 1);
-  });
-  $('playerNext').addEventListener('click', function(){
-    if (currentIdx >= 0 && currentIdx < musicList.length - 1) playMusicIdx(currentIdx + 1);
-  });
-  $('playerClose').addEventListener('click', function(){
-    audio.pause();
-    currentMusic = null;
-    playerBar.classList.remove('show');
-  });
-  $('miniClose').addEventListener('click', function(){
-    audio.pause();
-    currentMusic = null;
-    miniPlayer.classList.remove('show');
-  });
+  $('playerPlayBtn').addEventListener('click', function(){ if (audio.paused) audio.play(); else audio.pause(); });
+  $('miniPlayBtn').addEventListener('click', function(){ if (audio.paused) audio.play(); else audio.pause(); });
+  $('playerPrev').addEventListener('click', function(){ if (currentIdx > 0) playMusicIdx(currentIdx - 1); });
+  $('playerNext').addEventListener('click', function(){ if (currentIdx >= 0 && currentIdx < musicList.length - 1) playMusicIdx(currentIdx + 1); });
+  $('playerClose').addEventListener('click', function(){ audio.pause(); currentMusic = null; playerBar.classList.remove('show'); });
+  $('miniClose').addEventListener('click', function(){ audio.pause(); currentMusic = null; miniPlayer.classList.remove('show'); });
 
-  // ============ MUSIC MODAL ============
+  // MUSIC MODAL
   function openMusicModal(existing, editIdx){
     var isEdit = existing && typeof editIdx === 'number';
     var m = existing || { title:'', uploader:'', creator:'', cover:'', audioUrl:'', audioType:'url' };
@@ -1374,18 +1272,9 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
           '</div>' +
           '<div class="modal-body">' +
             '<div class="modal-err" id="musicErr"></div>' +
-            '<div class="modal-field">' +
-              '<label class="modal-label">Judul Lagu <span class="req">*</span></label>' +
-              '<input class="modal-input" id="mTitle" placeholder="Contoh: Bojack Horseman" value="' + esc(m.title) + '" />' +
-            '</div>' +
-            '<div class="modal-field">' +
-              '<label class="modal-label">Pencipta / Artis <span class="req">*</span></label>' +
-              '<input class="modal-input" id="mCreator" placeholder="Contoh: Egaa Official" value="' + esc(m.creator) + '" />' +
-            '</div>' +
-            '<div class="modal-field">' +
-              '<label class="modal-label">Nama Penambah <span class="req">*</span></label>' +
-              '<input class="modal-input" id="mUploader" placeholder="Nama kamu" value="' + esc(m.uploader) + '" />' +
-            '</div>' +
+            '<div class="modal-field"><label class="modal-label">Judul Lagu <span class="req">*</span></label><input class="modal-input" id="mTitle" placeholder="Contoh: Bojack Horseman" value="' + esc(m.title) + '" /></div>' +
+            '<div class="modal-field"><label class="modal-label">Pencipta / Artis <span class="req">*</span></label><input class="modal-input" id="mCreator" placeholder="Contoh: Egaa Official" value="' + esc(m.creator) + '" /></div>' +
+            '<div class="modal-field"><label class="modal-label">Nama Penambah <span class="req">*</span></label><input class="modal-input" id="mUploader" placeholder="Nama kamu" value="' + esc(m.uploader) + '" /></div>' +
             '<div class="modal-field">' +
               '<label class="modal-label">Foto Cover <span class="req">*</span></label>' +
               '<div class="cover-source">' +
@@ -1395,25 +1284,26 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
               '<div id="coverUrlMode">' +
                 '<input class="modal-input" id="mCover" placeholder="https://files.catbox.moe/xxxxx.jpg" value="' + esc(m.cover) + '" />' +
                 '<div class="cover-shortcut">' +
-                  '<a href="https://catbox.moe/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Catbox</a>' +
-                  '<a href="https://egabox.lovable.app/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>EgaaBox</a>' +
+                  '<a href="https://catbox.moe/" target="_blank" rel="noopener">Catbox</a>' +
+                  '<a href="https://egabox.lovable.app/" target="_blank" rel="noopener">EgaaBox</a>' +
                 '</div>' +
-                '<div class="modal-hint">Upload foto ke Catbox atau EgaaBox, lalu tempel link-nya di sini. Format bebas: jpg, png, webp, gif.</div>' +
+                '<div class="modal-hint">Upload foto ke Catbox atau EgaaBox, tempel link di sini. Format bebas: jpg, png, webp, gif.</div>' +
               '</div>' +
               '<div id="coverFileMode" style="display:none">' +
-                '<label class="file-cover-input">' +
-                  '<input type="file" id="mCoverFile" accept="image/*" />' +
-                  'Klik untuk pilih foto dari galeri' +
-                '</label>' +
-                '<div class="modal-hint" id="mCoverFileHint">Foto tersimpan lokal di browser ini.</div>' +
+                '<label class="file-cover-input"><input type="file" id="mCoverFile" accept="image/*" />Klik untuk pilih foto dari galeri</label>' +
+                '<div class="modal-hint" id="mCoverFileHint">Foto tersimpan lokal di browser.</div>' +
               '</div>' +
-              '<div class="modal-preview" id="mCoverPreview">' + (m.cover ? '<img src="' + esc(m.cover) + '" onerror="this.parentNode.textContent=\'Gambar gagal dimuat\'" />' : 'Preview cover') + '</div>' +
+              '<div class="modal-preview" id="mCoverPreview">' + (m.cover ? '<img src="' + esc(m.cover) + '" onerror="this.parentNode.textContent=\'Gagal muat\'" />' : 'Preview cover') + '</div>' +
             '</div>' +
             '<div class="modal-field">' +
               '<label class="modal-label">Sumber Audio <span class="req">*</span></label>' +
               '<div class="modal-tabs"><button type="button" class="modal-tab on" data-src="url">URL</button><button type="button" class="modal-tab" data-src="file">Upload File</button></div>' +
               '<div id="audioUrlMode"><input class="modal-input" id="mAudioUrl" placeholder="https://files.catbox.moe/lagu.mp3" value="' + esc(m.audioUrl) + '" /><div class="modal-hint">Link MP3 atau MP4 yang ada audionya.</div></div>' +
-              '<div id="audioFileMode" style="display:none"><label class="modal-file-input"><input type="file" id="mAudioFile" accept="audio/*,video/*" />Klik untuk pilih file audio/video</label><div class="modal-hint" id="mFileHint">File tidak diupload ke server, hanya disimpan lokal di browser ini (max 5MB).</div></div>' +
+              '<div id="audioFileMode" style="display:none">' +
+                '<label class="modal-file-input"><input type="file" id="mAudioFile" accept="audio/*,video/*" />Klik untuk pilih file audio/video (max 1GB)</label>' +
+                '<div class="modal-hint" id="mFileHint">File akan di-upload ke Vercel Blob dan permanen.</div>' +
+                '<div class="upload-progress" id="uploadProgress"><div class="upload-progress-inner" id="uploadProgressInner"></div></div>' +
+              '</div>' +
             '</div>' +
           '</div>' +
           '<div class="modal-foot"><button class="abtn abtn-2" id="musicCancel">Batal</button><button class="abtn abtn-1" id="musicSave">Simpan</button></div>' +
@@ -1426,21 +1316,18 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
 
     var coverSrc = 'url';
     var audioSrc = 'url';
-    var uploadedCoverData = m.cover && m.cover.indexOf('data:') === 0 ? m.cover : '';
-    var uploadedAudioData = m.audioUrl && m.audioUrl.indexOf('data:') === 0 ? m.audioUrl : '';
-    if (uploadedCoverData) {
+    var uploadedCoverData = '';
+    var uploadedAudioFile = null;
+
+    if (m.cover && m.cover.indexOf('data:') === 0) {
       coverSrc = 'file';
+      uploadedCoverData = m.cover;
       modal.querySelectorAll('.cover-source-btn').forEach(function(b){ b.classList.toggle('on', b.dataset.src === 'file'); });
       $('coverUrlMode').style.display = 'none';
       $('coverFileMode').style.display = 'block';
-      $('mCoverFileHint').textContent = 'Foto tersimpan lokal.';
     }
-    if (uploadedAudioData) {
+    if (m.audioType === 'file' || (m.audioUrl && m.audioUrl.indexOf('data:') === 0)) {
       audioSrc = 'file';
-      modal.querySelectorAll('.modal-tab').forEach(function(b){ b.classList.toggle('on', b.dataset.src === 'file'); });
-      $('audioUrlMode').style.display = 'none';
-      $('audioFileMode').style.display = 'block';
-      $('mFileHint').textContent = 'File audio tersimpan lokal.';
     }
 
     modal.querySelectorAll('.cover-source-btn').forEach(function(t){
@@ -1464,7 +1351,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
 
     $('mCover').addEventListener('input', function(){
       var v = $('mCover').value.trim();
-      $('mCoverPreview').innerHTML = v ? '<img src="' + esc(v) + '" onerror="this.parentNode.textContent=\'Gambar gagal dimuat\'" />' : 'Preview cover';
+      $('mCoverPreview').innerHTML = v ? '<img src="' + esc(v) + '" onerror="this.parentNode.textContent=\'Gagal muat\'" />' : 'Preview cover';
     });
     $('mCoverFile').addEventListener('change', function(e){
       var f = e.target.files[0];
@@ -1474,20 +1361,15 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       reader.onload = function(ev){
         uploadedCoverData = ev.target.result;
         $('mCoverPreview').innerHTML = '<img src="' + ev.target.result + '" />';
-        $('mCoverFileHint').textContent = 'Foto terpilih: ' + f.name + ' (' + (f.size / 1024).toFixed(0) + ' KB)';
+        $('mCoverFileHint').textContent = 'Terpilih: ' + f.name + ' (' + (f.size / 1024).toFixed(0) + ' KB)';
       };
       reader.readAsDataURL(f);
     });
     $('mAudioFile').addEventListener('change', function(e){
       var f = e.target.files[0];
       if (!f) return;
-      if (f.size > 5 * 1024 * 1024) { alert('File terlalu besar (max 5MB). Pakai URL untuk file besar.'); e.target.value = ''; return; }
-      var reader = new FileReader();
-      reader.onload = function(ev){
-        uploadedAudioData = ev.target.result;
-        $('mFileHint').textContent = 'File terpilih: ' + f.name + ' (' + (f.size / 1024).toFixed(0) + ' KB)';
-      };
-      reader.readAsDataURL(f);
+      uploadedAudioFile = f;
+      $('mFileHint').textContent = 'Terpilih: ' + f.name + ' (' + (f.size / 1024 / 1024).toFixed(2) + ' MB)';
     });
 
     $('musicSave').addEventListener('click', async function(){
@@ -1495,31 +1377,102 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       var creator = $('mCreator').value.trim();
       var uploader = $('mUploader').value.trim();
       var cover = coverSrc === 'url' ? $('mCover').value.trim() : uploadedCoverData;
-      var audioUrl = audioSrc === 'url' ? $('mAudioUrl').value.trim() : uploadedAudioData;
+
       if (!title) return showMusicErr('Judul lagu wajib diisi.');
       if (!creator) return showMusicErr('Pencipta wajib diisi.');
       if (!uploader) return showMusicErr('Nama penambah wajib diisi.');
       if (!cover) return showMusicErr('Foto cover wajib diisi.');
-      if (!audioUrl) return showMusicErr(audioSrc === 'url' ? 'URL audio wajib diisi.' : 'Pilih file audio dulu.');
+
+      var saveBtn = $('musicSave');
+      saveBtn.disabled = true;
+      showMusicErr('');
+
       try {
-        var songData = { title: title, creator: creator, uploader: uploader, cover: cover, audioUrl: audioUrl, audioType: coverSrc };
-        var body;
-        if (isEdit) { body = { action: 'update', id: m.id, song: songData }; }
-        else { body = { action: 'add', song: songData }; }
-        var res = await fetch('/api/playlist', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+        var audioUrl = '';
+
+        if (audioSrc === 'file') {
+          if (!uploadedAudioFile) throw new Error('Pilih file audio dulu.');
+
+          saveBtn.textContent = 'Membaca file...';
+          var base64 = await new Promise(function(resolve, reject){
+            var r = new FileReader();
+            r.onload = function(ev){ resolve(ev.target.result); };
+            r.onerror = function(){ reject(new Error('Gagal baca file')); };
+            r.readAsDataURL(uploadedAudioFile);
+          });
+
+          saveBtn.textContent = 'Upload ' + (uploadedAudioFile.size / 1024 / 1024).toFixed(2) + ' MB...';
+          var progWrap = $('uploadProgress');
+          var progInner = $('uploadProgressInner');
+          if (progWrap) progWrap.classList.add('show');
+          if (progInner) progInner.style.width = '30%';
+
+          var upRes = await fetch('/api/playlist', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'upload',
+              fileName: uploadedAudioFile.name,
+              fileType: uploadedAudioFile.type || 'audio/mpeg',
+              fileBase64: base64
+            })
+          });
+          if (progInner) progInner.style.width = '70%';
+
+          var upData = await upRes.json();
+          if (!upRes.ok || !upData.success) throw new Error(upData.error || ('Upload gagal HTTP ' + upRes.status));
+          audioUrl = upData.url;
+          if (progInner) progInner.style.width = '90%';
+
+        } else {
+          audioUrl = $('mAudioUrl').value.trim();
+          if (!audioUrl) throw new Error('URL audio wajib diisi.');
+        }
+
+        saveBtn.textContent = 'Menyimpan...';
+
+        var songData = {
+          title: title, creator: creator, uploader: uploader,
+          cover: cover, audioUrl: audioUrl, audioType: audioSrc
+        };
+
+        var body = isEdit
+          ? { action: 'update', id: m.id, song: songData }
+          : { action: 'add', song: songData };
+
+        var res = await fetch('/api/playlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+
         var data = await res.json();
-        if (!data.success) throw new Error(data.error || 'Gagal simpan');
-        // Update list lokal juga
-        if (isEdit) { musicList[editIdx] = Object.assign(musicList[editIdx], songData); }
-        else { musicList.unshift(Object.assign({ id: data.song ? data.song.id : 'local_' + Date.now(), playCount: 0, createdAt: new Date().toISOString() }, songData)); }
+        if (!res.ok || !data.success) throw new Error(data.error || ('HTTP ' + res.status));
+
+        if (isEdit) {
+          if (musicList[editIdx]) musicList[editIdx] = Object.assign(musicList[editIdx], songData);
+        } else {
+          if (data.song) musicList.unshift(data.song);
+        }
         saveLocalMusic(musicList);
         renderMusic();
         closeModal();
+        setTimeout(loadMusic, 500);
+
       } catch(e) {
-        showMusicErr(e.message);
+        showMusicErr('Gagal: ' + e.message);
       }
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Simpan';
     });
-    function showMusicErr(msg){ var el = $('musicErr'); el.textContent = msg; el.className = 'modal-err show'; }
+
+    function showMusicErr(msg){
+      var el = $('musicErr');
+      if (!msg) { el.className = 'modal-err'; el.textContent = ''; return; }
+      el.textContent = msg;
+      el.className = 'modal-err show';
+    }
   }
 
   $('musicAddBtn').addEventListener('click', function(){ openMusicModal(null, null); });
@@ -1548,7 +1501,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     input.click();
   });
 
-  // ============ RENDER COPY ============
+  // RENDER COPY
   function render(d){
     targetUrlEl.href = d.url; targetUrlEl.textContent = d.url;
     var s = d.stats;
@@ -1565,17 +1518,17 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     updateBadge('text', ''); updateBadge('raw', '');
     $('t-preview').innerHTML =
       '<div class="pv-toolbar"><div class="pv-url">' + esc(d.url) + '</div><div class="pv-btns">' +
-        '<button class="pv-btn" id="pvRefresh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Refresh</button>' +
-        '<button class="pv-btn primary" id="pvFullscreen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>Fullscreen</button>' +
+        '<button class="pv-btn" id="pvRefresh">Refresh</button>' +
+        '<button class="pv-btn primary" id="pvFullscreen">Fullscreen</button>' +
       '</div></div>' +
       '<div class="pv-frame-wrap" id="pvFrameWrap"><iframe id="pvFrame" src="' + esc(d.url) + '" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe></div>' +
-      '<div class="pv-note">Jika pratinjau kosong, website target kemungkinan menolak dimuat karena kebijakan X-Frame-Options. Coba klik Fullscreen.</div>' +
-      '<button class="pv-fs-close" id="pvFsClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Keluar</button>';
+      '<div class="pv-note">Jika kosong, coba Fullscreen.</div>' +
+      '<button class="pv-fs-close" id="pvFsClose">Keluar</button>';
     setTimeout(function(){
-      var frameWrap = $('pvFrameWrap'); var frame = $('pvFrame'); var fsClose = $('pvFsClose');
-      $('pvFullscreen').addEventListener('click', function(){ frameWrap.classList.add('fullscreen'); fsClose.classList.add('show'); document.body.style.overflow = 'hidden'; });
-      fsClose.addEventListener('click', function(){ frameWrap.classList.remove('fullscreen'); fsClose.classList.remove('show'); document.body.style.overflow = ''; });
-      $('pvRefresh').addEventListener('click', function(){ frame.src = frame.src; });
+      var fw = $('pvFrameWrap'); var fr = $('pvFrame'); var fc = $('pvFsClose');
+      $('pvFullscreen').addEventListener('click', function(){ fw.classList.add('fullscreen'); fc.classList.add('show'); document.body.style.overflow = 'hidden'; });
+      fc.addEventListener('click', function(){ fw.classList.remove('fullscreen'); fc.classList.remove('show'); document.body.style.overflow = ''; });
+      $('pvRefresh').addEventListener('click', function(){ fr.src = fr.src; });
     }, 10);
     var m = d.meta;
     $('t-meta').innerHTML = '<div class="aml">' +
@@ -1598,7 +1551,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     $('t-scripts').innerHTML = d.scripts.length ? '<div class="aitems">' + d.scripts.map(function(s){ return '<div class="ait"><span class="sub">' + esc(s.type) + (s.size ? ' · ' + fmtB(s.size) : '') + '</span>' + (s.url ? '<a href="' + esc(s.url) + '" target="_blank">' + esc(s.url) + '</a>' : '(inline)') + '</div>'; }).join('') + '</div>' : '<div class="aempty">Tidak ada script.</div>';
     var stylesHtml = '';
     if (d.stylesheets.length) { stylesHtml += '<div class="ast">External (' + d.stylesheets.length + ')</div><div class="aitems-grid">' + d.stylesheets.map(function(s){ return '<div class="ait">' + (s.size ? '<span class="sub">' + fmtB(s.size) + '</span>' : '') + '<a href="' + esc(s.url) + '" target="_blank">' + esc(s.url) + '</a></div>'; }).join('') + '</div>'; }
-    if (d.inlineStyles && d.inlineStyles.length) { stylesHtml += '<div class="ast">Inline CSS (' + d.inlineStyles.length + ')</div><pre>' + esc(d.inlineStyles.join('\n\n/* --- */\n\n').slice(0,30000)) + '</pre>'; }
+    if (d.inlineStyles && d.inlineStyles.length) { stylesHtml += '<div class="ast">Inline CSS (' + d.inlineStyles.length + ')</div><pre>' + esc(d.inlineStyles.join('\n\n').slice(0,30000)) + '</pre>'; }
     $('t-styles').innerHTML = stylesHtml || '<div class="aempty">Tidak ada CSS.</div>';
     var h = d.headings, hHtml = '', hasH = false;
     ['h1','h2','h3','h4','h5','h6'].forEach(function(tag){ if (h[tag] && h[tag].length) { hasH = true; hHtml += '<div class="ast">' + tag.toUpperCase() + ' (' + h[tag].length + ')</div><div class="aitems">' + h[tag].map(function(x){ return '<div class="ait">' + esc(x) + '</div>'; }).join('') + '</div>'; } });
@@ -1619,7 +1572,6 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   }
 
   renderHistory();
-  // Load music awal biar mini player tahu
   loadMusic();
 })();
 </script>
