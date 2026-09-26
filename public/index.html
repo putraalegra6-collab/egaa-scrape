@@ -358,8 +358,6 @@ input,textarea,select{font-family:inherit}
 .file-cover-input{width:100%;background:var(--bg);border:1px dashed var(--line-2);border-radius:9px;padding:14px;color:var(--fg-dim);font-size:12px;text-align:center;cursor:pointer;transition:.15s;display:block}
 .file-cover-input:hover{border-color:var(--blue);color:var(--fg)}
 .file-cover-input input{display:none}
-
-/* RESULT */
 #result{display:none}
 #result.show{display:block;animation:fade .3s}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
@@ -453,7 +451,6 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
 .blocked-ico svg{width:26px;height:26px;stroke:#ff5c5c;fill:none;stroke-width:2.4}
 .blocked-btn{padding:15px 26px;background:var(--fg);color:var(--bg);border:none;border-radius:11px;font-size:14.5px;font-weight:700;cursor:pointer;width:100%;font-family:inherit}
 .blocked-btn:hover{background:#fff}
-
 @media(max-width:1024px){.lnav{padding:0 24px}.lnav-center{display:none}.lhero{grid-template-columns:1fr;gap:48px;padding:72px 28px 56px}.lhero-h1{font-size:48px;letter-spacing:-1.8px}.lhero-right{order:2}.lstats{grid-template-columns:repeat(2,1fr);padding:0 28px 56px}.lflow,.lfeat,.lsecurity,.lcta{padding:0 28px 72px}.lflow-grid,.lfeat-grid{grid-template-columns:1fr}.lsec-inner{grid-template-columns:1fr;padding:40px 32px;gap:36px}.aidle{grid-template-columns:1fr}}
 @media(max-width:640px){.lnav{padding:0 16px;height:56px}.lnav-brand{font-size:13px}.lnav-cta{padding:8px 12px;font-size:12px}.lhero{padding:44px 18px 36px;gap:36px}.lhero-h1{font-size:32px;letter-spacing:-1px;margin-bottom:18px}.lhero-p{font-size:14px;margin-bottom:24px}.lhero-btns{flex-direction:row;flex-wrap:wrap;gap:10px;margin-bottom:24px}.lbtn-1,.lbtn-2{padding:12px 18px;font-size:13px}.lhero-meta{font-size:11px;gap:12px 18px}.lstats{padding:0 18px 36px;grid-template-columns:1fr 1fr;gap:10px}.lstat{padding:18px 16px}.lstat-v{font-size:20px}.lsec-head{margin-bottom:28px;padding:0 18px}.lsec-h{font-size:22px}.lsec-p{font-size:13px}.lflow,.lfeat,.lsecurity,.lcta{padding:0 18px 48px}.lstep{padding:22px 20px}.lstep::before{font-size:36px;top:16px;right:16px}.feat{padding:20px}.lsec-inner{padding:28px 20px;gap:24px}.lsec-h{font-size:20px}.lcta-inner{padding:36px 20px}.lcta-h{font-size:20px}.lcta-btn{padding:12px 20px;font-size:13px}.lfoot{padding:24px 18px;font-size:11.5px;flex-direction:column;align-items:flex-start}.anav{padding:0 12px;height:56px}.anav-tab{padding:6px 11px;font-size:11.5px}.aback{padding:7px 11px;font-size:12px}.awrap{padding:24px 16px 180px}.ahead-h1{font-size:22px}.ahead-p{font-size:13px}.apane{padding:18px;margin-bottom:16px}.arow{flex-direction:row;flex-wrap:wrap;gap:10px}.afield{min-width:100%;flex:1 1 100%}.afield input{padding:13px 14px 13px 42px;font-size:14px}.abtn{padding:13px 18px;font-size:13px}.aidle{gap:14px}.aidle-card{padding:22px 20px}.ahistory-item{padding:12px 14px;flex-direction:column;align-items:stretch;gap:10px}.ahistory-actions{justify-content:flex-end}.abar{padding:16px 18px;flex-direction:column;align-items:stretch;gap:12px}.abar .abtn{width:100%}.asgrid{grid-template-columns:repeat(2,1fr);gap:8px}.asc{padding:12px 13px}.asc-v{font-size:17px}.atab{padding:12px 13px;font-size:11.5px}.atc{padding:16px}.amr{flex-direction:column;gap:4px}.amk{min-width:auto}.aitems-grid{grid-template-columns:1fr}.aigrid{grid-template-columns:repeat(2,1fr)}.pv-frame-wrap{height:420px}.pv-toolbar{flex-direction:column;align-items:stretch}.pv-btns{width:100%}.pv-btn{flex:1;justify-content:center}.modal-card{max-height:95vh}.modal-head,.modal-body,.modal-foot{padding:16px 18px}.modal-foot{flex-direction:column}.blocked-card{padding:28px 22px}.amusic-grid{grid-template-columns:repeat(2,1fr);gap:10px}.player-inner{padding:9px 14px;gap:9px}.player-cover{width:40px;height:40px}.player-btn{width:32px;height:32px}.player-btn.play{width:38px;height:38px}.bubble-panel{width:calc(100vw - 24px);max-width:340px}.fab{width:48px;height:48px}.fab svg{width:18px;height:18px}}
 </style>
@@ -762,6 +759,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
 <div id="shareModal"></div>
 <div id="musicModal"></div>
 
+<script src="https://unpkg.com/@vercel/blob@0.27.0/dist/client.umd.js"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id) };
@@ -1106,7 +1104,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     audio.src = m.audioUrl;
     audio.load();
     audio.play().then(function(){ updatePlayIcons(); updateBubbleNow(); }).catch(function(e){
-      alert('Gagal putar.\n\nURL: ' + m.audioUrl + '\n\nPastikan URL langsung ke file .mp3 / .mp4.');
+      alert('Gagal putar.\n\nURL: ' + m.audioUrl);
     });
     updatePlayerInfo();
     updatePlayerVisibility();
@@ -1150,7 +1148,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   $('bubbleNext').addEventListener('click', function(){ if (currentIdx >= 0 && currentIdx < musicList.length - 1) playMusicIdx(currentIdx + 1); });
   $('playerClose').addEventListener('click', function(){ audio.pause(); currentMusic = null; currentIdx = -1; playerBar.classList.remove('show'); updateBubbleNow(); updatePlayerVisibility(); });
 
-  // ===== FAB DRAG (FIXED) =====
+  // ===== FAB DRAG (v3 FINAL) =====
   var FAB_POS_KEY = 'copywebsite_fab_pos';
   var fabBtn = $('fabBtn');
   var bubblePanel = $('bubblePanel');
@@ -1160,24 +1158,26 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   var moved = false;
 
   function positionPanel(){
-    var rect = fabBtn.getBoundingClientRect();
-    var panelWidth = Math.min(300, window.innerWidth - 24);
-    var panelMaxH = Math.min(window.innerHeight * 0.7, 520);
-    var left = rect.left + rect.width / 2 - panelWidth / 2;
-    if (left < 8) left = 8;
-    if (left + panelWidth > window.innerWidth - 8) left = window.innerWidth - panelWidth - 8;
-    var top;
-    if (rect.top > panelMaxH + 16) {
-      top = rect.top - panelMaxH - 8;
-    } else {
-      top = rect.bottom + 8;
-      if (top + panelMaxH > window.innerHeight - 8) top = window.innerHeight - panelMaxH - 8;
-    }
-    if (top < 8) top = 8;
-    bubblePanel.style.left = left + 'px';
-    bubblePanel.style.top = top + 'px';
-    bubblePanel.style.bottom = 'auto';
+    bubblePanel.style.visibility = 'hidden';
+    bubblePanel.style.left = '0px';
+    bubblePanel.style.top = '0px';
     bubblePanel.style.right = 'auto';
+    bubblePanel.style.bottom = 'auto';
+    var panelRect = bubblePanel.getBoundingClientRect();
+    var panelW = panelRect.width || 300;
+    var panelH = panelRect.height || 400;
+    var fabRect = fabBtn.getBoundingClientRect();
+    var gap = 10;
+    var margin = 10;
+    var top = fabRect.top - panelH - gap;
+    var left = fabRect.left + fabRect.width / 2 - panelW / 2;
+    if (top < margin) top = fabRect.bottom + gap;
+    if (top + panelH > window.innerHeight - margin) top = Math.max(margin, window.innerHeight - panelH - margin);
+    if (left < margin) left = margin;
+    if (left + panelW > window.innerWidth - margin) left = window.innerWidth - panelW - margin;
+    bubblePanel.style.left = Math.round(left) + 'px';
+    bubblePanel.style.top = Math.round(top) + 'px';
+    bubblePanel.style.visibility = '';
   }
 
   function setFabPos(x, y){
@@ -1233,7 +1233,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       if (bubblePanel.classList.contains('open')) positionPanel();
     }
   }
-  function onPointerUp(e){
+  function onPointerUp(){
     if (!isDragging) return;
     isDragging = false;
     fabBtn.classList.remove('dragging');
@@ -1242,21 +1242,15 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     document.removeEventListener('touchmove', onPointerMove);
     document.removeEventListener('touchend', onPointerUp);
     document.removeEventListener('touchcancel', onPointerUp);
-    // Klik jika tidak moved
-    if (!moved) {
-      toggleBubble();
-    }
+    if (!moved) toggleBubble();
   }
 
   function toggleBubble(){
-    if (bubblePanel.classList.contains('open')) {
-      bubblePanel.classList.remove('open');
-    } else {
-      bubblePanel.classList.add('open');
-      positionPanel();
-      updateBubbleNow();
-      renderBubbleList();
-    }
+    if (bubblePanel.classList.contains('open')) { bubblePanel.classList.remove('open'); return; }
+    bubblePanel.style.left = '0px';
+    bubblePanel.style.top = '0px';
+    bubblePanel.classList.add('open');
+    requestAnimationFrame(function(){ positionPanel(); updateBubbleNow(); renderBubbleList(); });
   }
 
   fabBtn.addEventListener('mousedown', onPointerDown);
@@ -1273,10 +1267,7 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
   window.addEventListener('resize', function(){
     try {
       var saved = localStorage.getItem(FAB_POS_KEY);
-      if (saved) {
-        var p = JSON.parse(saved);
-        setFabPos(p.x, p.y);
-      }
+      if (saved) { var p = JSON.parse(saved); setFabPos(p.x, p.y); }
     } catch(e){}
     if (bubblePanel.classList.contains('open')) positionPanel();
   });
@@ -1287,12 +1278,10 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       t.classList.add('on');
       $('bubblePlaylist').style.display = t.dataset.bt === 'playlist' ? 'block' : 'none';
       $('bubbleAdd').style.display = t.dataset.bt === 'add' ? 'block' : 'none';
+      if (bubblePanel.classList.contains('open')) requestAnimationFrame(positionPanel);
     });
   });
-  $('bubbleAddBtn').addEventListener('click', function(){
-    bubblePanel.classList.remove('open');
-    openMusicModal(null, null);
-  });
+  $('bubbleAddBtn').addEventListener('click', function(){ bubblePanel.classList.remove('open'); openMusicModal(null, null); });
   $('bubbleExport').addEventListener('click', function(){ downloadTextFile('playlist-copywebsite.json', JSON.stringify(musicList, null, 2)); });
   $('bubbleImport').addEventListener('click', triggerImport);
 
@@ -1317,6 +1306,45 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
     input.click();
   }
 
+  // UPLOAD HELPER: client upload ke Vercel Blob
+  async function uploadFileToBlob(file){
+    if (!window.VercelBlob && !window.blob) throw new Error('Library upload belum siap. Refresh halaman.');
+    var blobLib = window.VercelBlob || window.blob;
+    var uploadFn = blobLib && (blobLib.upload || (blobLib.default && blobLib.default.upload));
+    if (!uploadFn) throw new Error('Fungsi upload tidak ditemukan. Refresh halaman.');
+    var result = await uploadFn(file.name, file, {
+      access: 'public',
+      handleUploadUrl: '/api/playlist',
+      multipart: file.size > 5 * 1024 * 1024
+    });
+    return result.url;
+  }
+
+  // KOMPRES GAMBAR
+  function compressImage(file, maxW, maxH, quality){
+    return new Promise(function(resolve, reject){
+      var reader = new FileReader();
+      reader.onload = function(e){
+        var img = new Image();
+        img.onload = function(){
+          var w = img.width, h = img.height;
+          if (w > maxW) { h = h * maxW / w; w = maxW; }
+          if (h > maxH) { w = w * maxH / h; h = maxH; }
+          var canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          try { resolve(canvas.toDataURL('image/jpeg', quality)); } catch(err) { reject(err); }
+        };
+        img.onerror = function(){ reject(new Error('Gagal load gambar')); };
+        img.src = e.target.result;
+      };
+      reader.onerror = function(){ reject(new Error('Gagal baca file')); };
+      reader.readAsDataURL(file);
+    });
+  }
+
   // MUSIC MODAL
   function openMusicModal(existing, editIdx){
     var isEdit = existing && typeof editIdx === 'number';
@@ -1335,14 +1363,14 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
               '<label class="modal-label">Foto Cover <span class="req">*</span></label>' +
               '<div class="cover-source"><button type="button" class="cover-source-btn on" data-src="url">URL Foto</button><button type="button" class="cover-source-btn" data-src="file">Upload File</button></div>' +
               '<div id="coverUrlMode"><input class="modal-input" id="mCover" placeholder="https://files.catbox.moe/xxxxx.jpg" value="' + esc(m.cover) + '" /><div class="cover-shortcut"><a href="https://catbox.moe/" target="_blank" rel="noopener">Catbox</a></div><div class="modal-hint">URL langsung ke file gambar.</div></div>' +
-              '<div id="coverFileMode" style="display:none"><label class="file-cover-input"><input type="file" id="mCoverFile" accept="image/*" />Klik pilih foto dari galeri</label><div class="modal-hint" id="mCoverFileHint">Foto tersimpan lokal.</div></div>' +
+              '<div id="coverFileMode" style="display:none"><label class="file-cover-input"><input type="file" id="mCoverFile" accept="image/*" />Klik pilih foto dari galeri</label><div class="modal-hint" id="mCoverFileHint">Otomatis dikompres max 500KB.</div></div>' +
               '<div class="modal-preview" id="mCoverPreview">' + (m.cover ? '<img src="' + esc(m.cover) + '" onerror="this.parentNode.textContent=\'Gagal muat\'" />' : 'Preview cover') + '</div>' +
             '</div>' +
             '<div class="modal-field">' +
               '<label class="modal-label">Sumber Audio <span class="req">*</span></label>' +
               '<div class="modal-tabs"><button type="button" class="modal-tab" data-src="url">URL</button><button type="button" class="modal-tab on" data-src="file">Upload File</button></div>' +
               '<div id="audioUrlMode" style="display:none"><input class="modal-input" id="mAudioUrl" placeholder="https://files.catbox.moe/lagu.mp3" value="' + esc(m.audioUrl) + '" /><div class="modal-hint">URL langsung ke file .mp3/.mp4.</div></div>' +
-              '<div id="audioFileMode"><label class="modal-file-input"><input type="file" id="mAudioFile" accept="audio/*,video/*" />Klik pilih file audio/video</label><div class="modal-hint" id="mFileHint">File di-upload ke Vercel Blob.</div><div class="upload-progress" id="uploadProgress"><div class="upload-progress-inner" id="uploadProgressInner"></div></div></div>' +
+              '<div id="audioFileMode"><label class="modal-file-input"><input type="file" id="mAudioFile" accept="audio/*,video/*" />Klik pilih file audio/video</label><div class="modal-hint" id="mFileHint">Upload ke Vercel Blob (max 1GB).</div><div class="upload-progress" id="uploadProgress"><div class="upload-progress-inner" id="uploadProgressInner"></div></div></div>' +
             '</div>' +
           '</div>' +
           '<div class="modal-foot"><button class="abtn abtn-2" id="musicCancel">Batal</button><button class="abtn abtn-1" id="musicSave">Simpan</button></div>' +
@@ -1390,18 +1418,26 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
       var v = $('mCover').value.trim();
       $('mCoverPreview').innerHTML = v ? '<img src="' + esc(v) + '" onerror="this.parentNode.textContent=\'Gagal muat\'" />' : 'Preview cover';
     });
-    $('mCoverFile').addEventListener('change', function(e){
+
+    $('mCoverFile').addEventListener('change', async function(e){
       var f = e.target.files[0];
       if (!f) return;
-      if (f.size > 3 * 1024 * 1024) { alert('Foto max 3MB.'); e.target.value = ''; return; }
-      var reader = new FileReader();
-      reader.onload = function(ev){
-        uploadedCoverData = ev.target.result;
-        $('mCoverPreview').innerHTML = '<img src="' + ev.target.result + '" />';
-        $('mCoverFileHint').textContent = 'Terpilih: ' + f.name;
-      };
-      reader.readAsDataURL(f);
+      $('mCoverFileHint').textContent = 'Mengkompres...';
+      try {
+        var dataUrl = await compressImage(f, 500, 500, 0.85);
+        var sizeKB = Math.round((dataUrl.length * 3 / 4) / 1024);
+        if (sizeKB > 500) {
+          dataUrl = await compressImage(f, 400, 400, 0.7);
+          sizeKB = Math.round((dataUrl.length * 3 / 4) / 1024);
+        }
+        uploadedCoverData = dataUrl;
+        $('mCoverPreview').innerHTML = '<img src="' + dataUrl + '" />';
+        $('mCoverFileHint').textContent = 'Terpilih: ' + f.name + ' → ' + sizeKB + ' KB';
+      } catch(err) {
+        $('mCoverFileHint').textContent = 'Gagal kompres: ' + err.message;
+      }
     });
+
     $('mAudioFile').addEventListener('change', function(e){
       var f = e.target.files[0];
       if (!f) return;
@@ -1428,34 +1464,41 @@ pre{background:#050506;border:1px solid var(--line);border-radius:10px;padding:1
         var audioUrl = '';
         if (audioSrc === 'file') {
           if (!uploadedAudioFile) throw new Error('Pilih file audio dulu.');
-          saveBtn.textContent = 'Upload ' + (uploadedAudioFile.size / 1024 / 1024).toFixed(2) + ' MB...';
           var progWrap = $('uploadProgress');
           var progInner = $('uploadProgressInner');
           if (progWrap) progWrap.classList.add('show');
-          if (progInner) progInner.style.width = '20%';
+          if (progInner) progInner.style.width = '15%';
+          saveBtn.textContent = 'Upload ' + (uploadedAudioFile.size / 1024 / 1024).toFixed(2) + ' MB...';
 
-          var reader = new FileReader();
-          var base64 = await new Promise(function(resolve, reject){
-            reader.onload = function(ev){ resolve(ev.target.result); };
-            reader.onerror = function(){ reject(new Error('Gagal baca file')); };
-            reader.readAsDataURL(uploadedAudioFile);
-          });
-          if (progInner) progInner.style.width = '50%';
-          var upRes = await fetch('/api/playlist', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              action: 'upload',
-              fileName: uploadedAudioFile.name,
-              fileType: uploadedAudioFile.type || 'audio/mpeg',
-              fileBase64: base64
-            })
-          });
-          if (progInner) progInner.style.width = '85%';
-          var upData = await upRes.json();
-          if (!upRes.ok || !upData.success) throw new Error(upData.error || ('Upload gagal HTTP ' + upRes.status));
-          audioUrl = upData.url;
-          if (progInner) progInner.style.width = '95%';
+          try {
+            audioUrl = await uploadFileToBlob(uploadedAudioFile);
+            if (progInner) progInner.style.width = '90%';
+          } catch(upErr) {
+            console.warn('Client upload gagal:', upErr.message);
+            if (uploadedAudioFile.size > 4 * 1024 * 1024) {
+              throw new Error('Upload gagal. File >4MB butuh koneksi stabil. Coba lagi atau pakai URL Catbox.');
+            }
+            var reader = new FileReader();
+            var base64 = await new Promise(function(resolve, reject){
+              reader.onload = function(ev){ resolve(ev.target.result); };
+              reader.onerror = function(){ reject(new Error('Gagal baca file')); };
+              reader.readAsDataURL(uploadedAudioFile);
+            });
+            if (progInner) progInner.style.width = '50%';
+            var upRes = await fetch('/api/playlist', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ action: 'upload', fileName: uploadedAudioFile.name, fileType: uploadedAudioFile.type || 'audio/mpeg', fileBase64: base64 })
+            });
+            if (!upRes.ok) {
+              if (upRes.status === 413) throw new Error('File terlalu besar. Pakai URL Catbox.');
+              throw new Error('Upload server gagal (HTTP ' + upRes.status + ')');
+            }
+            var upData = await upRes.json();
+            if (!upData.success) throw new Error(upData.error || 'Upload gagal.');
+            audioUrl = upData.url;
+            if (progInner) progInner.style.width = '90%';
+          }
         } else {
           audioUrl = $('mAudioUrl').value.trim();
           if (!audioUrl) throw new Error('URL audio wajib diisi.');
